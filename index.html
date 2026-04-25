@@ -5,23 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
   <title>Mrozowski Automation — Premium Booking Systems</title>
-  <meta name="description" content="Premium systemy rezerwacji online dla lokalnych usług. Jeden link do oferty, cen, terminów i rezerwacji." />
+  <meta
+    name="description"
+    content="Premium systemy rezerwacji online dla lokalnych usług. Jeden link do oferty, cen, terminów i rezerwacji."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     :root {
       --bg-0: #030513;
       --bg-1: #070a1d;
       --bg-2: #0b1028;
+
       --text: #f7f8ff;
       --text-strong: #ffffff;
       --muted: #aab2d6;
       --muted-2: #7781ad;
+
       --line: rgba(255, 255, 255, 0.10);
       --line-strong: rgba(255, 255, 255, 0.18);
+
       --violet: #8b5cf6;
       --violet-2: #c4b5fd;
       --blue: #60a5fa;
@@ -30,18 +39,24 @@
       --gold: #f2c57b;
       --gold-2: #d9a75d;
       --green: #6ee7b7;
+
       --radius-xl: 36px;
       --radius-lg: 28px;
       --radius-md: 20px;
+
       --shadow-xl: 0 34px 120px rgba(0, 0, 0, 0.56);
       --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.42);
       --shadow-md: 0 18px 44px rgba(0, 0, 0, 0.30);
+
       --max: 1240px;
+
       --safe-top: env(safe-area-inset-top, 0px);
       --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html {
       scroll-behavior: smooth;
@@ -88,9 +103,15 @@
       mix-blend-mode: overlay;
     }
 
-    h1, h2, h3, p { margin: 0; }
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
 
-    a, button {
+    a,
+    button {
       color: inherit;
       -webkit-tap-highlight-color: transparent;
     }
@@ -139,8 +160,13 @@
     }
 
     @keyframes floatOrb {
-      from { transform: translate3d(0, 0, 0) scale(1); }
-      to { transform: translate3d(36px, 28px, 0) scale(1.08); }
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(36px, 28px, 0) scale(1.08);
+      }
     }
 
     .container {
@@ -153,10 +179,6 @@
     .desktop-version {
       position: relative;
       z-index: 2;
-    }
-
-    .mobile-version {
-      display: none;
     }
 
     .site-header {
@@ -195,7 +217,7 @@
       font-family: "Sora", sans-serif;
       font-weight: 800;
       letter-spacing: -0.09em;
-      color: #fff;
+      color: #ffffff;
       border: 1px solid rgba(255, 255, 255, 0.14);
       background:
         radial-gradient(circle at 30% 0%, rgba(196, 181, 253, 0.34), transparent 48%),
@@ -244,11 +266,14 @@
       text-decoration: none;
       font-size: 13px;
       font-weight: 850;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
     }
 
     .nav a:hover {
-      color: #fff;
+      color: #ffffff;
       background: rgba(255, 255, 255, 0.07);
       transform: translateY(-1px);
     }
@@ -265,7 +290,8 @@
       text-decoration: none;
       cursor: pointer;
       color: var(--text);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.038));
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.038));
       font: inherit;
       font-size: 13px;
       font-weight: 900;
@@ -275,7 +301,11 @@
       box-shadow:
         0 14px 34px rgba(0, 0, 0, 0.28),
         inset 0 1px 0 rgba(255, 255, 255, 0.09);
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, filter 0.22s ease;
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        filter 0.22s ease;
     }
 
     .btn:hover {
@@ -288,7 +318,7 @@
     }
 
     .btn-primary {
-      color: #fff;
+      color: #ffffff;
       border-color: rgba(139, 92, 246, 0.42);
       background: linear-gradient(180deg, #a392ff, #7457f6);
       box-shadow:
@@ -307,7 +337,7 @@
     .btn-light {
       color: #0f172a;
       border-color: rgba(255, 255, 255, 0.92);
-      background: linear-gradient(180deg, #fff, #eaf1ff);
+      background: linear-gradient(180deg, #ffffff, #eaf1ff);
       box-shadow:
         0 18px 42px rgba(37, 99, 235, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 1);
@@ -458,8 +488,15 @@
     }
 
     @keyframes chipIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-side {
@@ -514,8 +551,13 @@
     }
 
     @keyframes dashboardFloat {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-10px);
+      }
     }
 
     .dashboard-top {
@@ -587,7 +629,7 @@
       border-radius: 15px;
       display: grid;
       place-items: center;
-      color: #fff;
+      color: #ffffff;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.045));
       border: 1px solid rgba(255, 255, 255, 0.10);
       font-weight: 950;
@@ -710,7 +752,10 @@
         var(--shadow-lg),
         inset 0 1px 0 rgba(255, 255, 255, 0.085);
       transform-style: preserve-3d;
-      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease;
     }
 
     .demo-card:hover {
@@ -742,7 +787,9 @@
       opacity: 0;
       pointer-events: none;
       z-index: 2;
-      transition: opacity 0.25s ease, transform 0.75s cubic-bezier(.2,.8,.2,1);
+      transition:
+        opacity 0.25s ease,
+        transform 0.75s cubic-bezier(.2,.8,.2,1);
     }
 
     .demo-card:hover::after {
@@ -927,7 +974,7 @@
     }
 
     .ui-row strong {
-      color: #fff;
+      color: #ffffff;
     }
 
     .demo-card.light .ui-row {
@@ -1030,7 +1077,10 @@
       gap: 18px;
       backdrop-filter: blur(16px) saturate(130%);
       -webkit-backdrop-filter: blur(16px) saturate(130%);
-      transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
       position: relative;
       z-index: 1;
     }
@@ -1049,7 +1099,7 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      color: #fff;
+      color: #ffffff;
       font-weight: 950;
       background: linear-gradient(180deg, #a392ff, #7457f6);
       box-shadow: 0 16px 36px rgba(116, 87, 246, 0.27);
@@ -1164,7 +1214,11 @@
       color: var(--text);
       font-weight: 900;
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
     }
 
     .social-link:hover {
@@ -1197,7 +1251,9 @@
       opacity: 0;
       pointer-events: none;
       transform: translateY(18px);
-      transition: opacity 0.22s ease, transform 0.22s ease;
+      transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
     }
 
     .floating-contact.visible {
@@ -1228,10 +1284,12 @@
     }
 
     @keyframes wordIn {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* MOBILE APP VERSION */
     .mobile-app {
       position: relative;
       z-index: 3;
@@ -1266,7 +1324,9 @@
       box-shadow:
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
         0 12px 28px rgba(0, 0, 0, 0.22);
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
     }
 
     .mobile-icon:active {
@@ -1286,7 +1346,9 @@
       height: 2px;
       border-radius: 999px;
       background: currentColor;
-      transition: transform 0.25s ease, opacity 0.25s ease;
+      transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
     }
 
     body.mobile-menu-open .hamburger-lines span:nth-child(1) {
@@ -1324,65 +1386,68 @@
     }
 
     .mobile-drawer {
-  position: fixed;
-  left: 10px;
-  right: 10px;
-  top: calc(76px + var(--safe-top));
-  z-index: 120;
-  padding: 10px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(6, 8, 24, 0.88);
-  backdrop-filter: blur(24px) saturate(155%);
-  -webkit-backdrop-filter: blur(24px) saturate(155%);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.44);
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      top: calc(76px + var(--safe-top));
+      z-index: 120;
+      padding: 10px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(6, 8, 24, 0.90);
+      backdrop-filter: blur(24px) saturate(155%);
+      -webkit-backdrop-filter: blur(24px) saturate(155%);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.44);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-14px) scale(0.98);
+      transition:
+        opacity 0.24s ease,
+        transform 0.24s ease;
+      scroll-behavior: smooth;
+    }
 
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
+    .mobile-drawer::-webkit-scrollbar {
+      display: none;
+    }
 
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-14px) scale(0.98);
-  transition: opacity 0.24s ease, transform 0.24s ease;
-  scroll-behavior: smooth;
-}
+    body.mobile-menu-open .mobile-drawer {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
 
-.mobile-drawer::-webkit-scrollbar {
-  display: none;
-}
+    .mobile-nav-btn {
+      flex: 0 0 auto;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      color: rgba(247, 248, 255, 0.74);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+    }
 
-body.mobile-menu-open .mobile-drawer {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
-}
+    .mobile-nav-btn:first-child {
+      margin-left: 54px;
+    }
 
-.mobile-nav-btn {
-  flex: 0 0 auto;
-  min-height: 42px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.045);
-  color: rgba(247, 248, 255, 0.74);
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-}
-
-.mobile-nav-btn:first-child {
-  margin-left: 54px;
-}
-
-.mobile-nav-btn.active {
-  color: #fff;
-  background: linear-gradient(180deg, #a392ff, #7457f6);
-  border-color: rgba(139, 92, 246, 0.35);
-  box-shadow: 0 12px 28px rgba(116, 87, 246, 0.24);
-}
+    .mobile-nav-btn.active {
+      color: #ffffff;
+      background: linear-gradient(180deg, #a392ff, #7457f6);
+      border-color: rgba(139, 92, 246, 0.35);
+      box-shadow: 0 12px 28px rgba(116, 87, 246, 0.24);
+    }
 
     .mobile-pages {
       position: relative;
@@ -1398,23 +1463,55 @@ body.mobile-menu-open .mobile-drawer {
       grid-template-rows: auto 1fr;
       gap: 12px;
       overflow: hidden;
-      animation: pageIn 0.38s cubic-bezier(.2,.8,.2,1) both;
+      animation: pageIn 0.42s cubic-bezier(.2,.8,.2,1) both;
     }
 
     .mobile-page.active {
       display: grid;
     }
 
+    .mobile-page.active .mobile-kicker,
+    .mobile-page.active .mobile-title,
+    .mobile-page.active .mobile-sub,
+    .mobile-page.active .mobile-body > * {
+      animation: mobileRise 0.52s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .mobile-page.active .mobile-title {
+      animation-delay: 0.04s;
+    }
+
+    .mobile-page.active .mobile-sub {
+      animation-delay: 0.08s;
+    }
+
+    .mobile-page.active .mobile-body > * {
+      animation-delay: 0.13s;
+    }
+
     @keyframes pageIn {
       from {
         opacity: 0;
-        transform: translateY(12px) scale(0.99);
-        filter: blur(4px);
+        transform: translateY(14px) scale(0.985);
+        filter: blur(5px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
         filter: blur(0);
+      }
+    }
+
+    @keyframes mobileRise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
@@ -1524,76 +1621,162 @@ body.mobile-menu-open .mobile-drawer {
     }
 
     .mobile-demo-carousel {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  padding-bottom: 2px;
-  align-items: stretch;
-}
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 0 2px 2px;
+      align-items: stretch;
+    }
 
-.mobile-demo-carousel::-webkit-scrollbar {
-  display: none;
-}
+    .mobile-demo-carousel::-webkit-scrollbar {
+      display: none;
+    }
 
-.mobile-demo-card {
-  flex: 0 0 82%;
-  min-height: 385px;
-  max-height: 100%;
-  scroll-snap-align: center;
-  padding: 14px;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-}
+    .mobile-demo-card {
+      flex: 0 0 82%;
+      min-height: 386px;
+      scroll-snap-align: center;
+      padding: 14px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    }
 
-.mobile-demo-card h3 {
-  margin: 8px 0 0;
-  font-family: "Sora", sans-serif;
-  font-size: 26px;
-  line-height: 0.96;
-  letter-spacing: -0.065em;
-  max-width: 11ch;
-}
+    .mobile-demo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.10), transparent 45%),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 38%);
+      z-index: 0;
+    }
 
-.mobile-demo-card p {
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.42;
-}
+    .mobile-demo-card > * {
+      position: relative;
+      z-index: 1;
+    }
 
-.mobile-mockup {
-  min-height: 132px;
-  padding: 9px;
-  border-radius: 20px;
-  display: grid;
-  align-content: end;
-  gap: 7px;
-  background: rgba(255, 255, 255, 0.065);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-}
+    .mobile-demo-card.light {
+      color: #0f172a;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(96, 165, 250, 0.18), transparent 36%),
+        radial-gradient(circle at 90% 12%, rgba(196, 181, 253, 0.18), transparent 34%),
+        linear-gradient(180deg, #ffffff, #edf4ff 72%, #dfeaff);
+      border-color: rgba(255, 255, 255, 0.78);
+    }
 
-.mobile-ui-row {
-  min-height: 34px;
-  padding: 0 10px;
-  border-radius: 12px;
-  font-size: 10.5px;
-}
+    .mobile-demo-card.orange {
+      color: #fff8ef;
+      background:
+        linear-gradient(180deg, rgba(5, 4, 3, 0.64), rgba(5, 4, 3, 0.90)),
+        radial-gradient(circle at 20% 0%, rgba(242, 197, 123, 0.30), transparent 38%),
+        url("./marble.png") center / cover no-repeat,
+        #090806;
+      border-color: rgba(242, 197, 123, 0.28);
+    }
 
-.mobile-demo-card .btn {
-  min-height: 50px;
-  font-size: 11px;
-}
+    .mobile-demo-card.violet {
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(139, 92, 246, 0.33), transparent 36%),
+        radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+        #090c22;
+      border-color: rgba(196, 181, 253, 0.24);
+    }
+
+    .mobile-demo-card h3 {
+      margin: 8px 0 0;
+      font-family: "Sora", sans-serif;
+      font-size: 26px;
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+      max-width: 11ch;
+    }
+
+    .mobile-demo-card p {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.42;
+    }
+
+    .mobile-demo-card.light p {
+      color: #64748b;
+    }
+
+    .mobile-mockup {
+      min-height: 132px;
+      padding: 9px;
+      border-radius: 20px;
+      display: grid;
+      align-content: end;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.065);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 14px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .mobile-demo-card.light .mobile-mockup {
+      background: rgba(255, 255, 255, 0.82);
+      border-color: rgba(15, 23, 42, 0.08);
+      box-shadow:
+        0 12px 24px rgba(148, 163, 184, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    .mobile-ui-row {
+      min-height: 34px;
+      padding: 0 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      font-size: 10.5px;
+      font-weight: 850;
+    }
 
     .mobile-ui-row span {
       color: rgba(247, 248, 255, 0.62);
     }
 
+    .mobile-ui-row strong {
+      color: #ffffff;
+    }
+
+    .mobile-demo-card.light .mobile-ui-row {
+      background: rgba(37, 99, 235, 0.055);
+      border-color: rgba(37, 99, 235, 0.08);
+    }
+
     .mobile-demo-card.light .mobile-ui-row span {
       color: #64748b;
+    }
+
+    .mobile-demo-card.light .mobile-ui-row strong {
+      color: #0f172a;
+    }
+
+    .mobile-demo-card .btn {
+      min-height: 50px;
+      font-size: 11px;
+      width: 100%;
     }
 
     .mobile-list {
@@ -1671,7 +1854,8 @@ body.mobile-menu-open .mobile-drawer {
     }
 
     @media (max-width: 760px) {
-      html, body {
+      html,
+      body {
         height: 100%;
         overflow: hidden;
       }
@@ -1727,15 +1911,15 @@ body.mobile-menu-open .mobile-drawer {
 
       .mobile-demo-card {
         flex-basis: 88%;
-        min-height: 418px;
+        min-height: 404px;
       }
 
       .mobile-demo-card h3 {
-        font-size: 28px;
+        font-size: 27px;
       }
 
       .mobile-mockup {
-        min-height: 145px;
+        min-height: 138px;
       }
     }
 
@@ -1802,7 +1986,9 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="hero-actions">
               <a class="btn btn-primary" href="#demos">Zobacz 3 wersje</a>
-              <a class="btn" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">Napisz na Instagram</a>
+              <a class="btn" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
+                Napisz na Instagram
+              </a>
             </div>
 
             <div class="hero-pills" aria-label="Zastosowania systemu">
@@ -1822,6 +2008,7 @@ body.mobile-menu-open .mobile-drawer {
                   <strong>Link z każdego miejsca</strong>
                   <span>Jedna strona pod bio, DM, reklamę, QR kod albo profil Google.</span>
                 </div>
+
                 <div class="status-pill">live flow</div>
               </div>
 
@@ -1862,10 +2049,25 @@ body.mobile-menu-open .mobile-drawer {
           </div>
 
           <div class="mini-flow">
-            <div class="mini-step"><span>Start</span><strong>Bio / QR / Google</strong></div>
-            <div class="mini-step"><span>Oferta</span><strong>Ceny i usługi</strong></div>
-            <div class="mini-step"><span>Akcja</span><strong>Booking online</strong></div>
-            <div class="mini-step"><span>Finish</span><strong>Kalendarz</strong></div>
+            <div class="mini-step">
+              <span>Start</span>
+              <strong>Bio / QR / Google</strong>
+            </div>
+
+            <div class="mini-step">
+              <span>Oferta</span>
+              <strong>Ceny i usługi</strong>
+            </div>
+
+            <div class="mini-step">
+              <span>Akcja</span>
+              <strong>Booking online</strong>
+            </div>
+
+            <div class="mini-step">
+              <span>Finish</span>
+              <strong>Kalendarz</strong>
+            </div>
           </div>
         </div>
       </section>
@@ -1875,7 +2077,9 @@ body.mobile-menu-open .mobile-drawer {
           <div class="section-inner">
             <div class="section-head center">
               <div class="chip">Demo selector</div>
+
               <h2>Wybierz styl, który pasuje do Twojego biznesu.</h2>
+
               <p>
                 Ten sam mechanizm rezerwacji, trzy różne charaktery. Dzięki temu właściciel widzi,
                 że system można dopasować pod jego lokal, branżę i klimat marki.
@@ -1886,7 +2090,9 @@ body.mobile-menu-open .mobile-drawer {
               <article class="demo-card light reveal" id="white-demo">
                 <div class="demo-top">
                   <div class="demo-kicker">Clean premium</div>
+
                   <h3>Jasno, spokojnie, profesjonalnie.</h3>
+
                   <p>
                     Dla beauty, nails, lashes, kosmetologii i spokojnych marek.
                     Czysto, lekko i premium — bez ciężkiego efektu.
@@ -1895,10 +2101,25 @@ body.mobile-menu-open .mobile-drawer {
 
                 <div class="mockup">
                   <div class="screen-ui">
-                    <div class="ui-row"><span>Usługa</span><strong>Manicure</strong></div>
-                    <div class="ui-row"><span>Godzina</span><strong>14:30</strong></div>
-                    <div class="ui-row"><span>Status</span><strong>Potwierdzone</strong></div>
-                    <div class="ui-row"><span>CTA</span><strong>Zarezerwuj</strong></div>
+                    <div class="ui-row">
+                      <span>Usługa</span>
+                      <strong>Manicure</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Godzina</span>
+                      <strong>14:30</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Status</span>
+                      <strong>Potwierdzone</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>CTA</span>
+                      <strong>Zarezerwuj</strong>
+                    </div>
                   </div>
                 </div>
 
@@ -1909,14 +2130,23 @@ body.mobile-menu-open .mobile-drawer {
                     <span class="tag">Soft premium</span>
                     <span class="tag">Mobile-first</span>
                   </div>
-                  <a class="btn btn-light" href="https://przykladmonarch3.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+
+                  <a
+                    class="btn btn-light"
+                    href="https://przykladmonarch3.up.railway.app/"
+                    target="_blank"
+                    rel="noopener">
+                    Otwórz demo
+                  </a>
                 </div>
               </article>
 
               <article class="demo-card orange reveal" id="orange-demo">
                 <div class="demo-top">
                   <div class="demo-kicker">Dark local</div>
+
                   <h3>Mocny klimat dla lokalu.</h3>
+
                   <p>
                     Dla barbershopów, salonów i miejsc z mocniejszym charakterem.
                     Więcej kontrastu, więcej atmosfery, premium feeling.
@@ -1925,10 +2155,25 @@ body.mobile-menu-open .mobile-drawer {
 
                 <div class="mockup">
                   <div class="screen-ui">
-                    <div class="ui-row"><span>Barber</span><strong>Tymur</strong></div>
-                    <div class="ui-row"><span>Usługa</span><strong>Combo 140 zł</strong></div>
-                    <div class="ui-row"><span>Godzina</span><strong>18:00</strong></div>
-                    <div class="ui-row"><span>CTA</span><strong>Zarezerwuj</strong></div>
+                    <div class="ui-row">
+                      <span>Barber</span>
+                      <strong>Tymur</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Usługa</span>
+                      <strong>Combo 140 zł</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Godzina</span>
+                      <strong>18:00</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>CTA</span>
+                      <strong>Zarezerwuj</strong>
+                    </div>
                   </div>
                 </div>
 
@@ -1939,14 +2184,23 @@ body.mobile-menu-open .mobile-drawer {
                     <span class="tag">Strong CTA</span>
                     <span class="tag">Premium brand</span>
                   </div>
-                  <a class="btn btn-orange" href="https://przykladmonarch.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+
+                  <a
+                    class="btn btn-orange"
+                    href="https://przykladmonarch.up.railway.app/"
+                    target="_blank"
+                    rel="noopener">
+                    Otwórz demo
+                  </a>
                 </div>
               </article>
 
               <article class="demo-card violet reveal" id="violet-demo">
                 <div class="demo-top">
                   <div class="demo-kicker">Modern service</div>
+
                   <h3>Nowocześnie, drożej, czytelniej.</h3>
+
                   <p>
                     Dla usług, które chcą wyglądać lepiej niż zwykły formularz.
                     Szybka ścieżka, czytelna oferta i mocny przycisk rezerwacji.
@@ -1955,10 +2209,25 @@ body.mobile-menu-open .mobile-drawer {
 
                 <div class="mockup">
                   <div class="screen-ui">
-                    <div class="ui-row"><span>Sloty</span><strong>Z kalendarza</strong></div>
-                    <div class="ui-row"><span>Oferta</span><strong>Bez pytań</strong></div>
-                    <div class="ui-row"><span>System</span><strong>Auto booking</strong></div>
-                    <div class="ui-row"><span>Status</span><strong>Ready</strong></div>
+                    <div class="ui-row">
+                      <span>Sloty</span>
+                      <strong>Z kalendarza</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Oferta</span>
+                      <strong>Bez pytań</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>System</span>
+                      <strong>Auto booking</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Status</span>
+                      <strong>Ready</strong>
+                    </div>
                   </div>
                 </div>
 
@@ -1969,7 +2238,14 @@ body.mobile-menu-open .mobile-drawer {
                     <span class="tag">Automation</span>
                     <span class="tag">Premium flow</span>
                   </div>
-                  <a class="btn btn-primary" href="https://przykladmonarch2.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+
+                  <a
+                    class="btn btn-primary"
+                    href="https://przykladmonarch2.up.railway.app/"
+                    target="_blank"
+                    rel="noopener">
+                    Otwórz demo
+                  </a>
                 </div>
               </article>
             </div>
@@ -1982,7 +2258,9 @@ body.mobile-menu-open .mobile-drawer {
           <div class="section-inner">
             <div class="section-head center">
               <div class="chip">Co to daje?</div>
+
               <h2>Mniej ustalania. Więcej gotowych wizyt.</h2>
+
               <p>
                 Klient nie musi pytać o podstawy. W jednym miejscu widzi ofertę, ceny,
                 godziny, lokalizację i może od razu zarezerwować termin.
@@ -1992,6 +2270,7 @@ body.mobile-menu-open .mobile-drawer {
             <div class="benefit-grid">
               <article class="benefit-card reveal">
                 <div class="benefit-icon">↗</div>
+
                 <div>
                   <strong>Jeden link wszędzie</strong>
                   <p>Bio, DM, reklama, QR kod, Google Business Profile — ten sam link prowadzi klienta do rezerwacji.</p>
@@ -2000,6 +2279,7 @@ body.mobile-menu-open .mobile-drawer {
 
               <article class="benefit-card reveal">
                 <div class="benefit-icon">?</div>
+
                 <div>
                   <strong>Mniej pytań przed wizytą</strong>
                   <p>Ceny, czas trwania, usługi i lokalizacja są pokazane zanim klient napisze wiadomość.</p>
@@ -2008,6 +2288,7 @@ body.mobile-menu-open .mobile-drawer {
 
               <article class="benefit-card reveal">
                 <div class="benefit-icon">★</div>
+
                 <div>
                   <strong>Lepsze pierwsze wrażenie</strong>
                   <p>Zamiast zwykłego formularza klient widzi stronę, która wygląda jak część marki.</p>
@@ -2016,6 +2297,7 @@ body.mobile-menu-open .mobile-drawer {
 
               <article class="benefit-card reveal">
                 <div class="benefit-icon">✓</div>
+
                 <div>
                   <strong>Gotowe pod automatyzację</strong>
                   <p>Link można podpiąć pod auto reply, reklamy, kampanie, QR kod albo ręcznie wysyłać klientom.</p>
@@ -2031,7 +2313,9 @@ body.mobile-menu-open .mobile-drawer {
           <div class="section-inner">
             <div class="section-head center">
               <div class="chip">Jak działa?</div>
+
               <h2>Jak to działa od strony biznesu?</h2>
+
               <p>
                 Najpierw pokazujesz klientowi gotową ścieżkę, a dopiero potem wchodzisz
                 w rozmowę, jeśli naprawdę jest potrzebna.
@@ -2041,6 +2325,7 @@ body.mobile-menu-open .mobile-drawer {
             <div class="steps-grid">
               <article class="step-card reveal">
                 <div class="step-number">01</div>
+
                 <div>
                   <strong>Podpinasz link</strong>
                   <p>Dodajesz go do bio, DM, reklamy, Google, QR kodu albo wysyłasz klientowi ręcznie.</p>
@@ -2049,6 +2334,7 @@ body.mobile-menu-open .mobile-drawer {
 
               <article class="step-card reveal">
                 <div class="step-number">02</div>
+
                 <div>
                   <strong>Klient sam wybiera</strong>
                   <p>Nie tłumaczysz po raz setny cen, usług i godzin — wszystko jest już pokazane.</p>
@@ -2057,6 +2343,7 @@ body.mobile-menu-open .mobile-drawer {
 
               <article class="step-card reveal">
                 <div class="step-number">03</div>
+
                 <div>
                   <strong>System prowadzi do decyzji</strong>
                   <p>Strona skraca drogę od zainteresowania do konkretnej godziny.</p>
@@ -2065,6 +2352,7 @@ body.mobile-menu-open .mobile-drawer {
 
               <article class="step-card reveal">
                 <div class="step-number">04</div>
+
                 <div>
                   <strong>Kalendarz pilnuje slotów</strong>
                   <p>Zajęte terminy znikają, a właściciel widzi gotową rezerwację zamiast kolejnej rozmowy.</p>
@@ -2079,15 +2367,26 @@ body.mobile-menu-open .mobile-drawer {
         <div class="container cta-grid reveal">
           <div class="cta-copy">
             <div class="chip">Kontakt</div>
+
             <h2>Chcesz taki system pod swój lokal?</h2>
+
             <p>
               Można przygotować wersję pod barbershop, nails, lashes, kosmetologię, masaż
               albo inny biznes usługowy. Najpierw pokazujemy ofertę, potem prowadzimy klienta do rezerwacji.
             </p>
 
             <div class="section-actions">
-              <a class="btn btn-primary" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">Napisz na Instagram</a>
-              <a class="btn" href="tel:+48532377701">Zadzwoń</a>
+              <a
+                class="btn btn-primary"
+                href="https://www.instagram.com/mrozowski.automation/"
+                target="_blank"
+                rel="noopener">
+                Napisz na Instagram
+              </a>
+
+              <a class="btn" href="tel:+48532377701">
+                Zadzwoń
+              </a>
             </div>
           </div>
 
@@ -2095,17 +2394,36 @@ body.mobile-menu-open .mobile-drawer {
             <div class="chip">Social media</div>
 
             <div class="socials">
-              <a class="social-link" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
-                <span>Instagram</span><span>↗</span>
+              <a
+                class="social-link"
+                href="https://www.instagram.com/mrozowski.automation/"
+                target="_blank"
+                rel="noopener">
+                <span>Instagram</span>
+                <span>↗</span>
               </a>
-              <a class="social-link" href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener">
-                <span>Facebook</span><span>↗</span>
+
+              <a
+                class="social-link"
+                href="https://www.facebook.com/profile.php?id=61576437654902"
+                target="_blank"
+                rel="noopener">
+                <span>Facebook</span>
+                <span>↗</span>
               </a>
-              <a class="social-link" href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener">
-                <span>TikTok</span><span>↗</span>
+
+              <a
+                class="social-link"
+                href="https://www.tiktok.com/@mrozowski.automation"
+                target="_blank"
+                rel="noopener">
+                <span>TikTok</span>
+                <span>↗</span>
               </a>
+
               <a class="social-link" href="tel:+48532377701">
-                <span>+48 532 377 701</span><span>☎</span>
+                <span>+48 532 377 701</span>
+                <span>☎</span>
               </a>
             </div>
           </div>
@@ -2113,7 +2431,9 @@ body.mobile-menu-open .mobile-drawer {
       </section>
     </main>
 
-    <a class="btn btn-primary floating-contact" href="#contact">Kontakt</a>
+    <a class="btn btn-primary floating-contact" href="#contact">
+      Kontakt
+    </a>
 
     <footer class="footer">
       <div class="container">
@@ -2141,7 +2461,7 @@ body.mobile-menu-open .mobile-drawer {
       </a>
     </header>
 
-    <nav class="mobile-drawer" aria-label="Mobile navigation">
+    <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
       <button class="mobile-nav-btn active" type="button" data-page="home">Start</button>
       <button class="mobile-nav-btn" type="button" data-page="demos">Demo</button>
       <button class="mobile-nav-btn" type="button" data-page="benefits">Co daje</button>
@@ -2153,9 +2473,11 @@ body.mobile-menu-open .mobile-drawer {
       <article class="mobile-page active" id="page-home">
         <div class="mobile-page-head">
           <div class="mobile-kicker">Jeden link do rezerwacji</div>
+
           <h1 class="mobile-title">
             Nie strona. System do zdobywania <em>terminów.</em>
           </h1>
+
           <p class="mobile-sub">
             Klient trafia z bio, DM, reklamy, QR, Google albo WhatsApp — widzi ofertę,
             ceny, wolne godziny i od razu wybiera termin.
@@ -2166,6 +2488,7 @@ body.mobile-menu-open .mobile-drawer {
           <div class="mobile-card mobile-flow-card">
             <div class="mobile-flow-row">
               <div class="flow-num">01</div>
+
               <div>
                 <strong>Punkt wejścia</strong>
                 <span>Bio, reklama, QR, Google, DM albo WhatsApp.</span>
@@ -2174,6 +2497,7 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="mobile-flow-row">
               <div class="flow-num">02</div>
+
               <div>
                 <strong>Oferta bez rozmowy</strong>
                 <span>Usługa, cena, czas, lokalizacja i klimat marki.</span>
@@ -2182,6 +2506,7 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="mobile-flow-row">
               <div class="flow-num">03</div>
+
               <div>
                 <strong>Gotowa rezerwacja</strong>
                 <span>Klient wybiera dzień i godzinę bez ręcznego ustalania.</span>
@@ -2194,7 +2519,11 @@ body.mobile-menu-open .mobile-drawer {
       <article class="mobile-page" id="page-demos">
         <div class="mobile-page-head">
           <div class="mobile-kicker">Demo selector</div>
-          <h2 class="mobile-title">Wybierz styl pod swój biznes.</h2>
+
+          <h2 class="mobile-title">
+            Wybierz styl pod swój biznes.
+          </h2>
+
           <p class="mobile-sub">
             Trzy wersje, jeden mechanizm. Przesuń karty i otwórz demo.
           </p>
@@ -2205,49 +2534,112 @@ body.mobile-menu-open .mobile-drawer {
             <article class="mobile-demo-card light">
               <div>
                 <div class="demo-kicker">Clean premium</div>
+
                 <h3>Jasno i profesjonalnie.</h3>
-                <p>Dla beauty, nails, lashes, kosmetologii i spokojnych marek.</p>
+
+                <p>
+                  Dla beauty, nails, lashes, kosmetologii i spokojnych marek.
+                </p>
               </div>
 
               <div class="mobile-mockup">
-                <div class="mobile-ui-row"><span>Usługa</span><strong>Manicure</strong></div>
-                <div class="mobile-ui-row"><span>Godzina</span><strong>14:30</strong></div>
-                <div class="mobile-ui-row"><span>Status</span><strong>Ready</strong></div>
+                <div class="mobile-ui-row">
+                  <span>Usługa</span>
+                  <strong>Manicure</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>Godzina</span>
+                  <strong>14:30</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>Status</span>
+                  <strong>Ready</strong>
+                </div>
               </div>
 
-              <a class="btn btn-light" href="https://przykladmonarch3.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+              <a
+                class="btn btn-light"
+                href="https://przykladmonarch3.up.railway.app/"
+                target="_blank"
+                rel="noopener">
+                Otwórz demo
+              </a>
             </article>
 
             <article class="mobile-demo-card orange">
               <div>
                 <div class="demo-kicker">Dark local</div>
+
                 <h3>Mocny klimat lokalu.</h3>
-                <p>Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.</p>
+
+                <p>
+                  Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.
+                </p>
               </div>
 
               <div class="mobile-mockup">
-                <div class="mobile-ui-row"><span>Usługa</span><strong>Combo</strong></div>
-                <div class="mobile-ui-row"><span>Godzina</span><strong>18:00</strong></div>
-                <div class="mobile-ui-row"><span>CTA</span><strong>Zarezerwuj</strong></div>
+                <div class="mobile-ui-row">
+                  <span>Usługa</span>
+                  <strong>Combo</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>Godzina</span>
+                  <strong>18:00</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>CTA</span>
+                  <strong>Zarezerwuj</strong>
+                </div>
               </div>
 
-              <a class="btn btn-orange" href="https://przykladmonarch.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+              <a
+                class="btn btn-orange"
+                href="https://przykladmonarch.up.railway.app/"
+                target="_blank"
+                rel="noopener">
+                Otwórz demo
+              </a>
             </article>
 
             <article class="mobile-demo-card violet">
               <div>
                 <div class="demo-kicker">Modern service</div>
+
                 <h3>Nowocześnie i czytelnie.</h3>
-                <p>Dla usług, które chcą wyglądać drożej niż zwykły formularz.</p>
+
+                <p>
+                  Dla usług, które chcą wyglądać drożej niż zwykły formularz.
+                </p>
               </div>
 
               <div class="mobile-mockup">
-                <div class="mobile-ui-row"><span>Sloty</span><strong>Kalendarz</strong></div>
-                <div class="mobile-ui-row"><span>Oferta</span><strong>Bez pytań</strong></div>
-                <div class="mobile-ui-row"><span>Status</span><strong>Online</strong></div>
+                <div class="mobile-ui-row">
+                  <span>Sloty</span>
+                  <strong>Kalendarz</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>Oferta</span>
+                  <strong>Bez pytań</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>Status</span>
+                  <strong>Online</strong>
+                </div>
               </div>
 
-              <a class="btn btn-primary" href="https://przykladmonarch2.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+              <a
+                class="btn btn-primary"
+                href="https://przykladmonarch2.up.railway.app/"
+                target="_blank"
+                rel="noopener">
+                Otwórz demo
+              </a>
             </article>
           </div>
         </div>
@@ -2256,7 +2648,11 @@ body.mobile-menu-open .mobile-drawer {
       <article class="mobile-page" id="page-benefits">
         <div class="mobile-page-head">
           <div class="mobile-kicker">Co to daje?</div>
-          <h2 class="mobile-title">Mniej ustalania. Więcej wizyt.</h2>
+
+          <h2 class="mobile-title">
+            Mniej ustalania. Więcej wizyt.
+          </h2>
+
           <p class="mobile-sub">
             Klient widzi podstawy od razu i szybciej przechodzi do decyzji.
           </p>
@@ -2266,6 +2662,7 @@ body.mobile-menu-open .mobile-drawer {
           <div class="mobile-list">
             <div class="mobile-card mobile-info-card">
               <div class="benefit-icon">↗</div>
+
               <div>
                 <strong>Jeden link wszędzie</strong>
                 <p>Bio, DM, reklama, QR, Google Business Profile albo WhatsApp.</p>
@@ -2274,6 +2671,7 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="mobile-card mobile-info-card">
               <div class="benefit-icon">?</div>
+
               <div>
                 <strong>Mniej pytań</strong>
                 <p>Ceny, usługi, czas i lokalizacja są pokazane przed rozmową.</p>
@@ -2282,6 +2680,7 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="mobile-card mobile-info-card">
               <div class="benefit-icon">★</div>
+
               <div>
                 <strong>Lepsze wrażenie</strong>
                 <p>Klient widzi stronę, która wygląda jak część marki.</p>
@@ -2294,7 +2693,11 @@ body.mobile-menu-open .mobile-drawer {
       <article class="mobile-page" id="page-how">
         <div class="mobile-page-head">
           <div class="mobile-kicker">Jak działa?</div>
-          <h2 class="mobile-title">Od linku do gotowego terminu.</h2>
+
+          <h2 class="mobile-title">
+            Od linku do gotowego terminu.
+          </h2>
+
           <p class="mobile-sub">
             Prosta ścieżka dla klienta i mniej ręcznego ustalania dla właściciela.
           </p>
@@ -2304,6 +2707,7 @@ body.mobile-menu-open .mobile-drawer {
           <div class="mobile-list">
             <div class="mobile-card mobile-info-card">
               <div class="step-number">01</div>
+
               <div>
                 <strong>Podpinasz link</strong>
                 <p>Bio, DM, reklama, Google, QR kod albo wiadomość ręczna.</p>
@@ -2312,6 +2716,7 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="mobile-card mobile-info-card">
               <div class="step-number">02</div>
+
               <div>
                 <strong>Klient sam wybiera</strong>
                 <p>Widzi ofertę, ceny, usługi, osobę, dzień i godzinę.</p>
@@ -2320,6 +2725,7 @@ body.mobile-menu-open .mobile-drawer {
 
             <div class="mobile-card mobile-info-card">
               <div class="step-number">03</div>
+
               <div>
                 <strong>Kalendarz pilnuje slotów</strong>
                 <p>Zajęte terminy znikają, a właściciel widzi gotową rezerwację.</p>
@@ -2332,7 +2738,11 @@ body.mobile-menu-open .mobile-drawer {
       <article class="mobile-page" id="page-contact">
         <div class="mobile-page-head">
           <div class="mobile-kicker">Kontakt</div>
-          <h2 class="mobile-title">Chcesz taki system pod swój lokal?</h2>
+
+          <h2 class="mobile-title">
+            Chcesz taki system pod swój lokal?
+          </h2>
+
           <p class="mobile-sub">
             Wersja pod barbershop, beauty, nails, lashes, masaż albo inny lokal usługowy.
           </p>
@@ -2340,17 +2750,36 @@ body.mobile-menu-open .mobile-drawer {
 
         <div class="mobile-body">
           <div class="mobile-list">
-            <a class="social-link" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
-              <span>Instagram</span><span>↗</span>
+            <a
+              class="social-link"
+              href="https://www.instagram.com/mrozowski.automation/"
+              target="_blank"
+              rel="noopener">
+              <span>Instagram</span>
+              <span>↗</span>
             </a>
+
             <a class="social-link" href="tel:+48532377701">
-              <span>+48 532 377 701</span><span>☎</span>
+              <span>+48 532 377 701</span>
+              <span>☎</span>
             </a>
-            <a class="social-link" href="https://www.tiktok.com/@mrozowski.automation" target="_blank" rel="noopener">
-              <span>TikTok</span><span>↗</span>
+
+            <a
+              class="social-link"
+              href="https://www.tiktok.com/@mrozowski.automation"
+              target="_blank"
+              rel="noopener">
+              <span>TikTok</span>
+              <span>↗</span>
             </a>
-            <a class="social-link" href="https://www.facebook.com/profile.php?id=61576437654902" target="_blank" rel="noopener">
-              <span>Facebook</span><span>↗</span>
+
+            <a
+              class="social-link"
+              href="https://www.facebook.com/profile.php?id=61576437654902"
+              target="_blank"
+              rel="noopener">
+              <span>Facebook</span>
+              <span>↗</span>
             </a>
           </div>
         </div>
@@ -2358,7 +2787,11 @@ body.mobile-menu-open .mobile-drawer {
     </section>
 
     <div class="mobile-bottom">
-      <a class="btn btn-primary" href="https://www.instagram.com/mrozowski.automation/" target="_blank" rel="noopener">
+      <a
+        class="btn btn-primary"
+        href="https://www.instagram.com/mrozowski.automation/"
+        target="_blank"
+        rel="noopener">
         Napisz na Instagram
       </a>
     </div>
@@ -2383,10 +2816,14 @@ body.mobile-menu-open .mobile-drawer {
         }
 
         if (node.nodeType === Node.ELEMENT_NODE) {
-          const words = node.textContent.split(/(\s+)/).map((part) => {
-            if (!part.trim()) return part;
-            return `<span class="word" style="--i:${index++}">${part}</span>`;
-          }).join("");
+          const words = node.textContent
+            .split(/(\s+)/)
+            .map((part) => {
+              if (!part.trim()) return part;
+              return `<span class="word" style="--i:${index++}">${part}</span>`;
+            })
+            .join("");
+
           return `<${node.tagName.toLowerCase()}>${words}</${node.tagName.toLowerCase()}>`;
         }
 
@@ -2399,7 +2836,9 @@ body.mobile-menu-open .mobile-drawer {
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
         });
       },
       {
@@ -2408,15 +2847,19 @@ body.mobile-menu-open .mobile-drawer {
       }
     );
 
-    revealItems.forEach((item) => revealObserver.observe(item));
+    revealItems.forEach((item) => {
+      revealObserver.observe(item);
+    });
 
     const floating = document.querySelector(".floating-contact");
     const hero = document.querySelector(".hero");
 
     function handleFloating() {
       if (!floating || !hero) return;
+
       const rect = hero.getBoundingClientRect();
       const passedHero = rect.bottom < window.innerHeight * 0.55;
+
       floating.classList.toggle("visible", passedHero);
     }
 
@@ -2432,8 +2875,10 @@ body.mobile-menu-open .mobile-drawer {
           const rect = card.getBoundingClientRect();
           const x = event.clientX - rect.left;
           const y = event.clientY - rect.top;
+
           const rx = ((y / rect.height) - 0.5) * -4;
           const ry = ((x / rect.width) - 0.5) * 5;
+
           card.style.transform = `translateY(-7px) rotateX(${rx}deg) rotateY(${ry}deg)`;
         });
 
@@ -2444,24 +2889,40 @@ body.mobile-menu-open .mobile-drawer {
     }
 
     const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileDrawer = document.getElementById("mobileDrawer");
     const mobileNavButtons = document.querySelectorAll(".mobile-nav-btn");
     const mobilePages = document.querySelectorAll(".mobile-page");
 
-    if (mobileMenuBtn) {
-  mobileMenuBtn.addEventListener("click", () => {
-    const isOpen = document.body.classList.toggle("mobile-menu-open");
-    const drawer = document.querySelector(".mobile-drawer");
+    function openMobileDrawer() {
+      document.body.classList.add("mobile-menu-open");
 
-    if (isOpen && drawer) {
+      if (!mobileDrawer) return;
+
+      mobileDrawer.scrollLeft = 0;
+
       setTimeout(() => {
-        drawer.scrollTo({
-          left: 46,
+        mobileDrawer.scrollTo({
+          left: 54,
           behavior: "smooth"
         });
-      }, 80);
+      }, 120);
     }
-  });
-}
+
+    function closeMobileDrawer() {
+      document.body.classList.remove("mobile-menu-open");
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener("click", () => {
+        const isOpen = document.body.classList.contains("mobile-menu-open");
+
+        if (isOpen) {
+          closeMobileDrawer();
+        } else {
+          openMobileDrawer();
+        }
+      });
+    }
 
     mobileNavButtons.forEach((button) => {
       button.addEventListener("click", () => {
@@ -2475,13 +2936,13 @@ body.mobile-menu-open .mobile-drawer {
           page.classList.toggle("active", page.id === `page-${target}`);
         });
 
-        document.body.classList.remove("mobile-menu-open");
+        closeMobileDrawer();
       });
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
-        document.body.classList.remove("mobile-menu-open");
+        closeMobileDrawer();
       }
     });
   </script>
