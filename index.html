@@ -2448,10 +2448,20 @@ body.mobile-menu-open .mobile-drawer {
     const mobilePages = document.querySelectorAll(".mobile-page");
 
     if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener("click", () => {
-        document.body.classList.toggle("mobile-menu-open");
-      });
+  mobileMenuBtn.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("mobile-menu-open");
+    const drawer = document.querySelector(".mobile-drawer");
+
+    if (isOpen && drawer) {
+      setTimeout(() => {
+        drawer.scrollTo({
+          left: 46,
+          behavior: "smooth"
+        });
+      }, 80);
     }
+  });
+}
 
     mobileNavButtons.forEach((button) => {
       button.addEventListener("click", () => {
