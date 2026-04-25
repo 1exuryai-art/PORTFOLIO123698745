@@ -2892,6 +2892,29 @@
     const mobileDrawer = document.getElementById("mobileDrawer");
     const mobileNavButtons = document.querySelectorAll(".mobile-nav-btn");
     const mobilePages = document.querySelectorAll(".mobile-page");
+    const DRAWER_REST_LEFT = 46;
+let drawerSnapTimer = null;
+
+function snapDrawerBack() {
+  if (!mobileDrawer || !document.body.classList.contains("mobile-menu-open")) return;
+
+  if (mobileDrawer.scrollLeft < DRAWER_REST_LEFT) {
+    mobileDrawer.scrollTo({
+      left: DRAWER_REST_LEFT,
+      behavior: "smooth"
+    });
+  }
+}
+
+if (mobileDrawer) {
+  mobileDrawer.addEventListener("scroll", () => {
+    clearTimeout(drawerSnapTimer);
+    drawerSnapTimer = setTimeout(snapDrawerBack, 90);
+  }, { passive: true });
+
+  mobileDrawer.addEventListener("touchend", snapDrawerBack, { passive: true });
+  mobileDrawer.addEventListener("pointerup", snapDrawerBack);
+}
 
     function openMobileDrawer() {
       document.body.classList.add("mobile-menu-open");
