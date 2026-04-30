@@ -3298,5 +3298,32 @@
     }, true);
     
   </script>
+
+  <script>
+const params = new URLSearchParams(window.location.search);
+const pageFromUrl = params.get("page");
+
+if (pageFromUrl === "demos") {
+  window.addEventListener("load", () => {
+    const demoBtn = document.querySelector('.mobile-nav-btn[data-page="demos"]');
+
+    if (demoBtn) {
+      demoBtn.click();
+    }
+
+    const demosSection = document.getElementById("demos");
+
+    if (demosSection && window.innerWidth > 760) {
+      setTimeout(() => {
+        demosSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 200);
+    }
+  });
+}
+</script>
+  
 </body>
 </html>
