@@ -3250,6 +3250,51 @@
         closeMobileDrawer();
       }
     });
+
+        const DEMO_URLS = {
+      luna: "https://lunanails.up.railway.app/?back=demos",
+      barber: "https://barbermonarch.up.railway.app/?back=demos",
+      mrozowski: "https://mrozowski.up.railway.app/?back=demos"
+    };
+
+    document.querySelectorAll("#white-demo a.btn, .mobile-demo-card.light a.btn").forEach((link) => {
+      link.href = DEMO_URLS.luna;
+    });
+
+    document.querySelectorAll("#orange-demo a.btn, .mobile-demo-card.orange a.btn").forEach((link) => {
+      link.href = DEMO_URLS.barber;
+    });
+
+    document.querySelectorAll("#violet-demo a.btn, .mobile-demo-card.violet a.btn").forEach((link) => {
+      link.href = DEMO_URLS.mrozowski;
+    });
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+
+      if (!link) return;
+
+      const isDemoLink =
+        link.closest("#white-demo") ||
+        link.closest("#orange-demo") ||
+        link.closest("#violet-demo") ||
+        link.closest(".mobile-demo-card");
+
+      if (!isDemoLink) return;
+
+      if (link.closest("#white-demo") || link.closest(".mobile-demo-card.light")) {
+        link.href = DEMO_URLS.luna;
+      }
+
+      if (link.closest("#orange-demo") || link.closest(".mobile-demo-card.orange")) {
+        link.href = DEMO_URLS.barber;
+      }
+
+      if (link.closest("#violet-demo") || link.closest(".mobile-demo-card.violet")) {
+        link.href = DEMO_URLS.mrozowski;
+      }
+    }, true);
+    
   </script>
 </body>
 </html>
