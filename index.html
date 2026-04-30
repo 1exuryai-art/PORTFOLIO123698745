@@ -518,42 +518,42 @@
         radial-gradient(circle at 86% 18%, rgba(96, 165, 250, 0.28), transparent 33%),
         linear-gradient(135deg, #101838, #080a1d 58%, #181026);
     }
-    
+
     .hero-sell-badge {
-  position: absolute;
-  top: 34px;
-  right: 32px;
-  z-index: 4;
-  width: min(280px, calc(100% - 64px));
-  padding: 15px 17px;
-  border-radius: 23px;
-  border: 1px solid rgba(196, 181, 253, 0.20);
-  background:
-    radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.24), transparent 44%),
-    rgba(7, 10, 30, 0.66);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
-  box-shadow:
-    0 22px 60px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.10);
-}
+      position: absolute;
+      top: 34px;
+      right: 32px;
+      z-index: 4;
+      width: min(280px, calc(100% - 64px));
+      padding: 15px 17px;
+      border-radius: 23px;
+      border: 1px solid rgba(196, 181, 253, 0.20);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.24), transparent 44%),
+        rgba(7, 10, 30, 0.66);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
 
-.hero-sell-badge span {
-  display: block;
-  margin-bottom: 6px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 850;
-}
+    .hero-sell-badge span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
 
-.hero-sell-badge strong {
-  display: block;
-  color: #ffffff;
-  font-family: "Sora", sans-serif;
-  font-size: 18px;
-  line-height: 1.14;
-  letter-spacing: -0.055em;
-}
+    .hero-sell-badge strong {
+      display: block;
+      color: #ffffff;
+      font-family: "Sora", sans-serif;
+      font-size: 18px;
+      line-height: 1.14;
+      letter-spacing: -0.055em;
+    }
 
     .flow-dashboard::after {
       content: "";
@@ -890,7 +890,7 @@
       background: rgba(255, 255, 255, 0.07);
     }
 
-    .demo-card.light .demo-kicker {
+        .demo-card.light .demo-kicker {
       background: rgba(37, 99, 235, 0.075);
       border-color: rgba(37, 99, 235, 0.12);
       color: #1d4ed8;
@@ -1178,6 +1178,57 @@
       font-size: 14px;
     }
 
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-card {
+      min-height: 190px;
+      padding: 22px;
+      border-radius: 27px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.12), transparent 34%),
+        rgba(255, 255, 255, 0.052);
+      box-shadow:
+        var(--shadow-md),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 12px;
+      align-content: start;
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .faq-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(196, 181, 253, 0.22);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.17), transparent 34%),
+        rgba(255, 255, 255, 0.065);
+    }
+
+    .faq-card strong {
+      font-family: "Sora", sans-serif;
+      font-size: 20px;
+      line-height: 1.08;
+      letter-spacing: -0.055em;
+    }
+
+    .faq-card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.68;
+    }
+
     .cta-grid {
       display: grid;
       grid-template-columns: 1.12fr 0.88fr;
@@ -1368,6 +1419,29 @@
     .mobile-icon:active {
       transform: scale(0.94);
       background: rgba(139, 92, 246, 0.12);
+    }
+
+    .mobile-icon.menu-pulse {
+      animation: burgerPremiumPulse 1.7s ease-in-out infinite;
+    }
+
+    @keyframes burgerPremiumPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 12px 28px rgba(0, 0, 0, 0.22),
+          0 0 0 0 rgba(139, 92, 246, 0);
+      }
+
+      45% {
+        transform: scale(1.045);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 16px 36px rgba(0, 0, 0, 0.28),
+          0 0 0 8px rgba(139, 92, 246, 0.10),
+          0 0 30px rgba(139, 92, 246, 0.22);
+      }
     }
 
     .hamburger-lines {
@@ -1612,6 +1686,16 @@
       overflow: hidden;
     }
 
+    .mobile-body.scrollable {
+      overflow-y: auto;
+      padding-right: 2px;
+      scrollbar-width: none;
+    }
+
+    .mobile-body.scrollable::-webkit-scrollbar {
+      display: none;
+    }
+
     .mobile-card {
       border-radius: 24px;
       border: 1px solid var(--line);
@@ -1844,6 +1928,26 @@
       line-height: 1.38;
     }
 
+    .mobile-faq-card {
+      padding: 15px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-faq-card strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 17px;
+      line-height: 1.05;
+      letter-spacing: -0.055em;
+    }
+
+    .mobile-faq-card p {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.48;
+    }
+
     .mobile-bottom {
       padding: 8px 12px calc(10px + var(--safe-bottom));
       background: linear-gradient(180deg, transparent, rgba(3, 5, 19, 0.92) 38%);
@@ -1872,7 +1976,8 @@
 
       .demo-grid,
       .benefit-grid,
-      .steps-grid {
+      .steps-grid,
+      .faq-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1997,6 +2102,7 @@
           <a href="#demos">Demo</a>
           <a href="#benefits">Co daje</a>
           <a href="#how">Jak działa</a>
+          <a href="#faq">FAQ</a>
           <a href="#contact">Kontakt</a>
         </nav>
 
@@ -2039,9 +2145,10 @@
         <div class="hero-side reveal">
           <div class="glass flow-dashboard" aria-label="Flow rezerwacji">
             <div class="hero-sell-badge">
-  <span>System, który nie tylko wygląda drogo</span>
-  <strong>ale zamienia wejścia w konkretne rezerwacje.</strong>
-</div>
+              <span>System, który nie tylko wygląda drogo</span>
+              <strong>ale zamienia wejścia w konkretne rezerwacje.</strong>
+            </div>
+
             <div class="dashboard-card">
               <div class="dashboard-top">
                 <div class="dashboard-title">
@@ -2112,7 +2219,7 @@
         </div>
       </section>
 
-      <section class="section" id="demos">
+            <section class="section" id="demos">
         <div class="container glass reveal">
           <div class="section-inner">
             <div class="section-head center">
@@ -2403,6 +2510,72 @@
         </div>
       </section>
 
+      <section class="section" id="faq">
+        <div class="container glass reveal">
+          <div class="section-inner">
+            <div class="section-head center">
+              <div class="chip">FAQ</div>
+
+              <h2>Najczęstsze pytania przed startem.</h2>
+
+              <p>
+                Krótko i konkretnie: co robi strona, gdzie można ją podpiąć i jak wygląda sensowna ścieżka dla klienta.
+              </p>
+            </div>
+
+            <div class="faq-grid">
+              <article class="faq-card reveal">
+                <strong>Czy to jest tylko pod Instagram?</strong>
+                <p>
+                  Nie. Instagram może być jednym z wejść, ale główny produkt to własna strona ze ścieżką zapisu.
+                  Klient może przyjść też z TikToka, Google, WhatsAppa, Telegrama, reklamy albo zwykłego linku.
+                </p>
+              </article>
+
+              <article class="faq-card reveal">
+                <strong>Czy zapis może być w środku strony?</strong>
+                <p>
+                  Tak. Idea polega na tym, że klient nie musi skakać po aplikacjach. Widzi ofertę, wybiera opcję,
+                  zostawia dane i przechodzi dalej w jednym flow.
+                </p>
+              </article>
+
+              <article class="faq-card reveal">
+                <strong>Czy strona jest dopasowana pod markę?</strong>
+                <p>
+                  Tak. Wygląd, teksty, sekcje, oferta i CTA są dopasowane pod konkretną usługę,
+                  styl biznesu i to, co klient ma zrobić na końcu.
+                </p>
+              </article>
+
+              <article class="faq-card reveal">
+                <strong>Od czego najlepiej zacząć?</strong>
+                <p>
+                  Najlepiej zacząć od jednej konkretnej ścieżki: skąd klient przychodzi,
+                  co ma zobaczyć, jaką opcję wybiera i jakie dane mają trafić do właściciela.
+                </p>
+              </article>
+
+              <article class="faq-card reveal">
+                <strong>Dla jakich biznesów to pasuje?</strong>
+                <p>
+                  Najlepiej pasuje do lokalnych usług: beauty, barber, nails, fizjo, trenerzy, konsultacje,
+                  małe studia i biznesy, które potrzebują zbierać zapisy albo zgłoszenia bez chaosu w wiadomościach.
+                </p>
+              </article>
+
+              <article class="faq-card reveal">
+                <strong>Co daje automatyzacja wejść?</strong>
+                <p>
+                  Automatyzacja kieruje klienta z różnych miejsc do jednej ścieżki. Zamiast odpowiadać ręcznie
+                  na te same pytania, wysyłasz klienta na stronę, która tłumaczy ofertę i prowadzi do zgłoszenia.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="contact">
         <div class="container cta-grid reveal">
           <div class="cta-copy">
@@ -2484,7 +2657,7 @@
 
   <main class="mobile-app" id="mobileApp">
     <header class="mobile-top">
-      <button class="mobile-icon" type="button" id="mobileMenuBtn" aria-label="Menu">
+      <button class="mobile-icon menu-pulse" type="button" id="mobileMenuBtn" aria-label="Menu">
         <span class="hamburger-lines">
           <span></span>
           <span></span>
@@ -2506,6 +2679,7 @@
       <button class="mobile-nav-btn" type="button" data-page="demos">Demo</button>
       <button class="mobile-nav-btn" type="button" data-page="benefits">Co daje</button>
       <button class="mobile-nav-btn" type="button" data-page="how">Jak działa</button>
+      <button class="mobile-nav-btn" type="button" data-page="faq">FAQ</button>
       <button class="mobile-nav-btn" type="button" data-page="contact">Kontakt</button>
     </nav>
 
@@ -2608,43 +2782,6 @@
               </a>
             </article>
 
-            <article class="mobile-demo-card orange">
-              <div>
-                <div class="demo-kicker">Dark local</div>
-
-                <h3>Mocny klimat lokalu.</h3>
-
-                <p>
-                  Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.
-                </p>
-              </div>
-
-              <div class="mobile-mockup">
-                <div class="mobile-ui-row">
-                  <span>Usługa</span>
-                  <strong>Combo</strong>
-                </div>
-
-                <div class="mobile-ui-row">
-                  <span>Godzina</span>
-                  <strong>18:00</strong>
-                </div>
-
-                <div class="mobile-ui-row">
-                  <span>CTA</span>
-                  <strong>Zarezerwuj</strong>
-                </div>
-              </div>
-
-              <a
-                class="btn btn-orange"
-                href="https://przykladmonarch.up.railway.app/"
-                target="_blank"
-                rel="noopener">
-                Otwórz demo
-              </a>
-            </article>
-
             <article class="mobile-demo-card violet">
               <div>
                 <div class="demo-kicker">Modern service</div>
@@ -2676,6 +2813,43 @@
               <a
                 class="btn btn-primary"
                 href="https://przykladmonarch2.up.railway.app/"
+                target="_blank"
+                rel="noopener">
+                Otwórz demo
+              </a>
+            </article>
+
+            <article class="mobile-demo-card orange">
+              <div>
+                <div class="demo-kicker">Dark local</div>
+
+                <h3>Mocny klimat lokalu.</h3>
+
+                <p>
+                  Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.
+                </p>
+              </div>
+
+              <div class="mobile-mockup">
+                <div class="mobile-ui-row">
+                  <span>Usługa</span>
+                  <strong>Combo</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>Godzina</span>
+                  <strong>18:00</strong>
+                </div>
+
+                <div class="mobile-ui-row">
+                  <span>CTA</span>
+                  <strong>Zarezerwuj</strong>
+                </div>
+              </div>
+
+              <a
+                class="btn btn-orange"
+                href="https://przykladmonarch.up.railway.app/"
                 target="_blank"
                 rel="noopener">
                 Otwórz demo
@@ -2770,6 +2944,72 @@
                 <strong>Kalendarz pilnuje slotów</strong>
                 <p>Zajęte terminy znikają, a właściciel widzi gotową rezerwację.</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-page" id="page-faq">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker">FAQ</div>
+
+          <h2 class="mobile-title">
+            Najczęstsze pytania.
+          </h2>
+
+          <p class="mobile-sub">
+            Co robi strona, gdzie ją podpiąć i jak zacząć bez chaosu w wiadomościach.
+          </p>
+        </div>
+
+        <div class="mobile-body scrollable">
+          <div class="mobile-list">
+            <div class="mobile-card mobile-faq-card">
+              <strong>Czy to jest tylko pod Instagram?</strong>
+              <p>
+                Nie. Instagram może być jednym z wejść, ale główny produkt to własna strona ze ścieżką zapisu.
+                Klient może przyjść też z TikToka, Google, WhatsAppa, Telegrama, reklamy albo zwykłego linku.
+              </p>
+            </div>
+
+            <div class="mobile-card mobile-faq-card">
+              <strong>Czy zapis może być w środku strony?</strong>
+              <p>
+                Tak. Klient nie musi skakać po aplikacjach. Widzi ofertę, wybiera opcję,
+                zostawia dane i przechodzi dalej w jednym flow.
+              </p>
+            </div>
+
+            <div class="mobile-card mobile-faq-card">
+              <strong>Czy strona jest dopasowana pod markę?</strong>
+              <p>
+                Tak. Wygląd, teksty, sekcje, oferta i CTA są dopasowane pod konkretną usługę,
+                styl biznesu i akcję, którą klient ma wykonać.
+              </p>
+            </div>
+
+            <div class="mobile-card mobile-faq-card">
+              <strong>Od czego najlepiej zacząć?</strong>
+              <p>
+                Od jednej konkretnej ścieżki: skąd klient przychodzi, co ma zobaczyć,
+                jaką opcję wybiera i jakie dane mają trafić do właściciela.
+              </p>
+            </div>
+
+            <div class="mobile-card mobile-faq-card">
+              <strong>Dla jakich biznesów to pasuje?</strong>
+              <p>
+                Najlepiej pasuje do lokalnych usług: beauty, barber, nails, fizjo, trenerzy,
+                konsultacje, małe studia i biznesy zbierające zapisy albo zgłoszenia.
+              </p>
+            </div>
+
+            <div class="mobile-card mobile-faq-card">
+              <strong>Co daje automatyzacja wejść?</strong>
+              <p>
+                Kieruje klienta z różnych miejsc do jednej ścieżki. Zamiast odpowiadać ręcznie na te same pytania,
+                wysyłasz klienta na stronę, która tłumaczy ofertę i prowadzi do zgłoszenia.
+              </p>
             </div>
           </div>
         </div>
@@ -2933,28 +3173,28 @@
     const mobileNavButtons = document.querySelectorAll(".mobile-nav-btn");
     const mobilePages = document.querySelectorAll(".mobile-page");
     const DRAWER_REST_LEFT = 46;
-let drawerSnapTimer = null;
+    let drawerSnapTimer = null;
 
-function snapDrawerBack() {
-  if (!mobileDrawer || !document.body.classList.contains("mobile-menu-open")) return;
+    function snapDrawerBack() {
+      if (!mobileDrawer || !document.body.classList.contains("mobile-menu-open")) return;
 
-  if (mobileDrawer.scrollLeft < DRAWER_REST_LEFT) {
-    mobileDrawer.scrollTo({
-      left: DRAWER_REST_LEFT,
-      behavior: "smooth"
-    });
-  }
-}
+      if (mobileDrawer.scrollLeft < DRAWER_REST_LEFT) {
+        mobileDrawer.scrollTo({
+          left: DRAWER_REST_LEFT,
+          behavior: "smooth"
+        });
+      }
+    }
 
-if (mobileDrawer) {
-  mobileDrawer.addEventListener("scroll", () => {
-    clearTimeout(drawerSnapTimer);
-    drawerSnapTimer = setTimeout(snapDrawerBack, 90);
-  }, { passive: true });
+    if (mobileDrawer) {
+      mobileDrawer.addEventListener("scroll", () => {
+        clearTimeout(drawerSnapTimer);
+        drawerSnapTimer = setTimeout(snapDrawerBack, 90);
+      }, { passive: true });
 
-  mobileDrawer.addEventListener("touchend", snapDrawerBack, { passive: true });
-  mobileDrawer.addEventListener("pointerup", snapDrawerBack);
-}
+      mobileDrawer.addEventListener("touchend", snapDrawerBack, { passive: true });
+      mobileDrawer.addEventListener("pointerup", snapDrawerBack);
+    }
 
     function openMobileDrawer() {
       document.body.classList.add("mobile-menu-open");
@@ -2977,6 +3217,8 @@ if (mobileDrawer) {
 
     if (mobileMenuBtn) {
       mobileMenuBtn.addEventListener("click", () => {
+        mobileMenuBtn.classList.remove("menu-pulse");
+
         const isOpen = document.body.classList.contains("mobile-menu-open");
 
         if (isOpen) {
