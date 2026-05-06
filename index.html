@@ -1180,16 +1180,51 @@
       font-size: 14px;
     }
 
+    .faq-toolbar {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .faq-tabs {
+      width: min(100%, 540px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .faq-tab {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(247, 248, 255, 0.8);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.01em;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .faq-tab.active {
+      color: #ffffff;
+      background: linear-gradient(180deg, #a392ff, #7457f6);
+      border-color: rgba(139, 92, 246, 0.32);
+      box-shadow: 0 10px 26px rgba(116, 87, 246, 0.25);
+    }
+
     .faq-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
     }
 
-    .faq-card {
-      min-height: 190px;
-      padding: 22px;
-      border-radius: 27px;
+    .faq-question-card {
+      width: 100%;
+      min-height: 96px;
+      padding: 18px;
+      border-radius: 22px;
       border: 1px solid var(--line);
       background:
         radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.12), transparent 34%),
@@ -1198,37 +1233,121 @@
         var(--shadow-md),
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
       display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
       gap: 12px;
-      align-content: start;
+      text-align: left;
+      color: inherit;
+      position: relative;
+      z-index: 1;
       backdrop-filter: blur(16px) saturate(130%);
       -webkit-backdrop-filter: blur(16px) saturate(130%);
       transition:
-        transform 0.22s ease,
-        border-color 0.22s ease,
-        background 0.22s ease;
-      position: relative;
-      z-index: 1;
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
     }
 
-    .faq-card:hover {
-      transform: translateY(-4px);
+    .faq-question-card:hover {
+      transform: translateY(-2px);
       border-color: rgba(196, 181, 253, 0.22);
       background:
         radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.17), transparent 34%),
-        rgba(255, 255, 255, 0.065);
+        rgba(255, 255, 255, 0.068);
     }
 
-    .faq-card strong {
+    .faq-question-text {
+      margin: 0;
       font-family: "Sora", sans-serif;
-      font-size: 20px;
-      line-height: 1.08;
-      letter-spacing: -0.055em;
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -0.045em;
     }
 
-    .faq-card p {
+    .faq-plus {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(196, 181, 253, 0.44);
+      background: linear-gradient(180deg, rgba(167, 139, 250, 0.25), rgba(139, 92, 246, 0.24));
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      line-height: 1;
+      color: #f8f4ff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .faq-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 180;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .faq-modal.open {
+      display: flex;
+    }
+
+    .faq-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 4, 14, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .faq-modal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(760px, 100%);
+      max-height: min(78vh, 760px);
+      overflow: auto;
+      border-radius: 24px;
+      border: 1px solid rgba(196, 181, 253, 0.2);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.2), transparent 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+        #090c22;
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.5);
+      padding: 22px 22px 20px;
+    }
+
+    .faq-modal-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: #f6f7ff;
+      font-size: 24px;
+      line-height: 1;
+      margin-left: auto;
+      display: grid;
+      place-items: center;
+    }
+
+    .faq-modal-title {
+      margin: 12px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(28px, 4.4vw, 42px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .faq-modal-answer {
+      margin: 0;
       color: var(--muted);
-      font-size: 14px;
-      line-height: 1.68;
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+
+    body.faq-modal-open {
+      overflow: hidden;
     }
 
     .cta-grid {
@@ -1384,6 +1503,7 @@
       z-index: 3;
       min-height: 100svh;
       height: 100svh;
+      height: 100dvh;
       display: none;
       grid-template-rows: auto 1fr auto;
       overflow: hidden;
@@ -1495,6 +1615,11 @@
       font-family: "Sora", sans-serif;
       font-size: 13px;
       letter-spacing: -0.04em;
+      max-width: 100%;
+      padding: 0 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .mobile-drawer {
@@ -1572,10 +1697,16 @@
       position: absolute;
       inset: 12px;
       display: none;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: auto auto;
       gap: 12px;
-      overflow: hidden;
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding-right: 2px;
       animation: pageIn 0.42s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .mobile-page::-webkit-scrollbar {
+      display: none;
     }
 
     .mobile-page.active {
@@ -1685,13 +1816,11 @@
       display: grid;
       gap: 10px;
       align-content: stretch;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .mobile-body.scrollable {
-      overflow-y: auto;
-      padding-right: 2px;
-      scrollbar-width: none;
+      overflow: visible;
     }
 
     .mobile-body.scrollable::-webkit-scrollbar {
@@ -1930,24 +2059,55 @@
       line-height: 1.38;
     }
 
-    .mobile-faq-card {
-      padding: 15px;
+    .mobile-faq-section-title {
+      margin: 4px 2px 0;
+      color: rgba(247, 248, 255, 0.72);
+      font-size: 12px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .mobile-faq-list {
       display: grid;
-      gap: 8px;
+      gap: 9px;
     }
 
-    .mobile-faq-card strong {
-      display: block;
-      font-family: "Sora", sans-serif;
-      font-size: 17px;
-      line-height: 1.05;
-      letter-spacing: -0.055em;
+    .mobile-faq-list .faq-question-card {
+      min-height: 80px;
+      padding: 14px;
+      border-radius: 20px;
     }
 
-    .mobile-faq-card p {
-      color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.48;
+    .mobile-faq-list .faq-question-text {
+      font-size: 18px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .mobile-faq-list .faq-plus {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+    }
+
+    .mobile-demo-carousel.faq-carousel {
+      padding: 0 2px 6px;
+    }
+
+    .mobile-demo-carousel.faq-carousel .faq-question-card {
+      flex: 0 0 86%;
+      min-height: 190px;
+      scroll-snap-align: center;
+      align-content: space-between;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+
+    .mobile-demo-carousel.faq-carousel .faq-question-text {
+      font-size: 22px;
+      line-height: 0.98;
+      max-width: 13ch;
     }
 
     .mobile-bottom {
@@ -1955,6 +2115,15 @@
       background: linear-gradient(180deg, transparent, rgba(3, 5, 19, 0.92) 38%);
       position: relative;
       z-index: 20;
+      display: none;
+    }
+
+    .mobile-app.show-contact-cta .mobile-bottom {
+      display: block;
+    }
+
+    .mobile-app.show-contact-cta .mobile-page.active {
+      padding-bottom: 78px;
     }
 
     .mobile-bottom .btn {
@@ -2045,7 +2214,7 @@
 
     @media (max-width: 390px) {
       .mobile-title {
-        font-size: 37px;
+        font-size: 33px;
       }
 
       .mobile-sub {
@@ -2055,6 +2224,10 @@
       .mobile-demo-card {
         flex-basis: 88%;
         min-height: 404px;
+      }
+
+      .mobile-demo-carousel.faq-carousel .faq-question-card {
+        flex-basis: 90%;
       }
 
       .mobile-demo-card h3 {
@@ -2521,59 +2694,14 @@
               <h2>Najczęstsze pytania przed startem.</h2>
 
               <p>
-                Krótko i konkretnie: co robi strona, gdzie można ją podpiąć i jak wygląda sensowna ścieżka dla klienta.
+                Wybierz kategorię i kliknij pytanie. Odpowiedź otwiera się w osobnym oknie.
               </p>
+              <div class="faq-toolbar">
+                <div class="faq-tabs" id="desktopFaqTabs"></div>
+              </div>
             </div>
 
-            <div class="faq-grid">
-              <article class="faq-card reveal">
-                <strong>Czy to jest tylko pod Instagram?</strong>
-                <p>
-                  Nie. Instagram może być jednym z wejść, ale główny produkt to własna strona ze ścieżką zapisu.
-                  Klient może przyjść też z TikToka, Google, WhatsAppa, Telegrama, reklamy albo zwykłego linku.
-                </p>
-              </article>
-
-              <article class="faq-card reveal">
-                <strong>Czy zapis może być w środku strony?</strong>
-                <p>
-                  Tak. Idea polega na tym, że klient nie musi skakać po aplikacjach. Widzi ofertę, wybiera opcję,
-                  zostawia dane i przechodzi dalej w jednym flow.
-                </p>
-              </article>
-
-              <article class="faq-card reveal">
-                <strong>Czy strona jest dopasowana pod markę?</strong>
-                <p>
-                  Tak. Wygląd, teksty, sekcje, oferta i CTA są dopasowane pod konkretną usługę,
-                  styl biznesu i to, co klient ma zrobić na końcu.
-                </p>
-              </article>
-
-              <article class="faq-card reveal">
-                <strong>Od czego najlepiej zacząć?</strong>
-                <p>
-                  Najlepiej zacząć od jednej konkretnej ścieżki: skąd klient przychodzi,
-                  co ma zobaczyć, jaką opcję wybiera i jakie dane mają trafić do właściciela.
-                </p>
-              </article>
-
-              <article class="faq-card reveal">
-                <strong>Dla jakich biznesów to pasuje?</strong>
-                <p>
-                  Najlepiej pasuje do lokalnych usług: beauty, barber, nails, fizjo, trenerzy, konsultacje,
-                  małe studia i biznesy, które potrzebują zbierać zapisy albo zgłoszenia bez chaosu w wiadomościach.
-                </p>
-              </article>
-
-              <article class="faq-card reveal">
-                <strong>Co daje automatyzacja wejść?</strong>
-                <p>
-                  Automatyzacja kieruje klienta z różnych miejsc do jednej ścieżki. Zamiast odpowiadać ręcznie
-                  na te same pytania, wysyłasz klienta na stronę, która tłumaczy ofertę i prowadzi do zgłoszenia.
-                </p>
-              </article>
-            </div>
+            <div class="faq-grid" id="desktopFaqCards"></div>
           </div>
         </div>
       </section>
@@ -3079,6 +3207,15 @@
     </div>
   </main>
 
+  <div class="faq-modal" id="faqModal" aria-hidden="true">
+    <div class="faq-modal-backdrop" data-faq-close></div>
+    <div class="faq-modal-panel" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
+      <button class="faq-modal-close" type="button" data-faq-close aria-label="Zamknij">×</button>
+      <h3 class="faq-modal-title" id="faqModalTitle">Pytanie</h3>
+      <p class="faq-modal-answer" id="faqModalAnswer">Odpowiedź</p>
+    </div>
+  </div>
+
   <script>
     const splitTargets = document.querySelectorAll("[data-split]");
 
@@ -3241,15 +3378,269 @@
 
         mobilePages.forEach((page) => {
           page.classList.toggle("active", page.id === `page-${target}`);
+          if (page.id === `page-${target}`) page.scrollTop = 0;
         });
 
+        syncMobileContactCta(target);
         closeMobileDrawer();
       });
+    });
+
+    const FAQ_CONTENT = {
+      coDaje: [
+        {
+          q: "Co otrzymujesz?",
+          a: "Otrzymujesz stronę przygotowaną pod Twój biznes, połączoną z rezerwacją online, panelem admina i podstawową automatyzacją kontaktu z klientem.\n\nTo nie jest tylko wizytówka. To system, który pomaga klientowi zobaczyć ofertę, poznać ceny, sprawdzić FAQ i zapisać się na usługę online."
+        },
+        {
+          q: "Dlaczego to nie jest zwykła strona?",
+          a: "Strona nie tylko pokazuje informacje o biznesie, ale prowadzi klienta do konkretnego działania.\n\nKlient może zobaczyć ofertę, sprawdzić zdjęcia, obejrzeć video, przeczytać odpowiedzi na pytania i od razu przejść do rezerwacji."
+        },
+        {
+          q: "Jak strona jest dopasowywana do biznesu?",
+          a: "Strona jest dopasowywana do Twojej branży, oferty i stylu.\n\nDopasowywane są teksty, zdjęcia, video, usługi, pracownicy, kontakt, opisy i sekcje strony tak, żeby pasowały do Twojego salonu albo usługi.\n\nPrzykładowe sekcje to: O nas, Usługi, Galeria, Pracownicy, FAQ, Kontakt, Lokalizacja, Opinie, Efekty, Cennik i Rezerwacja online."
+        },
+        {
+          q: "Czy można dodać zdjęcia i video?",
+          a: "Tak. Na stronie można dodać zdjęcia oraz video.\n\nVideo może działać z automatycznym odtwarzaniem bez dźwięku, dzięki czemu strona wygląda bardziej dynamicznie i lepiej pokazuje klimat miejsca."
+        },
+        {
+          q: "Co daje booking online?",
+          a: "Booking online pozwala klientowi zapisać się na usługę bez pisania wiadomości.\n\nKlient może przejść ze strony bezpośrednio do rezerwacji, a właściciel nie musi ręcznie ustalać każdego terminu w wiadomościach."
+        },
+        {
+          q: "Co daje połączenie z Google Calendar?",
+          a: "Rezerwacje mogą trafiać do Google Calendar.\n\nDzięki temu właściciel widzi nowe terminy w jednym miejscu i może łatwiej kontrolować swój grafik."
+        },
+        {
+          q: "Co dają powiadomienia?",
+          a: "Po nowej rezerwacji właściciel może otrzymać powiadomienie, na przykład przez Telegram albo SMS.\n\nKlient może otrzymać potwierdzenie rezerwacji, żeby wiedział, że termin został zapisany."
+        },
+        {
+          q: "Jak strona pomaga w kontakcie z Instagrama?",
+          a: "Strona może działać jako miejsce, do którego trafia klient z Instagrama, reklamy, Google, QR kodu albo linku w bio.\n\nZamiast odpowiadać na te same pytania w wiadomościach, możesz kierować klienta na stronę, gdzie od razu widzi ofertę, ceny, FAQ, kontakt i rezerwację online."
+        }
+      ],
+      jakDziala: [
+        {
+          q: "Jak klient trafia na stronę?",
+          a: "Klient może trafić na stronę z Instagrama, reklamy, Google, QR kodu albo linku w bio.\n\nStrona zbiera w jednym miejscu najważniejsze informacje o biznesie i prowadzi klienta do kontaktu albo rezerwacji."
+        },
+        {
+          q: "Co klient widzi na stronie?",
+          a: "Klient może zobaczyć usługi, ceny, opisy, FAQ, zdjęcia, video, pracowników, kontakt, lokalizację i linki do social media.\n\nDzięki temu może sam znaleźć odpowiedzi na podstawowe pytania bez pisania kilku wiadomości."
+        },
+        {
+          q: "Jak działa rezerwacja online?",
+          a: "Klient może przejść ze strony do rezerwacji online i zapisać się na usługę.\n\nProces nie wymaga ręcznego ustalania terminu w wiadomościach, dlatego jest wygodniejszy dla klienta i właściciela."
+        },
+        {
+          q: "Co dzieje się po rezerwacji?",
+          a: "Po nowej rezerwacji właściciel może otrzymać powiadomienie o terminie.\n\nRezerwacja może też trafić do Google Calendar, żeby wszystkie terminy były widoczne w jednym miejscu."
+        },
+        {
+          q: "Czy klient otrzymuje potwierdzenie?",
+          a: "Tak. Klient może otrzymać potwierdzenie rezerwacji.\n\nDzięki temu wie, że termin został zapisany i nie trzeba dodatkowo potwierdzać wszystkiego ręcznie."
+        },
+        {
+          q: "Jak działa automatyzacja kontaktu?",
+          a: "Automatyzacja pomaga ograniczyć ręczne odpowiadanie na podstawowe pytania.\n\nKlient dostaje jasną ścieżkę: Instagram → strona → oferta → FAQ → kontakt albo rezerwacja online."
+        }
+      ],
+      panelAdmina: [
+        {
+          q: "Co daje panel admina?",
+          a: "Panel admina pozwala zarządzać informacjami na stronie.\n\nDzięki temu możesz samodzielnie aktualizować ofertę, ceny, zdjęcia, kontakt i dane widoczne w rezerwacji."
+        },
+        {
+          q: "Jakie dane można zmieniać w panelu?",
+          a: "Można zmieniać usługi, ceny, czas trwania usług, pracowników, zdjęcia, video, opisy, galerię, godziny pracy, kontakt, linki do social media i informacje widoczne w rezerwacji online."
+        },
+        {
+          q: "Czy można edytować usługi?",
+          a: "Tak. Możesz zmieniać nazwy usług, ceny, czas trwania, podpisy i widoczność usług."
+        },
+        {
+          q: "Czy można edytować pracowników?",
+          a: "Tak. Możesz dodawać i zmieniać pracowników oraz ustawiać, które usługi wykonują."
+        },
+        {
+          q: "Czy można edytować galerię?",
+          a: "Tak. Możesz dodawać zdjęcia, video i opisy do galerii albo innych sekcji strony."
+        },
+        {
+          q: "Czy panel wpływa na booking?",
+          a: "Tak. Usługi i pracownicy widoczni w rezerwacji online są połączeni z panelem admina.\n\nDzięki temu nie trzeba zmieniać tych danych w kilku miejscach osobno."
+        },
+        {
+          q: "Czy można zmieniać kontakt?",
+          a: "Tak. Możesz zmieniać numer telefonu, adres, godziny pracy i linki do social media."
+        }
+      ],
+      faq: [
+        {
+          q: "Co można zmieniać w środku strony?",
+          a: "Możesz samodzielnie zarządzać podstawowymi danymi przez panel admina.\n\nMożesz zmieniać usługi, ceny, pracowników, zdjęcia, video, opisy, galerię, kontakt, godziny pracy i informacje widoczne w booking."
+        },
+        {
+          q: "Czego nie obejmują zmiany po akceptacji projektu?",
+          a: "Po przyjęciu projektu większe zmiany całej koncepcji wizualnej są traktowane jako dodatkowa praca.\n\nDotyczy to na przykład zmiany stylu strony, zmiany kolorystyki, przebudowy układu, zmiany nagłówków po zatwierdzeniu albo dużej rozbudowy funkcji ponad ustalony zakres."
+        },
+        {
+          q: "Czy można później rozbudować stronę?",
+          a: "Tak. Stronę można później rozbudować o nowe sekcje, dodatkowe funkcje albo większą automatyzację.\n\nTaka rozbudowa jest ustalana osobno."
+        },
+        {
+          q: "Jak wygląda współpraca?",
+          a: "Najpierw ustalamy branżę, styl i zawartość strony.\n\nNastępnie przygotowuję stronę, dodaję sekcje, nagłówki, zdjęcia, video, usługi, pracowników i kontakt.\n\nPotem konfiguruję booking online, Google Calendar i podstawowe powiadomienia.\n\nNa końcu testuję cały proces: stronę, admin panel, rezerwację, powiadomienia i zapis terminu w kalendarzu."
+        },
+        {
+          q: "Ile trwa przygotowanie?",
+          a: "Standardowo przygotowanie strony trwa 1–3 dni.\n\nPrzy większej liczbie materiałów, większym zakresie albo kolejce prac czas może wynosić około tygodnia."
+        },
+        {
+          q: "Co trzeba przygotować przed startem?",
+          a: "Najlepiej przygotować nazwę biznesu, listę usług, ceny, czas trwania usług, dane pracowników, zdjęcia, video, godziny pracy, adres, numer telefonu i linki do social media."
+        }
+      ]
+    };
+
+    const FAQ_CATEGORY_LABELS = {
+      coDaje: "Co daje?",
+      jakDziala: "Jak działa?",
+      panelAdmina: "Panel admina",
+      faq: "FAQ"
+    };
+    const desktopFaqTabs = document.getElementById("desktopFaqTabs");
+    const desktopFaqCards = document.getElementById("desktopFaqCards");
+    const faqModal = document.getElementById("faqModal");
+    const faqModalTitle = document.getElementById("faqModalTitle");
+    const faqModalAnswer = document.getElementById("faqModalAnswer");
+    const mobileApp = document.getElementById("mobileApp");
+    let activeDesktopFaqCategory = "coDaje";
+
+    function escHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;");
+    }
+
+    function faqCardHtml(item, categoryKey, index, extraClass = "") {
+      return `<button class="faq-question-card ${extraClass}" type="button" data-faq-open data-faq-cat="${categoryKey}" data-faq-index="${index}">
+        <span class="faq-question-text">${escHtml(item.q)}</span>
+        <span class="faq-plus" aria-hidden="true">+</span>
+      </button>`;
+    }
+
+    function renderDesktopFaq() {
+      if (!desktopFaqTabs || !desktopFaqCards) return;
+
+      desktopFaqTabs.innerHTML = Object.entries(FAQ_CATEGORY_LABELS)
+        .map(([key, label]) => {
+          const active = key === activeDesktopFaqCategory ? "active" : "";
+          return `<button class="faq-tab ${active}" type="button" data-desktop-faq-tab="${key}">${label}</button>`;
+        })
+        .join("");
+
+      const entries = FAQ_CONTENT[activeDesktopFaqCategory] || [];
+      desktopFaqCards.innerHTML = entries
+        .map((item, idx) => faqCardHtml(item, activeDesktopFaqCategory, idx))
+        .join("");
+    }
+
+    function renderMobileFaqSections() {
+      const pageMap = {
+        home: { category: "jakDziala", ids: [0, 1, 2, 3], mode: "list" },
+        demos: { category: "coDaje", ids: [1, 2, 3, 7], mode: "carousel" },
+        benefits: { category: "coDaje", ids: [0, 1, 2, 3, 4, 5, 6, 7], mode: "list" },
+        how: { category: "jakDziala", ids: [0, 1, 2, 3, 4, 5], mode: "list" }
+      };
+
+      Object.entries(pageMap).forEach(([pageId, cfg]) => {
+        const body = document.querySelector(`#page-${pageId} .mobile-body`);
+        if (!body) return;
+        const nodes = cfg.ids
+          .map((i) => (FAQ_CONTENT[cfg.category] || [])[i])
+          .filter(Boolean)
+          .map((item, idx) => faqCardHtml(item, cfg.category, cfg.ids[idx], cfg.mode === "carousel" ? "faq-question-card--carousel" : ""))
+          .join("");
+
+        if (cfg.mode === "carousel") {
+          body.innerHTML = `<div class="mobile-demo-carousel faq-carousel">${nodes}</div>`;
+        } else {
+          body.innerHTML = `<div class="mobile-list mobile-faq-list">${nodes}</div>`;
+        }
+      });
+
+      const faqBody = document.querySelector("#page-faq .mobile-body");
+      if (faqBody) {
+        const panelList = (FAQ_CONTENT.panelAdmina || [])
+          .map((item, idx) => faqCardHtml(item, "panelAdmina", idx))
+          .join("");
+        const faqList = (FAQ_CONTENT.faq || [])
+          .map((item, idx) => faqCardHtml(item, "faq", idx))
+          .join("");
+
+        faqBody.innerHTML = `
+          <div class="mobile-list mobile-faq-list">
+            <h3 class="mobile-faq-section-title">Panel admina</h3>
+            ${panelList}
+            <h3 class="mobile-faq-section-title">FAQ</h3>
+            ${faqList}
+          </div>
+        `;
+      }
+    }
+
+    function openFaqModal(categoryKey, index) {
+      const data = FAQ_CONTENT[categoryKey] && FAQ_CONTENT[categoryKey][index];
+      if (!data || !faqModal || !faqModalTitle || !faqModalAnswer) return;
+      faqModalTitle.textContent = data.q;
+      faqModalAnswer.textContent = data.a;
+      faqModal.classList.add("open");
+      faqModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("faq-modal-open");
+    }
+
+    function closeFaqModal() {
+      if (!faqModal) return;
+      faqModal.classList.remove("open");
+      faqModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("faq-modal-open");
+    }
+
+    function syncMobileContactCta(pageId) {
+      if (!mobileApp) return;
+      mobileApp.classList.toggle("show-contact-cta", pageId === "contact");
+    }
+
+    renderDesktopFaq();
+    renderMobileFaqSections();
+    syncMobileContactCta("home");
+
+    document.addEventListener("click", (event) => {
+      const tab = event.target.closest("[data-desktop-faq-tab]");
+      if (tab) {
+        activeDesktopFaqCategory = tab.getAttribute("data-desktop-faq-tab") || "coDaje";
+        renderDesktopFaq();
+      }
+
+      const faqOpen = event.target.closest("[data-faq-open]");
+      if (faqOpen) {
+        openFaqModal(faqOpen.getAttribute("data-faq-cat"), Number(faqOpen.getAttribute("data-faq-index")));
+      }
+
+      if (event.target.closest("[data-faq-close]")) {
+        closeFaqModal();
+      }
     });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         closeMobileDrawer();
+        closeFaqModal();
       }
     });
 
