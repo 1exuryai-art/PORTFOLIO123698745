@@ -2483,7 +2483,7 @@
 
                   <a
                     class="btn btn-light"
-                    href="https://lunanails.up.railway.app/?back=demos"
+                    href="https://lunanails.up.railway.app/"
                     target="_blank"
                     rel="noopener">
                     Otwórz demo
@@ -2537,7 +2537,7 @@
 
                   <a
                     class="btn btn-orange"
-                    href="https://barbermonarch.up.railway.app/?back=demos"
+                    href="https://barbermonarch.up.railway.app/"
                     target="_blank"
                     rel="noopener">
                     Otwórz demo
@@ -2591,7 +2591,7 @@
 
                   <a
                     class="btn btn-primary"
-                    href="https://mrozowski.up.railway.app/?back=demos"
+                    href="https://mrozowski.up.railway.app/"
                     target="_blank"
                     rel="noopener">
                     Otwórz demo
@@ -2892,7 +2892,7 @@
                 <div class="mobile-ui-row"><span>Godzina</span><strong>14:30</strong></div>
                 <div class="mobile-ui-row"><span>Status</span><strong>Ready</strong></div>
               </div>
-              <a class="btn btn-light" href="https://lunanails.up.railway.app/?back=demos" target="_blank" rel="noopener">Otwórz demo</a>
+              <a class="btn btn-light" href="https://lunanails.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
             </article>
 
             <article class="mobile-demo-card violet">
@@ -2906,7 +2906,7 @@
                 <div class="mobile-ui-row"><span>Oferta</span><strong>Bez pytań</strong></div>
                 <div class="mobile-ui-row"><span>Status</span><strong>Online</strong></div>
               </div>
-              <a class="btn btn-primary" href="https://mrozowski.up.railway.app/?back=demos" target="_blank" rel="noopener">Otwórz demo</a>
+              <a class="btn btn-primary" href="https://mrozowski.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
             </article>
 
             <article class="mobile-demo-card orange">
@@ -2920,7 +2920,7 @@
                 <div class="mobile-ui-row"><span>Godzina</span><strong>18:00</strong></div>
                 <div class="mobile-ui-row"><span>CTA</span><strong>Zarezerwuj</strong></div>
               </div>
-              <a class="btn btn-orange" href="https://barbermonarch.up.railway.app/?back=demos" target="_blank" rel="noopener">Otwórz demo</a>
+              <a class="btn btn-orange" href="https://barbermonarch.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
             </article>
           </div>
         </div>
@@ -3554,10 +3554,22 @@
       }
     });
 
-        const DEMO_URLS = {
-      luna: "https://lunanails.up.railway.app/?back=demos",
-      barber: "https://barbermonarch.up.railway.app/?back=demos",
-      mrozowski: "https://mrozowski.up.railway.app/?back=demos"
+    const demoBackTarget = `${window.location.origin}${window.location.pathname}?page=demos`;
+    function withBackTarget(baseUrl) {
+      try {
+        const u = new URL(baseUrl);
+        u.searchParams.set("back", demoBackTarget);
+        u.searchParams.set("returnUrl", demoBackTarget);
+        return u.toString();
+      } catch {
+        return baseUrl;
+      }
+    }
+
+    const DEMO_URLS = {
+      luna: withBackTarget("https://lunanails.up.railway.app/"),
+      barber: withBackTarget("https://barbermonarch.up.railway.app/"),
+      mrozowski: withBackTarget("https://mrozowski.up.railway.app/")
     };
 
     document.querySelectorAll("#white-demo a.btn, .mobile-demo-card.light a.btn").forEach((link) => {
