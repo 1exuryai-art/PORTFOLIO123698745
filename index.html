@@ -2110,6 +2110,31 @@
       max-width: 13ch;
     }
 
+    .mobile-faq-carousel {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 0 2px 8px;
+      align-items: stretch;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-faq-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-faq-carousel .faq-question-card {
+      flex: 0 0 86%;
+      min-height: 190px;
+      scroll-snap-align: center;
+      align-content: space-between;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+
     .mobile-bottom {
       padding: 8px 12px calc(10px + var(--safe-bottom));
       background: linear-gradient(180deg, transparent, rgba(3, 5, 19, 0.92) 38%);
@@ -2227,6 +2252,10 @@
       }
 
       .mobile-demo-carousel.faq-carousel .faq-question-card {
+        flex-basis: 90%;
+      }
+
+      .mobile-faq-carousel .faq-question-card {
         flex-basis: 90%;
       }
 
@@ -3552,10 +3581,10 @@
 
     function renderMobileFaqSections() {
       const pageMap = {
-        home: { category: "jakDziala", ids: [0, 1, 2, 3], mode: "list" },
+        home: { category: "jakDziala", ids: [0, 1, 2, 3], mode: "carousel" },
         demos: { category: "coDaje", ids: [1, 2, 3, 7], mode: "carousel" },
-        benefits: { category: "coDaje", ids: [0, 1, 2, 3, 4, 5, 6, 7], mode: "list" },
-        how: { category: "jakDziala", ids: [0, 1, 2, 3, 4, 5], mode: "list" }
+        benefits: { category: "coDaje", ids: [0, 1, 2, 3, 4, 5, 6, 7], mode: "carousel" },
+        how: { category: "jakDziala", ids: [0, 1, 2, 3, 4, 5], mode: "carousel" }
       };
 
       Object.entries(pageMap).forEach(([pageId, cfg]) => {
@@ -3568,7 +3597,7 @@
           .join("");
 
         if (cfg.mode === "carousel") {
-          body.innerHTML = `<div class="mobile-demo-carousel faq-carousel">${nodes}</div>`;
+          body.innerHTML = `<div class="mobile-faq-carousel">${nodes}</div>`;
         } else {
           body.innerHTML = `<div class="mobile-list mobile-faq-list">${nodes}</div>`;
         }
@@ -3586,12 +3615,55 @@
         faqBody.innerHTML = `
           <div class="mobile-list mobile-faq-list">
             <h3 class="mobile-faq-section-title">Panel admina</h3>
-            ${panelList}
+            <div class="mobile-faq-carousel">${panelList}</div>
             <h3 class="mobile-faq-section-title">FAQ</h3>
-            ${faqList}
+            <div class="mobile-faq-carousel">${faqList}</div>
           </div>
         `;
       }
+    }
+
+    function enableVerticalSwipeOnFaqCarousels() {
+      document.querySelectorAll(".mobile-faq-carousel").forEach((carousel) => {
+        if (carousel.dataset.verticalSwipeBound === "1") return;
+        carousel.dataset.verticalSwipeBound = "1";
+
+        let startX = 0;
+        let startY = 0;
+        let lastY = 0;
+        let axis = "";
+
+        carousel.addEventListener("touchstart", (event) => {
+          const t = event.touches && event.touches[0];
+          if (!t) return;
+          startX = t.clientX;
+          startY = t.clientY;
+          lastY = t.clientY;
+          axis = "";
+        }, { passive: true });
+
+        carousel.addEventListener("touchmove", (event) => {
+          const t = event.touches && event.touches[0];
+          if (!t) return;
+
+          const dx = t.clientX - startX;
+          const dy = t.clientY - startY;
+
+          if (!axis) {
+            axis = Math.abs(dy) > Math.abs(dx) ? "y" : "x";
+          }
+
+          if (axis === "y") {
+            const page = carousel.closest(".mobile-page");
+            if (page) {
+              const deltaY = t.clientY - lastY;
+              page.scrollTop -= deltaY;
+              lastY = t.clientY;
+              event.preventDefault();
+            }
+          }
+        }, { passive: false });
+      });
     }
 
     function openFaqModal(categoryKey, index) {
@@ -3618,6 +3690,7 @@
 
     renderDesktopFaq();
     renderMobileFaqSections();
+    enableVerticalSwipeOnFaqCarousels();
     syncMobileContactCta("home");
 
     document.addEventListener("click", (event) => {
