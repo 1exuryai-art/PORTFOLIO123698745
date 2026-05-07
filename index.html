@@ -1657,6 +1657,84 @@
       transform: translateY(0) scale(1);
     }
 
+    .mobile-lang {
+      position: relative;
+      justify-self: end;
+    }
+
+    .mobile-lang-btn {
+      position: relative;
+      z-index: 2;
+    }
+
+    .mobile-lang-panel {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      min-width: 158px;
+      padding: 8px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(6, 8, 24, 0.94);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(12px);
+      transition:
+        opacity 0.22s ease,
+        transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.22s;
+      z-index: 130;
+    }
+
+    body.mobile-lang-open .mobile-lang-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .mobile-lang-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(247, 248, 255, 0.88);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+    }
+
+    .mobile-lang-option:hover {
+      background: rgba(139, 92, 246, 0.14);
+      border-color: rgba(139, 92, 246, 0.28);
+      color: #fff;
+    }
+
+    .mobile-lang-option.active {
+      background: linear-gradient(180deg, rgba(163, 146, 255, 0.35), rgba(116, 87, 246, 0.22));
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #fff;
+    }
+
+    .mobile-lang-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
     .mobile-nav-btn {
       flex: 0 0 auto;
       min-height: 42px;
@@ -2853,30 +2931,47 @@
         <strong>Mrozowski Automation</strong>
       </div>
 
-      <a class="mobile-icon" href="tel:+48532377701" aria-label="Zadzwoń">
-        ☎
-      </a>
+      <div class="mobile-lang" id="mobileLang">
+        <button
+          class="mobile-icon mobile-lang-btn"
+          type="button"
+          id="mobileLangBtn"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="mobileLangPanel"
+          data-i18n-aria="lang_aria">
+          <svg class="mobile-lang-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9" />
+            <path d="M3 12h18M12 3c2.8 3.4 2.8 14.6 0 18M12 3c-2.8 3.4-2.8 14.6 0 18" />
+          </svg>
+        </button>
+        <div class="mobile-lang-panel" id="mobileLangPanel" role="menu" aria-label="Language">
+          <button class="mobile-lang-option" type="button" role="menuitem" data-set-lang="ru">Русский</button>
+          <button class="mobile-lang-option" type="button" role="menuitem" data-set-lang="pl">Polski</button>
+          <button class="mobile-lang-option" type="button" role="menuitem" data-set-lang="en">English</button>
+        </div>
+      </div>
     </header>
 
     <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
-      <button class="mobile-nav-btn active" type="button" data-page="demos">Demo</button>
-      <button class="mobile-nav-btn" type="button" data-page="home">Start</button>
-      <button class="mobile-nav-btn" type="button" data-page="benefits">Co daje</button>
-      <button class="mobile-nav-btn" type="button" data-page="how">Jak działa</button>
-      <button class="mobile-nav-btn" type="button" data-page="faq">FAQ</button>
-      <button class="mobile-nav-btn" type="button" data-page="contact">Kontakt</button>
+      <button class="mobile-nav-btn active" type="button" data-page="demos" data-i18n="nav_demos">Demo</button>
+      <button class="mobile-nav-btn" type="button" data-page="home" data-i18n="nav_home">Start</button>
+      <button class="mobile-nav-btn" type="button" data-page="benefits" data-i18n="nav_benefits">Co daje</button>
+      <button class="mobile-nav-btn" type="button" data-page="how" data-i18n="nav_how">Jak działa</button>
+      <button class="mobile-nav-btn" type="button" data-page="faq" data-i18n="nav_faq">FAQ</button>
+      <button class="mobile-nav-btn" type="button" data-page="contact" data-i18n="nav_contact">Kontakt</button>
     </nav>
 
     <section class="mobile-pages">
       <article class="mobile-page active" id="page-demos">
         <div class="mobile-page-head">
-          <div class="mobile-kicker">Demo selector</div>
+          <div class="mobile-kicker" data-i18n="demos_kicker">Demo selector</div>
 
-          <h2 class="mobile-title">
+          <h2 class="mobile-title" data-i18n="demos_title">
             Wybierz styl pod swój biznes.
           </h2>
 
-          <p class="mobile-sub">
+          <p class="mobile-sub" data-i18n="demos_sub">
             Trzy wersje, jeden mechanizm. Przesuń karty i otwórz demo.
           </p>
         </div>
@@ -2885,44 +2980,44 @@
           <div class="mobile-demo-carousel">
             <article class="mobile-demo-card light">
               <div>
-                <div class="demo-kicker">Clean premium</div>
-                <h3>Jasno i profesjonalnie.</h3>
-                <p>Dla beauty, nails, lashes, kosmetologii i spokojnych marek.</p>
+                <div class="demo-kicker" data-i18n="demo_light_kicker">Clean premium</div>
+                <h3 data-i18n="demo_light_h3">Jasno i profesjonalnie.</h3>
+                <p data-i18n="demo_light_p">Dla beauty, nails, lashes, kosmetologii i spokojnych marek.</p>
               </div>
               <div class="mobile-mockup">
-                <div class="mobile-ui-row"><span>Usługa</span><strong>Manicure</strong></div>
-                <div class="mobile-ui-row"><span>Godzina</span><strong>14:30</strong></div>
-                <div class="mobile-ui-row"><span>Status</span><strong>Ready</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_light_r1a">Usługa</span><strong data-i18n="demo_light_r1b">Manicure</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_light_r2a">Godzina</span><strong data-i18n="demo_light_r2b">14:30</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_light_r3a">Status</span><strong data-i18n="demo_light_r3b">Ready</strong></div>
               </div>
-              <a class="btn btn-light" href="https://lunanails.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+              <a class="btn btn-light" href="https://lunanails.up.railway.app/" target="_blank" rel="noopener" data-i18n="demo_open">Otwórz demo</a>
             </article>
 
             <article class="mobile-demo-card violet">
               <div>
-                <div class="demo-kicker">Modern service</div>
-                <h3>Nowocześnie i czytelnie.</h3>
-                <p>Dla usług, które chcą wyglądać drożej niż zwykły formularz.</p>
+                <div class="demo-kicker" data-i18n="demo_violet_kicker">Modern service</div>
+                <h3 data-i18n="demo_violet_h3">Nowocześnie i czytelnie.</h3>
+                <p data-i18n="demo_violet_p">Dla usług, które chcą wyglądać drożej niż zwykły formularz.</p>
               </div>
               <div class="mobile-mockup">
-                <div class="mobile-ui-row"><span>Sloty</span><strong>Kalendarz</strong></div>
-                <div class="mobile-ui-row"><span>Oferta</span><strong>Bez pytań</strong></div>
-                <div class="mobile-ui-row"><span>Status</span><strong>Online</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_violet_r1a">Sloty</span><strong data-i18n="demo_violet_r1b">Kalendarz</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_violet_r2a">Oferta</span><strong data-i18n="demo_violet_r2b">Bez pytań</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_violet_r3a">Status</span><strong data-i18n="demo_violet_r3b">Online</strong></div>
               </div>
-              <a class="btn btn-primary" href="https://mrozowski.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+              <a class="btn btn-primary" href="https://mrozowski.up.railway.app/" target="_blank" rel="noopener" data-i18n="demo_open">Otwórz demo</a>
             </article>
 
             <article class="mobile-demo-card orange">
               <div>
-                <div class="demo-kicker">Dark local</div>
-                <h3>Mocny klimat lokalu.</h3>
-                <p>Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.</p>
+                <div class="demo-kicker" data-i18n="demo_orange_kicker">Dark local</div>
+                <h3 data-i18n="demo_orange_h3">Mocny klimat lokalu.</h3>
+                <p data-i18n="demo_orange_p">Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.</p>
               </div>
               <div class="mobile-mockup">
-                <div class="mobile-ui-row"><span>Usługa</span><strong>Combo</strong></div>
-                <div class="mobile-ui-row"><span>Godzina</span><strong>18:00</strong></div>
-                <div class="mobile-ui-row"><span>CTA</span><strong>Zarezerwuj</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_orange_r1a">Usługa</span><strong data-i18n="demo_orange_r1b">Combo</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_orange_r2a">Godzina</span><strong data-i18n="demo_orange_r2b">18:00</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_orange_r3a">CTA</span><strong data-i18n="demo_orange_r3b">Zarezerwuj</strong></div>
               </div>
-              <a class="btn btn-orange" href="https://barbermonarch.up.railway.app/" target="_blank" rel="noopener">Otwórz demo</a>
+              <a class="btn btn-orange" href="https://barbermonarch.up.railway.app/" target="_blank" rel="noopener" data-i18n="demo_open">Otwórz demo</a>
             </article>
           </div>
         </div>
@@ -2930,13 +3025,13 @@
 
       <article class="mobile-page" id="page-home">
         <div class="mobile-page-head">
-          <div class="mobile-kicker">Jeden link do rezerwacji</div>
+          <div class="mobile-kicker" data-i18n="home_kicker">Jeden link do rezerwacji</div>
 
-          <h1 class="mobile-title">
+          <h1 class="mobile-title" data-i18n-html="home_title_html">
             Nie strona. System do zdobywania <em>terminów.</em>
           </h1>
 
-          <p class="mobile-sub">
+          <p class="mobile-sub" data-i18n="home_sub">
             Klient trafia z bio, DM, reklamy, QR, Google albo WhatsApp — widzi ofertę,
             ceny, wolne godziny i od razu wybiera termin.
           </p>
@@ -2954,13 +3049,13 @@
 
       <article class="mobile-page" id="page-benefits">
         <div class="mobile-page-head">
-          <div class="mobile-kicker">Co to daje?</div>
+          <div class="mobile-kicker" data-i18n="benefits_kicker">Co to daje?</div>
 
-          <h2 class="mobile-title">
+          <h2 class="mobile-title" data-i18n="benefits_title">
             Mniej ustalania. Więcej wizyt.
           </h2>
 
-          <p class="mobile-sub">
+          <p class="mobile-sub" data-i18n="benefits_sub">
             Klient widzi podstawy od razu i szybciej przechodzi do decyzji.
           </p>
         </div>
@@ -2981,13 +3076,13 @@
 
       <article class="mobile-page" id="page-how">
         <div class="mobile-page-head">
-          <div class="mobile-kicker">Jak działa?</div>
+          <div class="mobile-kicker" data-i18n="how_kicker">Jak działa?</div>
 
-          <h2 class="mobile-title">
+          <h2 class="mobile-title" data-i18n="how_title">
             Od linku do gotowego terminu.
           </h2>
 
-          <p class="mobile-sub">
+          <p class="mobile-sub" data-i18n="how_sub">
             Prosta ścieżka dla klienta i mniej ręcznego ustalania dla właściciela.
           </p>
         </div>
@@ -3006,20 +3101,20 @@
 
       <article class="mobile-page" id="page-faq">
         <div class="mobile-page-head">
-          <div class="mobile-kicker">FAQ</div>
+          <div class="mobile-kicker" data-i18n="faq_page_kicker">FAQ</div>
 
-          <h2 class="mobile-title">
+          <h2 class="mobile-title" data-i18n="faq_page_title">
             Najczęstsze pytania.
           </h2>
 
-          <p class="mobile-sub">
+          <p class="mobile-sub" data-i18n="faq_page_sub">
             Co robi strona, gdzie ją podpiąć i jak zacząć bez chaosu w wiadomościach.
           </p>
         </div>
 
         <div class="mobile-body scrollable">
           <div class="mobile-list mobile-faq-list">
-            <h3 class="mobile-faq-section-title">Panel admina</h3>
+            <h3 class="mobile-faq-section-title" data-i18n="faq_section_admin">Panel admina</h3>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="0"><span class="faq-question-text">Co daje panel admina?</span><span class="faq-plus" aria-hidden="true">+</span></button>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="1"><span class="faq-question-text">Jakie dane można zmieniać w panelu?</span><span class="faq-plus" aria-hidden="true">+</span></button>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="2"><span class="faq-question-text">Czy można edytować usługi?</span><span class="faq-plus" aria-hidden="true">+</span></button>
@@ -3027,7 +3122,7 @@
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="4"><span class="faq-question-text">Czy można edytować galerię?</span><span class="faq-plus" aria-hidden="true">+</span></button>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="5"><span class="faq-question-text">Czy panel wpływa na booking?</span><span class="faq-plus" aria-hidden="true">+</span></button>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="6"><span class="faq-question-text">Czy można zmieniać kontakt?</span><span class="faq-plus" aria-hidden="true">+</span></button>
-            <h3 class="mobile-faq-section-title">FAQ</h3>
+            <h3 class="mobile-faq-section-title" data-i18n="faq_section_faq">FAQ</h3>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="0"><span class="faq-question-text">Co można zmieniać w środku strony?</span><span class="faq-plus" aria-hidden="true">+</span></button>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="1"><span class="faq-question-text">Czego nie obejmują zmiany po akceptacji projektu?</span><span class="faq-plus" aria-hidden="true">+</span></button>
             <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="2"><span class="faq-question-text">Czy można później rozbudować stronę?</span><span class="faq-plus" aria-hidden="true">+</span></button>
@@ -3040,13 +3135,13 @@
 
       <article class="mobile-page" id="page-contact">
         <div class="mobile-page-head">
-          <div class="mobile-kicker">Kontakt</div>
+          <div class="mobile-kicker" data-i18n="contact_kicker">Kontakt</div>
 
-          <h2 class="mobile-title">
+          <h2 class="mobile-title" data-i18n="contact_title">
             Chcesz taki system pod swój lokal?
           </h2>
 
-          <p class="mobile-sub">
+          <p class="mobile-sub" data-i18n="contact_sub">
             Wersja pod barbershop, beauty, nails, lashes, masaż albo inny lokal usługowy.
           </p>
         </div>
@@ -3094,7 +3189,8 @@
         class="btn btn-primary"
         href="https://www.instagram.com/mrozowski.automation/"
         target="_blank"
-        rel="noopener">
+        rel="noopener"
+        data-i18n="cta_instagram">
         Napisz na Instagram
       </a>
     </div>
@@ -3103,7 +3199,7 @@
   <div class="faq-modal" id="faqModal" aria-hidden="true">
     <div class="faq-modal-backdrop" data-faq-close></div>
     <div class="faq-modal-panel" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
-      <button class="faq-modal-close" type="button" data-faq-close aria-label="Zamknij">×</button>
+      <button class="faq-modal-close" type="button" data-faq-close data-i18n-aria="faq_modal_close_aria" aria-label="Zamknij">×</button>
       <h3 class="faq-modal-title" id="faqModalTitle">Pytanie</h3>
       <p class="faq-modal-answer" id="faqModalAnswer">Odpowiedź</p>
     </div>
@@ -3229,6 +3325,7 @@
     }
 
     function openMobileDrawer() {
+      closeMobileLangPanel();
       document.body.classList.add("mobile-menu-open");
 
       if (!mobileDrawer) return;
@@ -3279,7 +3376,8 @@
       });
     });
 
-    const FAQ_CONTENT = {
+    const FAQ_BY_LANG = {
+      pl: {
       coDaje: [
         {
           q: "Co otrzymujesz?",
@@ -3317,18 +3415,22 @@
       jakDziala: [
         {
           q: "Jak klient trafia na stronę?",
+          preview: "Instagram, Google, QR, WhatsApp albo link w bio.",
           a: "Klient może trafić na stronę z Instagrama, reklamy, Google, QR kodu albo linku w bio.\n\nStrona zbiera w jednym miejscu najważniejsze informacje o biznesie i prowadzi klienta do kontaktu albo rezerwacji."
         },
         {
           q: "Co klient widzi na stronie?",
+          preview: "Oferta, ceny, FAQ, zdjęcia, kontakt i wolne terminy.",
           a: "Klient może zobaczyć usługi, ceny, opisy, FAQ, zdjęcia, video, pracowników, kontakt, lokalizację i linki do social media.\n\nDzięki temu może sam znaleźć odpowiedzi na podstawowe pytania bez pisania kilku wiadomości."
         },
         {
           q: "Jak działa rezerwacja online?",
+          preview: "Klient wybiera usługę, dzień i godzinę bez pisania wiadomości.",
           a: "Klient może przejść ze strony do rezerwacji online i zapisać się na usługę.\n\nProces nie wymaga ręcznego ustalania terminu w wiadomościach, dlatego jest wygodniejszy dla klienta i właściciela."
         },
         {
           q: "Co dzieje się po rezerwacji?",
+          preview: "Termin trafia do systemu, a właściciel dostaje powiadomienie.",
           a: "Po nowej rezerwacji właściciel może otrzymać powiadomienie o terminie.\n\nRezerwacja może też trafić do Google Calendar, żeby wszystkie terminy były widoczne w jednym miejscu."
         },
         {
@@ -3396,14 +3498,349 @@
           a: "Najlepiej przygotować nazwę biznesu, listę usług, ceny, czas trwania usług, dane pracowników, zdjęcia, video, godziny pracy, adres, numer telefonu i linki do social media."
         }
       ]
+    },
+      en: {
+        coDaje: [
+          { q: "What do you get?", a: "You get a page tailored to your business, connected to online booking, an admin panel, and basic automation for client contact.\n\nIt is not just a business card. It is a system that helps the client see the offer, prices, FAQ, and book a service online." },
+          { q: "Why is this not a regular website?", a: "The page does not only show information about the business — it leads the client to a concrete action.\n\nThe client can see the offer, photos, video, read answers to questions, and go straight to booking." },
+          { q: "How is the page matched to the business?", a: "The page is matched to your industry, offer, and style.\n\nTexts, photos, video, services, staff, contact, descriptions, and sections are adjusted so they fit your salon or service.\n\nExample sections: About, Services, Gallery, Staff, FAQ, Contact, Location, Reviews, Results, Pricing, and Online booking." },
+          { q: "Can you add photos and video?", a: "Yes. The page can include photos and video.\n\nVideo can autoplay muted so the page feels more dynamic and shows the vibe of the place." },
+          { q: "What does online booking give you?", a: "Online booking lets the client book without writing messages.\n\nThey can go from the page straight to booking, and you do not have to arrange every slot manually in DMs." },
+          { q: "What does Google Calendar integration give?", a: "Bookings can go to Google Calendar.\n\nYou see new slots in one place and manage your schedule more easily." },
+          { q: "What do notifications do?", a: "After a new booking the owner can get a notification, e.g. via Telegram or SMS.\n\nThe client can get a confirmation so they know the slot is saved." },
+          { q: "How does the page help Instagram contact?", a: "The page can be the single place clients land from Instagram, ads, Google, a QR code, or a bio link.\n\nInstead of answering the same questions in DMs, you send people to a page where they immediately see offer, prices, FAQ, contact, and online booking." }
+        ],
+        jakDziala: [
+          { q: "How does the client reach the page?", preview: "Instagram, Google, QR, WhatsApp, or a bio link.", a: "Clients can come from Instagram, ads, Google, a QR code, or a bio link.\n\nThe page gathers the key business info in one place and leads to contact or booking." },
+          { q: "What does the client see on the page?", preview: "Offer, prices, FAQ, photos, contact, and free slots.", a: "They can see services, prices, descriptions, FAQ, photos, video, staff, contact, location, and social links.\n\nThey can answer basic questions themselves without several messages." },
+          { q: "How does online booking work?", preview: "The client picks service, day, and time without writing a message.", a: "They can go from the page to online booking and reserve a service.\n\nNo need to negotiate the time manually in messages — easier for both sides." },
+          { q: "What happens after booking?", preview: "The slot goes to the system and the owner gets a notification.", a: "After a booking the owner can get a notification.\n\nThe booking can also sync to Google Calendar so everything is visible in one place." },
+          { q: "Does the client get a confirmation?", a: "Yes. The client can receive a booking confirmation.\n\nThey know the slot is saved without extra manual back-and-forth." },
+          { q: "How does contact automation work?", a: "Automation cuts down manual replies to basic questions.\n\nThe path is clear: Instagram → page → offer → FAQ → contact or online booking." }
+        ],
+        panelAdmina: [
+          { q: "What does the admin panel do?", a: "The admin panel lets you manage information on the page.\n\nYou can update offer, prices, photos, contact, and data shown in booking yourself." },
+          { q: "What can you change in the panel?", a: "Services, prices, duration, staff, photos, video, descriptions, gallery, opening hours, contact, social links, and booking-visible information." },
+          { q: "Can you edit services?", a: "Yes. You can change service names, prices, duration, captions, and visibility." },
+          { q: "Can you edit staff?", a: "Yes. You can add and edit staff and which services they perform." },
+          { q: "Can you edit the gallery?", a: "Yes. You can add photos, video, and captions to the gallery or other sections." },
+          { q: "Does the panel affect booking?", a: "Yes. Services and staff in online booking are tied to the admin panel.\n\nYou do not maintain the same data in several separate places." },
+          { q: "Can you change contact details?", a: "Yes. Phone, address, opening hours, and social links can be updated." }
+        ],
+        faq: [
+          { q: "What can you change inside the page?", a: "You manage core data yourself via the admin panel.\n\nServices, prices, staff, photos, video, descriptions, gallery, contact, hours, and booking info." },
+          { q: "What is not included in changes after the project is accepted?", a: "After sign-off, major visual concept changes count as extra work.\n\nFor example: changing the overall style, color scheme, layout, headlines after approval, or large feature scope beyond what was agreed." },
+          { q: "Can the page be expanded later?", a: "Yes. You can add sections, features, or more automation later.\n\nThat is agreed separately." },
+          { q: "How does collaboration work?", a: "First we align industry, style, and content.\n\nThen I build the page with sections, headlines, photos, video, services, staff, and contact.\n\nThen I set up online booking, Google Calendar, and basic notifications.\n\nFinally I test the full flow: page, admin, booking, notifications, and calendar." },
+          { q: "How long does setup take?", a: "Typically 1–3 days.\n\nMore materials, wider scope, or a queue can push it to about a week." },
+          { q: "What should you prepare before start?", a: "Business name, service list, prices, durations, staff details, photos, video, hours, address, phone, and social links." }
+        ]
+      },
+      ru: {
+        coDaje: [
+          { q: "Что вы получаете?", a: "Страницу под ваш бизнес с онлайн-записью, админ-панелью и базовой автоматизацией контакта с клиентом.\n\nЭто не просто визитка, а система: клиент видит оферту, цены, FAQ и может сразу записаться онлайн." },
+          { q: "Почему это не обычный сайт?", a: "Страница не только показывает информацию, а ведёт клиента к действию.\n\nОн видит услуги, фото, видео, ответы на вопросы и сразу переходит к записи." },
+          { q: "Как страница подстраивается под бизнес?", a: "Под отрасль, оферту и стиль.\n\nТексты, фото, видео, услуги, сотрудники, контакты, описания и блоки под ваш салон или сервис.\n\nПримеры блоков: О нас, Услуги, Галерея, Команда, FAQ, Контакт, Локация, Отзывы, Результаты, Цены и Онлайн-запись." },
+          { q: "Можно ли добавить фото и видео?", a: "Да. На странице могут быть фото и видео.\n\nВидео может автовоспроизводиться без звука — страница выглядит живее и передаёт атмосферу." },
+          { q: "Что даёт онлайн-запись?", a: "Клиент записывается без переписки.\n\nПереход со страницы сразу в бронирование, вам не нужно вручную согласовывать каждый слот в сообщениях." },
+          { q: "Что даёт связка с Google Calendar?", a: "Записи могут попадать в Google Calendar.\n\nВсе слоты в одном месте, проще контролировать расписание." },
+          { q: "Зачем уведомления?", a: "После новой записи владелец может получить уведомление, например в Telegram или SMS.\n\nКлиент может получить подтверждение, что время сохранено." },
+          { q: "Как страница помогает с Instagram?", a: "Это единая точка входа из Instagram, рекламы, Google, QR или ссылки в био.\n\nВместо одних и тех же ответов в Direct вы направляете на страницу: оферта, цены, FAQ, контакт и онлайн-запись сразу видны." }
+        ],
+        jakDziala: [
+          { q: "Как клиент попадает на страницу?", preview: "Instagram, Google, QR, WhatsApp или ссылка в био.", a: "Клиент может прийти из Instagram, рекламы, Google, QR-кода или ссылки в био.\n\nНа странице собрана ключевая информация и путь к контакту или записи." },
+          { q: "Что клиент видит на странице?", preview: "Оферта, цены, FAQ, фото, контакт и свободные слоты.", a: "Услуги, цены, описания, FAQ, фото, видео, сотрудников, контакт, локацию и соцсети.\n\nБазовые вопросы он закрывает сам, без цепочки сообщений." },
+          { q: "Как работает онлайн-запись?", preview: "Клиент выбирает услугу, день и время без переписки.", a: "Со страницы — в онлайн-запись и бронирование услуги.\n\nБез ручного согласования времени в переписке — удобнее всем." },
+          { q: "Что после записи?", preview: "Слот попадает в систему, владелец получает уведомление.", a: "После записи владелец получает уведомление о слоте.\n\nЗапись может синхронизироваться с Google Calendar." },
+          { q: "Клиент получает подтверждение?", a: "Да. Можно отправить подтверждение записи.\n\nКлиент уверен, что время сохранено." },
+          { q: "Как работает автоматизация контакта?", a: "Меньше ручных ответов на однотипные вопросы.\n\nПуть: Instagram → страница → оферта → FAQ → контакт или онлайн-запись." }
+        ],
+        panelAdmina: [
+          { q: "Что даёт админ-панель?", a: "Управление данными на странице.\n\nСамостоятельно обновляете оферту, цены, фото, контакт и то, что видно в записи." },
+          { q: "Что можно менять в панели?", a: "Услуги, цены, длительность, сотрудников, фото, видео, описания, галерею, часы работы, контакт, соцсети и данные в бронировании." },
+          { q: "Можно редактировать услуги?", a: "Да. Названия, цены, длительность, подписи и видимость услуг." },
+          { q: "Можно редактировать сотрудников?", a: "Да. Добавление и изменение сотрудников и привязка услуг." },
+          { q: "Можно редактировать галерею?", a: "Да. Фото, видео и подписи в галерее и других блоках." },
+          { q: "Панель влияет на бронирование?", a: "Да. Услуги и сотрудники в онлайн-записи связаны с админ-панелью.\n\nНе нужно дублировать данные в нескольких местах." },
+          { q: "Можно менять контакты?", a: "Да. Телефон, адрес, часы и ссылки на соцсети." }
+        ],
+        faq: [
+          { q: "Что можно менять внутри страницы?", a: "Основные данные — через админ-панель.\n\nУслуги, цены, сотрудники, фото, видео, описания, галерея, контакт, часы и информация для записи." },
+          { q: "Что не входит в правки после принятия проекта?", a: "После сдачи проекта крупные изменения визуальной концепции — отдельная работа.\n\nНапример: смена стиля, палитры, сетки, заголовков после утверждения или существенное расширение функций сверх согласованного." },
+          { q: "Можно ли расширить страницу позже?", a: "Да. Новые блоки, функции и автоматизация — по отдельной договорённости." },
+          { q: "Как выглядит сотрудничество?", a: "Сначала согласуем нишу, стиль и контент.\n\nЗатем страница, блоки, заголовки, фото, видео, услуги, сотрудники и контакт.\n\nПотом онлайн-запись, Google Calendar и базовые уведомления.\n\nВ конце проверка всего пути: страница, админ, запись, уведомления, календарь." },
+          { q: "Сколько длится подготовка?", a: "Обычно 1–3 дня.\n\nБольше материалов, объём или очередь — около недели." },
+          { q: "Что подготовить до старта?", a: "Название, список услуг, цены, длительность, данные сотрудников, фото, видео, часы, адрес, телефон и ссылки на соцсети." }
+        ]
+      }
     };
 
-    const FAQ_CATEGORY_LABELS = {
-      coDaje: "Co daje?",
-      jakDziala: "Jak działa?",
-      panelAdmina: "Panel admina",
-      faq: "FAQ"
+    let portfolioLang = localStorage.getItem("portfolioLang") || "pl";
+    if (!FAQ_BY_LANG[portfolioLang]) portfolioLang = "pl";
+
+    function getFaqContent() {
+      return FAQ_BY_LANG[portfolioLang] || FAQ_BY_LANG.pl;
+    }
+
+    const FAQ_CATEGORY_LABELS_BY_LANG = {
+      pl: { coDaje: "Co daje?", jakDziala: "Jak działa?", panelAdmina: "Panel admina", faq: "FAQ" },
+      en: { coDaje: "What you get", jakDziala: "How it works", panelAdmina: "Admin panel", faq: "FAQ" },
+      ru: { coDaje: "Что даёт", jakDziala: "Как это работает", panelAdmina: "Админ-панель", faq: "FAQ" }
     };
+
+    function getFaqCategoryLabels() {
+      return FAQ_CATEGORY_LABELS_BY_LANG[portfolioLang] || FAQ_CATEGORY_LABELS_BY_LANG.pl;
+    }
+
+    const MOBILE_UI_I18N = {
+      pl: {
+        nav_demos: "Demo",
+        nav_home: "Start",
+        nav_benefits: "Co daje",
+        nav_how: "Jak działa",
+        nav_faq: "FAQ",
+        nav_contact: "Kontakt",
+        demos_kicker: "Demo selector",
+        demos_title: "Wybierz styl pod swój biznes.",
+        demos_sub: "Trzy wersje, jeden mechanizm. Przesuń karty i otwórz demo.",
+        demo_light_kicker: "Clean premium",
+        demo_light_h3: "Jasno i profesjonalnie.",
+        demo_light_p: "Dla beauty, nails, lashes, kosmetologii i spokojnych marek.",
+        demo_light_r1a: "Usługa",
+        demo_light_r1b: "Manicure",
+        demo_light_r2a: "Godzina",
+        demo_light_r2b: "14:30",
+        demo_light_r3a: "Status",
+        demo_light_r3b: "Ready",
+        demo_violet_kicker: "Modern service",
+        demo_violet_h3: "Nowocześnie i czytelnie.",
+        demo_violet_p: "Dla usług, które chcą wyglądać drożej niż zwykły formularz.",
+        demo_violet_r1a: "Sloty",
+        demo_violet_r1b: "Kalendarz",
+        demo_violet_r2a: "Oferta",
+        demo_violet_r2b: "Bez pytań",
+        demo_violet_r3a: "Status",
+        demo_violet_r3b: "Online",
+        demo_orange_kicker: "Dark local",
+        demo_orange_h3: "Mocny klimat lokalu.",
+        demo_orange_p: "Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.",
+        demo_orange_r1a: "Usługa",
+        demo_orange_r1b: "Combo",
+        demo_orange_r2a: "Godzina",
+        demo_orange_r2b: "18:00",
+        demo_orange_r3a: "CTA",
+        demo_orange_r3b: "Zarezerwuj",
+        demo_open: "Otwórz demo",
+        home_kicker: "Jeden link do rezerwacji",
+        home_title_html: "Nie strona. System do zdobywania <em>terminów.</em>",
+        home_sub: "Klient trafia z bio, DM, reklamy, QR, Google albo WhatsApp — widzi ofertę, ceny, wolne godziny i od razu wybiera termin.",
+        benefits_kicker: "Co to daje?",
+        benefits_title: "Mniej ustalania. Więcej wizyt.",
+        benefits_sub: "Klient widzi podstawy od razu i szybciej przechodzi do decyzji.",
+        how_kicker: "Jak działa?",
+        how_title: "Od linku do gotowego terminu.",
+        how_sub: "Prosta ścieżka dla klienta i mniej ręcznego ustalania dla właściciela.",
+        faq_page_kicker: "FAQ",
+        faq_page_title: "Najczęstsze pytania.",
+        faq_page_sub: "Co robi strona, gdzie ją podpiąć i jak zacząć bez chaosu w wiadomościach.",
+        faq_section_admin: "Panel admina",
+        faq_section_faq: "FAQ",
+        contact_kicker: "Kontakt",
+        contact_title: "Chcesz taki system pod swój lokal?",
+        contact_sub: "Wersja pod barbershop, beauty, nails, lashes, masaż albo inny lokal usługowy.",
+        cta_instagram: "Napisz na Instagram",
+        lang_aria: "Język",
+        faq_modal_close_aria: "Zamknij"
+      },
+      en: {
+        nav_demos: "Demo",
+        nav_home: "Start",
+        nav_benefits: "Benefits",
+        nav_how: "How it works",
+        nav_faq: "FAQ",
+        nav_contact: "Contact",
+        demos_kicker: "Demo selector",
+        demos_title: "Pick a style for your business.",
+        demos_sub: "Three versions, one engine. Swipe the cards and open a demo.",
+        demo_light_kicker: "Clean premium",
+        demo_light_h3: "Bright and professional.",
+        demo_light_p: "For beauty, nails, lashes, cosmetology, and calm brands.",
+        demo_light_r1a: "Service",
+        demo_light_r1b: "Manicure",
+        demo_light_r2a: "Time",
+        demo_light_r2b: "2:30 PM",
+        demo_light_r3a: "Status",
+        demo_light_r3b: "Ready",
+        demo_violet_kicker: "Modern service",
+        demo_violet_h3: "Modern and clear.",
+        demo_violet_p: "For businesses that should look more premium than a plain form.",
+        demo_violet_r1a: "Slots",
+        demo_violet_r1b: "Calendar",
+        demo_violet_r2a: "Offer",
+        demo_violet_r2b: "No back-and-forth",
+        demo_violet_r3a: "Status",
+        demo_violet_r3b: "Online",
+        demo_orange_kicker: "Dark local",
+        demo_orange_h3: "Strong local vibe.",
+        demo_orange_p: "For barbershops, salons, and brands that want a bolder premium feel.",
+        demo_orange_r1a: "Service",
+        demo_orange_r1b: "Combo",
+        demo_orange_r2a: "Time",
+        demo_orange_r2b: "6:00 PM",
+        demo_orange_r3a: "CTA",
+        demo_orange_r3b: "Book",
+        demo_open: "Open demo",
+        home_kicker: "One link for booking",
+        home_title_html: "Not just a website. A system for <em>booking appointments.</em>",
+        home_sub: "Clients land from bio, DMs, ads, QR, Google, or WhatsApp — they see the offer, prices, free slots, and book right away.",
+        benefits_kicker: "What you get",
+        benefits_title: "Less negotiating. More visits.",
+        benefits_sub: "Clients see the essentials faster and decide sooner.",
+        how_kicker: "How it works",
+        how_title: "From link to a booked slot.",
+        how_sub: "A simple path for clients and less manual scheduling for you.",
+        faq_page_kicker: "FAQ",
+        faq_page_title: "Common questions.",
+        faq_page_sub: "What the page does, where to plug it in, and how to start without inbox chaos.",
+        faq_section_admin: "Admin panel",
+        faq_section_faq: "FAQ",
+        contact_kicker: "Contact",
+        contact_title: "Want this system for your venue?",
+        contact_sub: "For barbershops, beauty, nails, lashes, massage, and other local services.",
+        cta_instagram: "Message on Instagram",
+        lang_aria: "Language",
+        faq_modal_close_aria: "Close"
+      },
+      ru: {
+        nav_demos: "Демо",
+        nav_home: "Старт",
+        nav_benefits: "Что даёт",
+        nav_how: "Как работает",
+        nav_faq: "FAQ",
+        nav_contact: "Контакт",
+        demos_kicker: "Выбор демо",
+        demos_title: "Выберите стиль под свой бизнес.",
+        demos_sub: "Три версии, один механизм. Листайте карточки и откройте демо.",
+        demo_light_kicker: "Clean premium",
+        demo_light_h3: "Светло и профессионально.",
+        demo_light_p: "Для beauty, nails, lashes, косметологии и спокойных брендов.",
+        demo_light_r1a: "Услуга",
+        demo_light_r1b: "Маникюр",
+        demo_light_r2a: "Время",
+        demo_light_r2b: "14:30",
+        demo_light_r3a: "Статус",
+        demo_light_r3b: "Готово",
+        demo_violet_kicker: "Modern service",
+        demo_violet_h3: "Современно и понятно.",
+        demo_violet_p: "Для сервисов, которым важно выглядеть дороже обычной формы.",
+        demo_violet_r1a: "Слоты",
+        demo_violet_r1b: "Календарь",
+        demo_violet_r2a: "Оферта",
+        demo_violet_r2b: "Без лишних вопросов",
+        demo_violet_r3a: "Статус",
+        demo_violet_r3b: "Онлайн",
+        demo_orange_kicker: "Dark local",
+        demo_orange_h3: "Сильный характер локала.",
+        demo_orange_p: "Для барбершопов, салонов и брендов с более смелым премиум-вайбом.",
+        demo_orange_r1a: "Услуга",
+        demo_orange_r1b: "Комбо",
+        demo_orange_r2a: "Время",
+        demo_orange_r2b: "18:00",
+        demo_orange_r3a: "CTA",
+        demo_orange_r3b: "Записаться",
+        demo_open: "Открыть демо",
+        home_kicker: "Одна ссылка на запись",
+        home_title_html: "Не сайт. Система для <em>записи клиентов.</em>",
+        home_sub: "Клиент приходит из био, DM, рекламы, QR, Google или WhatsApp — видит оферту, цены, свободные слоты и сразу выбирает время.",
+        benefits_kicker: "Что это даёт",
+        benefits_title: "Меньше переписок. Больше визитов.",
+        benefits_sub: "Клиент быстрее видит суть и переходит к решению.",
+        how_kicker: "Как это работает",
+        how_title: "От ссылки до записи.",
+        how_sub: "Простой путь для клиента и меньше ручного согласования для вас.",
+        faq_page_kicker: "FAQ",
+        faq_page_title: "Частые вопросы.",
+        faq_page_sub: "Что делает страница, куда её вставить и как стартовать без хаоса в сообщениях.",
+        faq_section_admin: "Админ-панель",
+        faq_section_faq: "FAQ",
+        contact_kicker: "Контакт",
+        contact_title: "Нужна такая система под ваш локал?",
+        contact_sub: "Для барбершопа, beauty, nails, lashes, массажа и других локальных услуг.",
+        cta_instagram: "Написать в Instagram",
+        lang_aria: "Язык",
+        faq_modal_close_aria: "Закрыть"
+      }
+    };
+
+    function getMobileUiPack() {
+      return MOBILE_UI_I18N[portfolioLang] || MOBILE_UI_I18N.pl;
+    }
+
+    function applyMobileUiStrings() {
+      const pack = getMobileUiPack();
+      if (!mobileApp) return;
+
+      mobileApp.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (key && pack[key] != null) el.textContent = pack[key];
+      });
+
+      mobileApp.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-html");
+        if (key && pack[key] != null) el.innerHTML = pack[key];
+      });
+
+      document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-aria");
+        if (key && pack[key] != null) el.setAttribute("aria-label", pack[key]);
+      });
+    }
+
+    function syncMobileFaqFromLang() {
+      if (!mobileApp) return;
+      const bundle = getFaqContent();
+      mobileApp.querySelectorAll("[data-faq-open]").forEach((btn) => {
+        const cat = btn.getAttribute("data-faq-cat");
+        const idx = Number(btn.getAttribute("data-faq-index"));
+        const row = bundle[cat] && bundle[cat][idx];
+        if (!row) return;
+        const qt = btn.querySelector(".faq-question-text");
+        const qp = btn.querySelector(".faq-question-preview");
+        if (qt) qt.textContent = row.q;
+        if (qp) qp.textContent = row.preview || "";
+      });
+    }
+
+    function setLangOptionActive() {
+      document.querySelectorAll(".mobile-lang-option").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-set-lang") === portfolioLang);
+      });
+    }
+
+    function closeMobileLangPanel() {
+      document.body.classList.remove("mobile-lang-open");
+      const btn = document.getElementById("mobileLangBtn");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+    }
+
+    function openMobileLangPanel() {
+      document.body.classList.add("mobile-lang-open");
+      const btn = document.getElementById("mobileLangBtn");
+      if (btn) btn.setAttribute("aria-expanded", "true");
+      setLangOptionActive();
+    }
+
+    function setPortfolioLang(lang) {
+      if (!FAQ_BY_LANG[lang]) return;
+      portfolioLang = lang;
+      localStorage.setItem("portfolioLang", lang);
+      document.documentElement.lang = lang === "pl" ? "pl" : lang === "ru" ? "ru" : "en";
+      applyMobileUiStrings();
+      syncMobileFaqFromLang();
+      renderDesktopFaq();
+      setLangOptionActive();
+    }
+
     const desktopFaqTabs = document.getElementById("desktopFaqTabs");
     const desktopFaqCards = document.getElementById("desktopFaqCards");
     const faqModal = document.getElementById("faqModal");
@@ -3430,14 +3867,14 @@
     function renderDesktopFaq() {
       if (!desktopFaqTabs || !desktopFaqCards) return;
 
-      desktopFaqTabs.innerHTML = Object.entries(FAQ_CATEGORY_LABELS)
+      desktopFaqTabs.innerHTML = Object.entries(getFaqCategoryLabels())
         .map(([key, label]) => {
           const active = key === activeDesktopFaqCategory ? "active" : "";
           return `<button class="faq-tab ${active}" type="button" data-desktop-faq-tab="${key}">${label}</button>`;
         })
         .join("");
 
-      const entries = FAQ_CONTENT[activeDesktopFaqCategory] || [];
+      const entries = getFaqContent()[activeDesktopFaqCategory] || [];
       desktopFaqCards.innerHTML = entries
         .map((item, idx) => faqCardHtml(item, activeDesktopFaqCategory, idx))
         .join("");
@@ -3455,7 +3892,7 @@
         const body = document.querySelector(`#page-${pageId} .mobile-body`);
         if (!body) return;
         const nodes = cfg.ids
-          .map((i) => (FAQ_CONTENT[cfg.category] || [])[i])
+          .map((i) => (getFaqContent()[cfg.category] || [])[i])
           .filter(Boolean)
           .map((item, idx) => faqCardHtml(item, cfg.category, cfg.ids[idx], cfg.mode === "carousel" ? "faq-question-card--carousel" : ""))
           .join("");
@@ -3469,10 +3906,10 @@
 
       const faqBody = document.querySelector("#page-faq .mobile-body");
       if (faqBody) {
-        const panelList = (FAQ_CONTENT.panelAdmina || [])
+        const panelList = (getFaqContent().panelAdmina || [])
           .map((item, idx) => faqCardHtml(item, "panelAdmina", idx))
           .join("");
-        const faqList = (FAQ_CONTENT.faq || [])
+        const faqList = (getFaqContent().faq || [])
           .map((item, idx) => faqCardHtml(item, "faq", idx))
           .join("");
 
@@ -3531,7 +3968,7 @@
     }
 
     function openFaqModal(categoryKey, index) {
-      const data = FAQ_CONTENT[categoryKey] && FAQ_CONTENT[categoryKey][index];
+      const data = getFaqContent()[categoryKey] && getFaqContent()[categoryKey][index];
       if (!data || !faqModal || !faqModalTitle || !faqModalAnswer) return;
       faqModalTitle.textContent = data.q;
       faqModalAnswer.textContent = data.a;
@@ -3552,9 +3989,41 @@
       mobileApp.classList.toggle("show-contact-cta", pageId === "contact");
     }
 
-    renderDesktopFaq();
+    setPortfolioLang(portfolioLang);
     enableVerticalSwipeOnFaqCarousels();
     syncMobileContactCta("demos");
+
+    const mobileLangBtn = document.getElementById("mobileLangBtn");
+    const mobileLang = document.getElementById("mobileLang");
+
+    if (mobileLangBtn) {
+      mobileLangBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (document.body.classList.contains("mobile-lang-open")) {
+          closeMobileLangPanel();
+        } else {
+          closeMobileDrawer();
+          openMobileLangPanel();
+        }
+      });
+    }
+
+    document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const lang = btn.getAttribute("data-set-lang");
+        if (lang) setPortfolioLang(lang);
+        closeMobileLangPanel();
+      });
+    });
+
+    document.addEventListener("click", () => {
+      closeMobileLangPanel();
+    });
+
+    if (mobileLang) {
+      mobileLang.addEventListener("click", (event) => event.stopPropagation());
+    }
 
     document.addEventListener("click", (event) => {
       const tab = event.target.closest("[data-desktop-faq-tab]");
@@ -3576,6 +4045,7 @@
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape") {
         closeMobileDrawer();
+        closeMobileLangPanel();
         closeFaqModal();
       }
     });
