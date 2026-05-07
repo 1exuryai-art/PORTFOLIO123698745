@@ -4108,7 +4108,8 @@
     const mobileLang = document.getElementById("mobileLang");
 
     if (mobileLangBtn) {
-      mobileLangBtn.addEventListener("click", () => {
+      mobileLangBtn.addEventListener("click", (event) => {
+        event.stopPropagation();
         const isOpen = document.body.classList.contains("mobile-lang-open");
 
         if (isOpen) {
