@@ -4108,9 +4108,10 @@
     const mobileLang = document.getElementById("mobileLang");
 
     if (mobileLangBtn) {
-      mobileLangBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        if (document.body.classList.contains("mobile-lang-open")) {
+      mobileLangBtn.addEventListener("click", () => {
+        const isOpen = document.body.classList.contains("mobile-lang-open");
+
+        if (isOpen) {
           closeMobileLangPanel();
         } else {
           closeMobileDrawer();
@@ -4133,15 +4134,7 @@
     });
 
     if (mobileLang) {
-      mobileLang.addEventListener("click", (event) => {
-        event.stopPropagation();
-        if (document.body.classList.contains("mobile-lang-open")) {
-          closeMobileLangPanel();
-        } else {
-          closeMobileDrawer();
-          openMobileLangPanel();
-        }
-      });
+      mobileLang.addEventListener("click", (event) => event.stopPropagation());
     }
 
     document.addEventListener("click", (event) => {
