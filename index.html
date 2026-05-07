@@ -1560,7 +1560,7 @@
       overflow: visible;
       padding: calc(10px + var(--safe-top)) 12px 10px;
       display: grid;
-      grid-template-columns: 52px 1fr 52px;
+      grid-template-columns: 52px 1fr auto;
       align-items: center;
       gap: 10px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -1712,9 +1712,28 @@
       z-index: 130;
     }
 
-    .mobile-lang-btn {
-      position: relative;
-      z-index: 2;
+    .mobile-lang-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 28px rgba(0, 0, 0, 0.22);
+      touch-action: manipulation;
+    }
+
+    .mobile-lang-inline .mobile-lang-option {
+      width: auto;
+      padding: 8px 10px;
+      border-radius: 14px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     .mobile-lang-panel {
@@ -3016,23 +3035,10 @@
       </div>
 
       <div class="mobile-lang" id="mobileLang">
-        <button
-          class="mobile-icon mobile-lang-btn"
-          type="button"
-          id="mobileLangBtn"
-          aria-expanded="false"
-          aria-haspopup="true"
-          aria-controls="mobileLangPanel"
-          data-i18n-aria="lang_aria">
-          <svg class="mobile-lang-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
-            <circle cx="12" cy="12" r="9" />
-            <path d="M3 12h18M12 3c2.8 3.4 2.8 14.6 0 18M12 3c-2.8 3.4-2.8 14.6 0 18" />
-          </svg>
-        </button>
-        <div class="mobile-lang-panel" id="mobileLangPanel" role="menu" aria-label="Language">
-          <button class="mobile-lang-option" type="button" role="menuitem" data-set-lang="ru">Русский</button>
-          <button class="mobile-lang-option" type="button" role="menuitem" data-set-lang="pl">Polski</button>
-          <button class="mobile-lang-option" type="button" role="menuitem" data-set-lang="en">English</button>
+        <div class="mobile-lang-inline" aria-label="Language">
+          <button class="mobile-lang-option" type="button" data-set-lang="ru">RU</button>
+          <button class="mobile-lang-option" type="button" data-set-lang="pl">PL</button>
+          <button class="mobile-lang-option" type="button" data-set-lang="en">EN</button>
         </div>
       </div>
     </header>
@@ -3903,9 +3909,7 @@
 
     function closeMobileLangPanel() {
       document.body.classList.remove("mobile-lang-open");
-      const btn = document.getElementById("mobileLangBtn");
       const panel = document.getElementById("mobileLangPanel");
-      if (btn) btn.setAttribute("aria-expanded", "false");
       if (panel) {
         panel.style.position = "";
         panel.style.top = "";
@@ -3919,12 +3923,11 @@
 
     function openMobileLangPanel() {
       const panel = document.getElementById("mobileLangPanel");
-      const btn = document.getElementById("mobileLangBtn");
       document.body.classList.add("mobile-lang-open");
-      if (btn) btn.setAttribute("aria-expanded", "true");
 
-      if (panel && btn) {
-        const r = btn.getBoundingClientRect();
+      if (panel) {
+        const anchor = document.getElementById("mobileLang") || panel;
+        const r = anchor.getBoundingClientRect();
         const gap = 10;
         const vh = window.visualViewport?.height ?? window.innerHeight;
         const spaceAbove = Math.max(0, r.top - gap);
@@ -4104,22 +4107,7 @@
     enableVerticalSwipeOnFaqCarousels();
     syncMobileContactCta("demos");
 
-    const mobileLangBtn = document.getElementById("mobileLangBtn");
     const mobileLang = document.getElementById("mobileLang");
-
-    if (mobileLangBtn) {
-      mobileLangBtn.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isOpen = document.body.classList.contains("mobile-lang-open");
-
-        if (isOpen) {
-          closeMobileLangPanel();
-        } else {
-          closeMobileDrawer();
-          openMobileLangPanel();
-        }
-      });
-    }
 
     document.querySelectorAll("[data-set-lang]").forEach((btn) => {
       btn.addEventListener("click", (event) => {
