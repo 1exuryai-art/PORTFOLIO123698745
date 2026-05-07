@@ -2398,6 +2398,15 @@
       .orb {
         filter: blur(76px);
         opacity: 0.62;
+        animation: none;
+      }
+
+      .mobile-top,
+      .mobile-drawer,
+      .mobile-lang-panel,
+      .faq-modal-backdrop {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
       }
 
       .orb.one {
@@ -3296,58 +3305,62 @@
   </div>
 
   <script>
-    const splitTargets = document.querySelectorAll("[data-split]");
+    const isMobileUi = window.matchMedia("(max-width: 760px)").matches;
 
-    splitTargets.forEach((element) => {
-      const nodes = [...element.childNodes];
-      let index = 0;
+    if (!isMobileUi) {
+      const splitTargets = document.querySelectorAll("[data-split]");
 
-      element.innerHTML = nodes.map((node) => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          return node.textContent
-            .split(/(\s+)/)
-            .map((part) => {
-              if (!part.trim()) return part;
-              return `<span class="word" style="--i:${index++}">${part}</span>`;
-            })
-            .join("");
-        }
+      splitTargets.forEach((element) => {
+        const nodes = [...element.childNodes];
+        let index = 0;
 
-        if (node.nodeType === Node.ELEMENT_NODE) {
-          const words = node.textContent
-            .split(/(\s+)/)
-            .map((part) => {
-              if (!part.trim()) return part;
-              return `<span class="word" style="--i:${index++}">${part}</span>`;
-            })
-            .join("");
-
-          return `<${node.tagName.toLowerCase()}>${words}</${node.tagName.toLowerCase()}>`;
-        }
-
-        return "";
-      }).join("");
-    });
-
-    const revealItems = document.querySelectorAll(".reveal");
-
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+        element.innerHTML = nodes.map((node) => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent
+              .split(/(\s+)/)
+              .map((part) => {
+                if (!part.trim()) return part;
+                return `<span class="word" style="--i:${index++}">${part}</span>`;
+              })
+              .join("");
           }
-        });
-      },
-      {
-        threshold: 0.14,
-        rootMargin: "0px 0px -7% 0px"
-      }
-    );
 
-    revealItems.forEach((item) => {
-      revealObserver.observe(item);
-    });
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const words = node.textContent
+              .split(/(\s+)/)
+              .map((part) => {
+                if (!part.trim()) return part;
+                return `<span class="word" style="--i:${index++}">${part}</span>`;
+              })
+              .join("");
+
+            return `<${node.tagName.toLowerCase()}>${words}</${node.tagName.toLowerCase()}>`;
+          }
+
+          return "";
+        }).join("");
+      });
+
+      const revealItems = document.querySelectorAll(".reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.14,
+          rootMargin: "0px 0px -7% 0px"
+        }
+      );
+
+      revealItems.forEach((item) => {
+        revealObserver.observe(item);
+      });
+    }
 
     const floating = document.querySelector(".floating-contact");
     const hero = document.querySelector(".hero");
@@ -3361,14 +3374,26 @@
       floating.classList.toggle("visible", passedHero);
     }
 
-    window.addEventListener("scroll", handleFloating, { passive: true });
-    window.addEventListener("resize", handleFloating);
+    let floatingRaf = 0;
+    function scheduleFloatingUpdate() {
+      if (floatingRaf) return;
+      floatingRaf = requestAnimationFrame(() => {
+        floatingRaf = 0;
+        handleFloating();
+      });
+    }
+
+    window.addEventListener("scroll", scheduleFloatingUpdate, { passive: true });
+    window.addEventListener("resize", scheduleFloatingUpdate);
     handleFloating();
 
     const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     if (canHover) {
       document.querySelectorAll(".demo-card").forEach((card) => {
+        let tiltRaf = 0;
+        let nextTransform = "";
+
         card.addEventListener("mousemove", (event) => {
           const rect = card.getBoundingClientRect();
           const x = event.clientX - rect.left;
@@ -3376,11 +3401,21 @@
 
           const rx = ((y / rect.height) - 0.5) * -4;
           const ry = ((x / rect.width) - 0.5) * 5;
+          nextTransform = `translateY(-7px) rotateX(${rx}deg) rotateY(${ry}deg)`;
 
-          card.style.transform = `translateY(-7px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+          if (!tiltRaf) {
+            tiltRaf = requestAnimationFrame(() => {
+              tiltRaf = 0;
+              card.style.transform = nextTransform;
+            });
+          }
         });
 
         card.addEventListener("mouseleave", () => {
+          if (tiltRaf) {
+            cancelAnimationFrame(tiltRaf);
+            tiltRaf = 0;
+          }
           card.style.transform = "";
         });
       });
