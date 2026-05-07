@@ -1709,6 +1709,7 @@
     .mobile-lang {
       position: relative;
       justify-self: end;
+      z-index: 130;
     }
 
     .mobile-lang-btn {
@@ -4132,7 +4133,15 @@
     });
 
     if (mobileLang) {
-      mobileLang.addEventListener("click", (event) => event.stopPropagation());
+      mobileLang.addEventListener("click", (event) => {
+        event.stopPropagation();
+        if (document.body.classList.contains("mobile-lang-open")) {
+          closeMobileLangPanel();
+        } else {
+          closeMobileDrawer();
+          openMobileLangPanel();
+        }
+      });
     }
 
     document.addEventListener("click", (event) => {
