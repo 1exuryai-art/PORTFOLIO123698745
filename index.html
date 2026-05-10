@@ -1,0 +1,4691 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="x-deploy-rev" content="mobile-faq-carousel-v2" />
+
+  <title>Mrozowski Systems — Premium Booking Systems</title>
+  <meta
+    name="description"
+    content="Premium systemy rezerwacji online dla lokalnych usług. Jeden link do oferty, cen, terminów i rezerwacji."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --bg-0: #030513;
+      --bg-1: #070a1d;
+      --bg-2: #0b1028;
+
+      --text: #f7f8ff;
+      --text-strong: #ffffff;
+      --muted: #aab2d6;
+      --muted-2: #7781ad;
+
+      --line: rgba(255, 255, 255, 0.10);
+      --line-strong: rgba(255, 255, 255, 0.18);
+
+      --violet: #8b5cf6;
+      --violet-2: #c4b5fd;
+      --blue: #60a5fa;
+      --blue-2: #2563eb;
+      --cyan: #38bdf8;
+      --gold: #f2c57b;
+      --gold-2: #d9a75d;
+      --green: #6ee7b7;
+
+      --radius-xl: 36px;
+      --radius-lg: 28px;
+      --radius-md: 20px;
+
+      --shadow-xl: 0 34px 120px rgba(0, 0, 0, 0.56);
+      --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.42);
+      --shadow-md: 0 18px 44px rgba(0, 0, 0, 0.30);
+
+      --max: 1240px;
+
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-0);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      font-family: "Manrope", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 14% 8%, rgba(139, 92, 246, 0.22), transparent 31%),
+        radial-gradient(circle at 91% 13%, rgba(96, 165, 250, 0.16), transparent 30%),
+        radial-gradient(circle at 48% 104%, rgba(242, 197, 123, 0.10), transparent 36%),
+        linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 44%, #050616 100%);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.024) 1px, transparent 1px),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05), transparent 57%);
+      background-size: 36px 36px, 36px 36px, auto;
+      mask-image: linear-gradient(to bottom, black 0%, black 42%, transparent 92%);
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.34;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    a,
+    button {
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .orb {
+      position: fixed;
+      z-index: 0;
+      border-radius: 999px;
+      filter: blur(105px);
+      pointer-events: none;
+      opacity: 0.8;
+      animation: floatOrb 16s ease-in-out infinite alternate;
+    }
+
+    .orb.one {
+      width: 430px;
+      height: 430px;
+      left: -160px;
+      top: -130px;
+      background: rgba(139, 92, 246, 0.32);
+    }
+
+    .orb.two {
+      width: 520px;
+      height: 520px;
+      right: -230px;
+      top: 210px;
+      background: rgba(56, 189, 248, 0.16);
+      animation-duration: 19s;
+      animation-delay: -4s;
+    }
+
+    .orb.three {
+      width: 500px;
+      height: 500px;
+      left: 32%;
+      bottom: -300px;
+      background: rgba(242, 197, 123, 0.13);
+      animation-duration: 21s;
+      animation-delay: -7s;
+    }
+
+    @keyframes floatOrb {
+      from {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+
+      to {
+        transform: translate3d(36px, 28px, 0) scale(1.08);
+      }
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .desktop-version {
+      position: relative;
+      z-index: 2;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(3, 5, 19, 0.70);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.28);
+    }
+
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .desktop-lang {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      margin-right: 16px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow:
+        0 12px 30px rgba(15, 23, 42, 0.75),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .desktop-lang-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .desktop-lang-option {
+      min-width: 0;
+      border-radius: 999px;
+      padding: 3px 9px;
+      font-size: 11px;
+      line-height: 1.4;
+      border: none;
+      cursor: pointer;
+      background: transparent;
+      color: #e5e7eb;
+      transition:
+        background 0.18s ease,
+        color 0.18s ease;
+    }
+
+    .desktop-lang-option:hover {
+      background: rgba(148, 163, 184, 0.16);
+    }
+
+    .desktop-lang-option.active {
+      background: linear-gradient(180deg, rgba(163, 146, 255, 0.35), rgba(116, 87, 246, 0.22));
+      color: #f9fafb;
+    }
+
+    .brand {
+      min-width: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-family: "Sora", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.09em;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background:
+        radial-gradient(circle at 30% 0%, rgba(196, 181, 253, 0.34), transparent 48%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035));
+      box-shadow:
+        0 0 28px rgba(139, 92, 246, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14),
+        0 16px 34px rgba(0, 0, 0, 0.28);
+    }
+
+    .brand-copy {
+      display: grid;
+      gap: 2px;
+    }
+
+    .brand-copy strong {
+      font-family: "Sora", sans-serif;
+      font-size: 15px;
+      letter-spacing: -0.045em;
+      line-height: 1.1;
+    }
+
+    .brand-copy span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.075);
+      background: rgba(255, 255, 255, 0.035);
+      border-radius: 999px;
+    }
+
+    .nav a {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      color: rgba(247, 248, 255, 0.72);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 850;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.07);
+      transform: translateY(-1px);
+    }
+
+    .btn {
+      min-height: 56px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      color: var(--text);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.038));
+      font: inherit;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      box-shadow:
+        0 14px 34px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease,
+        filter 0.22s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.20);
+      box-shadow:
+        0 24px 54px rgba(0, 0, 0, 0.38),
+        0 0 0 4px rgba(255, 255, 255, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      border-color: rgba(139, 92, 246, 0.42);
+      background: linear-gradient(180deg, #a392ff, #7457f6);
+      box-shadow:
+        0 18px 46px rgba(116, 87, 246, 0.34),
+        0 0 42px rgba(96, 165, 250, 0.13),
+        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+    }
+
+    .btn-primary:hover {
+      box-shadow:
+        0 22px 60px rgba(116, 87, 246, 0.44),
+        0 0 0 5px rgba(139, 92, 246, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    }
+
+    .btn-light {
+      color: #0f172a;
+      border-color: rgba(255, 255, 255, 0.92);
+      background: linear-gradient(180deg, #ffffff, #eaf1ff);
+      box-shadow:
+        0 18px 42px rgba(37, 99, 235, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    .btn-orange {
+      color: #19110a;
+      border-color: rgba(242, 197, 123, 0.58);
+      background: linear-gradient(180deg, #ffd58f, #d9a75d);
+      box-shadow:
+        0 18px 42px rgba(217, 167, 93, 0.31),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32);
+    }
+
+    .glass {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(139, 92, 246, 0.15), transparent 32%),
+        radial-gradient(circle at 96% 0%, rgba(96, 165, 250, 0.10), transparent 28%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.070), rgba(255, 255, 255, 0.026));
+      box-shadow:
+        var(--shadow-xl),
+        inset 0 1px 0 rgba(255, 255, 255, 0.085);
+      backdrop-filter: blur(18px) saturate(138%);
+      -webkit-backdrop-filter: blur(18px) saturate(138%);
+    }
+
+    .glass::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.075), transparent 42%);
+    }
+
+    .hero {
+      min-height: calc(100svh - 82px);
+      padding: 22px 0 10px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.95fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      min-height: 706px;
+      padding: clamp(28px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .chip {
+      width: fit-content;
+      min-height: 42px;
+      padding: 0 15px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(255, 255, 255, 0.055);
+      color: #d8d7ff;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .chip::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 14px rgba(96, 165, 250, 0.52);
+    }
+
+    .hero h1 {
+      margin: 0;
+      max-width: 11.5ch;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(50px, 7.3vw, 106px);
+      line-height: 0.92;
+      letter-spacing: -0.087em;
+      text-wrap: balance;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--violet-2);
+      text-shadow: 0 16px 64px rgba(139, 92, 246, 0.36);
+    }
+
+    .hero-lead {
+      margin: 0;
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.76;
+    }
+
+    .hero-actions,
+    .section-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .pill {
+      min-height: 38px;
+      padding: 0 13px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      animation: chipIn 0.7s cubic-bezier(.2,.8,.2,1) both;
+      animation-delay: calc(var(--i, 0) * 70ms + 420ms);
+    }
+
+    .pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: currentColor;
+      box-shadow: 0 0 12px currentColor;
+    }
+
+    @keyframes chipIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-side {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 16px;
+    }
+
+    .flow-dashboard {
+      min-height: 560px;
+      padding: 22px;
+      display: grid;
+      align-content: end;
+      position: relative;
+      z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(3, 5, 19, 0.05) 0%, rgba(3, 5, 19, 0.86) 100%),
+        radial-gradient(circle at 26% 8%, rgba(139, 92, 246, 0.42), transparent 32%),
+        radial-gradient(circle at 86% 18%, rgba(96, 165, 250, 0.28), transparent 33%),
+        linear-gradient(135deg, #101838, #080a1d 58%, #181026);
+    }
+
+    .hero-sell-badge {
+      position: absolute;
+      top: 34px;
+      right: 32px;
+      z-index: 4;
+      width: min(280px, calc(100% - 64px));
+      padding: 15px 17px;
+      border-radius: 23px;
+      border: 1px solid rgba(196, 181, 253, 0.20);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.24), transparent 44%),
+        rgba(7, 10, 30, 0.66);
+      backdrop-filter: blur(18px) saturate(150%);
+      -webkit-backdrop-filter: blur(18px) saturate(150%);
+      box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+
+    .hero-sell-badge span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .hero-sell-badge strong {
+      display: block;
+      color: #ffffff;
+      font-family: "Sora", sans-serif;
+      font-size: 18px;
+      line-height: 1.14;
+      letter-spacing: -0.055em;
+    }
+
+    .flow-dashboard::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 28px;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background:
+        linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(circle at top, black, transparent 75%);
+    }
+
+    .dashboard-card {
+      position: relative;
+      z-index: 2;
+      border-radius: 28px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(5, 7, 22, 0.66);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+      display: grid;
+      gap: 14px;
+      animation: dashboardFloat 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes dashboardFloat {
+      from {
+        transform: translateY(0);
+      }
+
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    .dashboard-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .dashboard-title {
+      display: grid;
+      gap: 3px;
+    }
+
+    .dashboard-title strong {
+      font-family: "Sora", sans-serif;
+      font-size: 24px;
+      letter-spacing: -0.055em;
+    }
+
+    .dashboard-title span,
+    .status-pill {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .status-pill {
+      min-height: 34px;
+      padding: 0 11px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(110, 231, 183, 0.18);
+      color: #bcf7df;
+      background: rgba(110, 231, 183, 0.075);
+    }
+
+    .status-pill::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(110, 231, 183, 0.55);
+    }
+
+    .flow-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .flow-row {
+      min-height: 70px;
+      padding: 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.095);
+      background: rgba(255, 255, 255, 0.045);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.065);
+    }
+
+    .flow-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.045));
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      font-weight: 950;
+      flex: 0 0 auto;
+    }
+
+    .flow-row strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .flow-row span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .mini-flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .mini-step {
+      min-height: 110px;
+      padding: 14px;
+      border-radius: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.045);
+      display: grid;
+      align-content: space-between;
+      gap: 8px;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 16px 36px rgba(0, 0, 0, 0.22);
+    }
+
+    .mini-step span {
+      color: var(--muted-2);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .mini-step strong {
+      font-size: 14px;
+      line-height: 1.25;
+    }
+
+    .section {
+      padding: 10px 0;
+      scroll-margin-top: 102px;
+    }
+
+    .section-inner {
+      padding: clamp(22px, 4vw, 38px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 12px;
+      max-width: 920px;
+      margin-bottom: 28px;
+    }
+
+    .section-head.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      justify-items: center;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(36px, 5vw, 72px);
+      line-height: 0.96;
+      letter-spacing: -0.074em;
+      max-width: 14ch;
+      text-wrap: balance;
+    }
+
+    .section-head.center h2 {
+      max-width: 17ch;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.76;
+      max-width: 820px;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      perspective: 1400px;
+    }
+
+    .demo-card {
+      min-height: 650px;
+      padding: 22px;
+      border-radius: 31px;
+      border: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.085);
+      transform-style: preserve-3d;
+      transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease;
+    }
+
+    .demo-card:hover {
+      transform: translateY(-7px) rotateX(1.1deg) rotateY(var(--tilt, 0deg));
+      box-shadow:
+        0 44px 120px rgba(0, 0, 0, 0.56),
+        0 0 0 4px rgba(255, 255, 255, 0.045),
+        inset 0 1px 0 rgba(255, 255, 255, 0.13);
+    }
+
+    .demo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), transparent 42%);
+      z-index: 0;
+    }
+
+    .demo-card::after {
+      content: "";
+      position: absolute;
+      top: -70%;
+      left: -70%;
+      width: 60%;
+      height: 240%;
+      transform: rotate(24deg) translateX(-40%);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.24), transparent);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      transition:
+        opacity 0.25s ease,
+        transform 0.75s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .demo-card:hover::after {
+      opacity: 1;
+      transform: rotate(24deg) translateX(360%);
+    }
+
+    .demo-card.light {
+      --tilt: -1.2deg;
+      color: #101827;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(96, 165, 250, 0.22), transparent 32%),
+        radial-gradient(circle at 88% 16%, rgba(196, 181, 253, 0.18), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.97), rgba(231, 238, 252, 0.92));
+      border-color: rgba(255, 255, 255, 0.78);
+    }
+
+    .demo-card.orange {
+      --tilt: 1.2deg;
+      background:
+        linear-gradient(180deg, rgba(7, 6, 4, 0.74), rgba(7, 6, 4, 0.93)),
+        radial-gradient(circle at 16% 0%, rgba(242, 197, 123, 0.25), transparent 36%),
+        url("./marble.png") center / cover no-repeat,
+        #090806;
+      border-color: rgba(242, 197, 123, 0.28);
+    }
+
+    .demo-card.violet {
+      --tilt: 0.8deg;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(139, 92, 246, 0.27), transparent 34%),
+        radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.15), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.082), rgba(255, 255, 255, 0.028)),
+        #080a1c;
+      border-color: rgba(157, 139, 255, 0.28);
+    }
+
+    .demo-top,
+    .demo-bottom,
+    .mockup {
+      position: relative;
+      z-index: 1;
+    }
+
+    .demo-top {
+      display: grid;
+      gap: 12px;
+    }
+
+    .demo-kicker {
+      width: fit-content;
+      min-height: 34px;
+      padding: 0 11px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .demo-card.light .demo-kicker {
+      background: rgba(37, 99, 235, 0.075);
+      border-color: rgba(37, 99, 235, 0.12);
+      color: #1d4ed8;
+    }
+
+    .demo-card.orange .demo-kicker {
+      color: #ffd58f;
+      border-color: rgba(242, 197, 123, 0.20);
+      background: rgba(242, 197, 123, 0.08);
+    }
+
+    .demo-card.violet .demo-kicker {
+      color: #d8ccff;
+      border-color: rgba(196, 181, 253, 0.18);
+      background: rgba(139, 92, 246, 0.10);
+    }
+
+    .demo-card h3 {
+      margin: 0;
+      max-width: 11ch;
+      font-family: "Sora", sans-serif;
+      font-size: 36px;
+      line-height: 0.98;
+      letter-spacing: -0.067em;
+      text-wrap: balance;
+    }
+
+    .demo-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 15px;
+    }
+
+    .demo-card.light p {
+      color: #64748b;
+    }
+
+    .mockup {
+      min-height: 282px;
+      border-radius: 27px;
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      padding: 14px;
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 20px 48px rgba(0, 0, 0, 0.30);
+      transition: transform 0.28s ease;
+    }
+
+    .demo-card:hover .mockup {
+      transform: scale(1.02) translateY(-5px);
+    }
+
+    .demo-card.light .mockup {
+      background:
+        radial-gradient(circle at top, rgba(96, 165, 250, 0.14), transparent 44%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.92));
+      border-color: rgba(15, 23, 42, 0.08);
+      box-shadow:
+        0 20px 48px rgba(148, 163, 184, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    .demo-card.orange .mockup {
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.68)),
+        radial-gradient(circle at top, rgba(242, 197, 123, 0.21), transparent 43%),
+        url("./marble.png") center / cover no-repeat,
+        #12100d;
+      border-color: rgba(242, 197, 123, 0.22);
+    }
+
+    .demo-card.violet .mockup {
+      background:
+        linear-gradient(180deg, rgba(5, 6, 21, 0.06), rgba(5, 6, 21, 0.72)),
+        radial-gradient(circle at 22% 6%, rgba(139, 92, 246, 0.36), transparent 36%),
+        radial-gradient(circle at 86% 12%, rgba(96, 165, 250, 0.22), transparent 34%),
+        #0b0e24;
+    }
+
+    .screen-ui {
+      height: 100%;
+      min-height: 252px;
+      border-radius: 21px;
+      padding: 14px;
+      display: grid;
+      align-content: end;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.065);
+      backdrop-filter: blur(13px);
+      -webkit-backdrop-filter: blur(13px);
+      border: 1px solid rgba(255, 255, 255, 0.105);
+    }
+
+        .demo-card.light .screen-ui {
+      background: rgba(255, 255, 255, 0.82);
+      border-color: rgba(15, 23, 42, 0.07);
+    }
+
+    .ui-row {
+      min-height: 46px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.082);
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 0 12px;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .ui-row span {
+      color: rgba(247, 248, 255, 0.66);
+    }
+
+    .ui-row strong {
+      color: #ffffff;
+    }
+
+    .demo-card.light .ui-row {
+      background: rgba(37, 99, 235, 0.058);
+      border-color: rgba(37, 99, 235, 0.085);
+    }
+
+    .demo-card.light .ui-row span {
+      color: #64748b;
+    }
+
+    .demo-card.light .ui-row strong {
+      color: #0f172a;
+    }
+
+    .demo-card.orange .ui-row {
+      border-color: rgba(242, 197, 123, 0.13);
+      background: rgba(0, 0, 0, 0.22);
+    }
+
+    .demo-card.orange .ui-row strong {
+      color: #ffd58f;
+    }
+
+    .demo-card.violet .ui-row {
+      background: rgba(139, 92, 246, 0.08);
+      border-color: rgba(196, 181, 253, 0.12);
+    }
+
+    .demo-bottom {
+      display: grid;
+      gap: 12px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      min-height: 32px;
+      padding: 0 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.055);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .demo-card.light .tag {
+      background: rgba(37, 99, 235, 0.055);
+      border-color: rgba(37, 99, 235, 0.09);
+      color: #475569;
+    }
+
+    .demo-card.orange .tag {
+      color: #dfc291;
+      border-color: rgba(242, 197, 123, 0.14);
+      background: rgba(242, 197, 123, 0.06);
+    }
+
+    .benefit-grid,
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .steps-grid {
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: "";
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 49px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+      pointer-events: none;
+    }
+
+    .benefit-card,
+    .step-card {
+      min-height: 242px;
+      padding: 22px;
+      border-radius: 27px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.052);
+      box-shadow:
+        var(--shadow-md),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      transition:
+        transform 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-card:hover,
+    .step-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.17);
+      background: rgba(255, 255, 255, 0.067);
+    }
+
+    .benefit-icon,
+    .step-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      font-weight: 950;
+      background: linear-gradient(180deg, #a392ff, #7457f6);
+      box-shadow: 0 16px 36px rgba(116, 87, 246, 0.27);
+    }
+
+    .benefit-card:nth-child(2) .benefit-icon,
+    .step-card:nth-child(2) .step-number {
+      background: linear-gradient(180deg, #60a5fa, #2563eb);
+      box-shadow: 0 16px 36px rgba(37, 99, 235, 0.25);
+    }
+
+    .benefit-card:nth-child(3) .benefit-icon,
+    .step-card:nth-child(3) .step-number {
+      color: #18110a;
+      background: linear-gradient(180deg, #ffd58f, #d9a75d);
+      box-shadow: 0 16px 36px rgba(217, 167, 93, 0.22);
+    }
+
+    .benefit-card:nth-child(4) .benefit-icon,
+    .step-card:nth-child(4) .step-number {
+      background: linear-gradient(180deg, #6ee7b7, #10b981);
+      box-shadow: 0 16px 36px rgba(16, 185, 129, 0.20);
+    }
+
+    .benefit-card strong,
+    .step-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: "Sora", sans-serif;
+      font-size: 22px;
+      line-height: 1.04;
+      letter-spacing: -0.057em;
+    }
+
+    .benefit-card p,
+    .step-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.66;
+      font-size: 14px;
+    }
+
+    .faq-toolbar {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .faq-tabs {
+      width: min(100%, 540px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .faq-tab {
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.05);
+      color: rgba(247, 248, 255, 0.8);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.01em;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .faq-tab.active {
+      color: #ffffff;
+      background: linear-gradient(180deg, #a392ff, #7457f6);
+      border-color: rgba(139, 92, 246, 0.32);
+      box-shadow: 0 10px 26px rgba(116, 87, 246, 0.25);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-question-card {
+      width: 100%;
+      min-height: 96px;
+      padding: 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.12), transparent 34%),
+        rgba(255, 255, 255, 0.052);
+      box-shadow:
+        var(--shadow-md),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      color: inherit;
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .faq-question-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(196, 181, 253, 0.22);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.17), transparent 34%),
+        rgba(255, 255, 255, 0.068);
+    }
+
+    .faq-question-text {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: -0.045em;
+    }
+
+    .faq-plus {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(196, 181, 253, 0.44);
+      background: linear-gradient(180deg, rgba(167, 139, 250, 0.25), rgba(139, 92, 246, 0.24));
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      line-height: 1;
+      color: #f8f4ff;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .faq-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 180;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .faq-modal.open {
+      display: flex;
+    }
+
+    .faq-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(2, 4, 14, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .faq-modal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(760px, 100%);
+      max-height: min(78vh, 760px);
+      overflow: auto;
+      border-radius: 24px;
+      border: 1px solid rgba(196, 181, 253, 0.2);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.2), transparent 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+        #090c22;
+      box-shadow: 0 32px 90px rgba(0, 0, 0, 0.5);
+      padding: 22px 22px 20px;
+    }
+
+    .faq-modal-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      color: #f6f7ff;
+      font-size: 24px;
+      line-height: 1;
+      margin-left: auto;
+      display: grid;
+      place-items: center;
+    }
+
+    .faq-modal-title {
+      margin: 12px 0 12px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(28px, 4.4vw, 42px);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+    }
+
+    .faq-modal-answer {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+
+    body.faq-modal-open {
+      overflow: hidden;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .cta-copy {
+      padding: clamp(24px, 4vw, 36px);
+      border-radius: 32px;
+      border: 1px solid rgba(255, 255, 255, 0.105);
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.20), transparent 34%),
+        radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.10), transparent 30%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.028));
+      box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .cta-copy h2 {
+      margin: 14px 0 12px;
+      max-width: 12ch;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(38px, 5vw, 74px);
+      line-height: 0.94;
+      letter-spacing: -0.078em;
+      text-wrap: balance;
+    }
+
+    .cta-copy p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16px;
+    }
+
+    .contact-card {
+      padding: 24px;
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.052);
+      box-shadow:
+        var(--shadow-lg),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      display: grid;
+      gap: 14px;
+      align-content: start;
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+    }
+
+    .socials {
+      display: grid;
+      gap: 10px;
+    }
+
+    .social-link {
+      min-height: 58px;
+      padding: 0 16px;
+      border-radius: 19px;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      background: rgba(255, 255, 255, 0.055);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 900;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.07);
+      box-shadow:
+        0 18px 34px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+
+    .social-link span:last-child {
+      color: var(--violet-2);
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 20px 0 42px;
+      color: var(--muted-2);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .floating-contact {
+      position: fixed;
+      right: 18px;
+      bottom: calc(18px + var(--safe-bottom));
+      z-index: 80;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(18px);
+      transition:
+        opacity 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .floating-contact.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(0.987);
+      transition:
+        opacity 0.74s cubic-bezier(.2,.8,.2,1),
+        transform 0.74s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: wordIn 0.78s cubic-bezier(.2,.8,.2,1) forwards;
+      animation-delay: calc(var(--i) * 48ms + 80ms);
+    }
+
+    @keyframes wordIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mobile-app {
+      position: relative;
+      z-index: 3;
+      min-height: 100svh;
+      height: 100svh;
+      height: 100dvh;
+      display: none;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+
+    .mobile-top {
+      position: relative;
+      z-index: 40;
+      overflow: visible;
+      padding: calc(10px + var(--safe-top)) 12px 10px;
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(3, 5, 19, 0.76);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+    }
+
+    .mobile-icon {
+      width: 52px;
+      height: 52px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: var(--violet-2);
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 28px rgba(0, 0, 0, 0.22);
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .mobile-icon:active {
+      transform: scale(0.94);
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    .mobile-icon.menu-pulse {
+      animation: burgerPremiumPulse 1.7s ease-in-out infinite;
+    }
+
+    @keyframes burgerPremiumPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          0 12px 28px rgba(0, 0, 0, 0.22),
+          0 0 0 0 rgba(139, 92, 246, 0);
+      }
+
+      45% {
+        transform: scale(1.045);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.12),
+          0 16px 36px rgba(0, 0, 0, 0.28),
+          0 0 0 8px rgba(139, 92, 246, 0.10),
+          0 0 30px rgba(139, 92, 246, 0.22);
+      }
+    }
+
+    .hamburger-lines {
+      width: 20px;
+      height: 14px;
+      display: grid;
+      gap: 4px;
+    }
+
+    .hamburger-lines span {
+      display: block;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+    }
+
+    body.mobile-menu-open .hamburger-lines span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    body.mobile-menu-open .hamburger-lines span:nth-child(2) {
+      opacity: 0;
+    }
+
+    body.mobile-menu-open .hamburger-lines span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .mobile-brand {
+      justify-self: center;
+      min-height: 56px;
+      width: min(178px, 100%);
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.18), transparent 48%),
+        rgba(255, 255, 255, 0.045);
+      box-shadow:
+        0 14px 34px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-brand strong {
+      font-family: "Sora", sans-serif;
+      font-size: 13px;
+      letter-spacing: -0.04em;
+      max-width: 100%;
+      padding: 0 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .mobile-drawer {
+      position: fixed;
+      left: 10px;
+      right: 10px;
+      top: calc(76px + var(--safe-top));
+      z-index: 120;
+      padding: 10px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      background: rgba(6, 8, 24, 0.90);
+      backdrop-filter: blur(24px) saturate(155%);
+      -webkit-backdrop-filter: blur(24px) saturate(155%);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.44);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-14px) scale(0.98);
+      transition:
+        opacity 0.24s ease,
+        transform 0.24s ease;
+      scroll-behavior: smooth;
+    }
+
+    .mobile-drawer::-webkit-scrollbar {
+      display: none;
+    }
+
+    body.mobile-menu-open .mobile-drawer {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .mobile-lang {
+      position: relative;
+      justify-self: end;
+      z-index: 130;
+    }
+
+    .mobile-lang-inline {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 12px 28px rgba(0, 0, 0, 0.22);
+      touch-action: manipulation;
+    }
+
+    .mobile-lang-inline .mobile-lang-option {
+      width: auto;
+      padding: 8px 10px;
+      border-radius: 14px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .mobile-lang-panel {
+      position: absolute;
+      right: 0;
+      left: auto;
+      bottom: calc(100% + 10px);
+      top: auto;
+      min-width: 158px;
+      max-height: min(220px, calc(100dvh - env(safe-area-inset-top, 0px) - 24px));
+      padding: 8px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(6, 8, 24, 0.94);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, 0.45);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition:
+        opacity 0.22s ease,
+        transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0.22s;
+      z-index: 50;
+    }
+
+    body.mobile-lang-open .mobile-lang-panel {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .mobile-lang-option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(247, 248, 255, 0.88);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(139, 92, 246, 0.25);
+      position: relative;
+      z-index: 1;
+      transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+    }
+
+    .mobile-lang-option:hover {
+      background: rgba(139, 92, 246, 0.14);
+      border-color: rgba(139, 92, 246, 0.28);
+      color: #fff;
+    }
+
+    .mobile-lang-option.active {
+      background: linear-gradient(180deg, rgba(163, 146, 255, 0.35), rgba(116, 87, 246, 0.22));
+      border-color: rgba(139, 92, 246, 0.4);
+      color: #fff;
+    }
+
+    .mobile-lang-icon {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .mobile-nav-btn {
+      flex: 0 0 auto;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+      color: rgba(247, 248, 255, 0.74);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .mobile-nav-btn:first-child {
+      margin-left: 54px;
+    }
+
+    .mobile-nav-btn.active {
+      color: #ffffff;
+      background: linear-gradient(180deg, #a392ff, #7457f6);
+      border-color: rgba(139, 92, 246, 0.35);
+      box-shadow: 0 12px 28px rgba(116, 87, 246, 0.24);
+    }
+
+    .mobile-pages {
+      position: relative;
+      z-index: 0;
+      min-height: 0;
+      overflow: hidden;
+      padding: 12px;
+    }
+
+    .mobile-page {
+      position: absolute;
+      inset: 12px;
+      display: none;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding-right: 2px;
+      animation: pageIn 0.42s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .mobile-page::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-page.active {
+      display: grid;
+    }
+
+    .mobile-page.active .mobile-kicker,
+    .mobile-page.active .mobile-title,
+    .mobile-page.active .mobile-sub,
+    .mobile-page.active .mobile-body > * {
+      animation: mobileRise 0.52s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .mobile-page.active .mobile-title {
+      animation-delay: 0.04s;
+    }
+
+    .mobile-page.active .mobile-sub {
+      animation-delay: 0.08s;
+    }
+
+    .mobile-page.active .mobile-body > * {
+      animation-delay: 0.13s;
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.985);
+        filter: blur(5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes mobileRise {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mobile-page-head {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mobile-kicker {
+      width: fit-content;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--violet-2);
+      border: 1px solid rgba(196, 181, 253, 0.18);
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .mobile-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 14px rgba(96, 165, 250, 0.52);
+    }
+
+    .mobile-title {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(38px, 12vw, 58px);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      max-width: 10.5ch;
+      text-wrap: balance;
+    }
+
+    .mobile-title em {
+      font-style: normal;
+      color: var(--violet-2);
+    }
+
+    .mobile-sub {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+      max-width: 36ch;
+    }
+
+    .mobile-demos-note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      margin: 8px 0 0;
+      max-width: 42ch;
+      opacity: 0.92;
+    }
+
+    .mobile-body {
+      min-height: 0;
+      display: grid;
+      gap: 10px;
+      align-content: stretch;
+      overflow: visible;
+    }
+
+    .mobile-body.scrollable {
+      overflow: visible;
+    }
+
+    .mobile-body.scrollable::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-card {
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.072), rgba(255, 255, 255, 0.032)),
+        rgba(6, 8, 24, 0.72);
+      box-shadow:
+        0 18px 46px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile-flow-card {
+      padding: 14px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .mobile-flow-row {
+      min-height: 62px;
+      padding: 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      background: rgba(255, 255, 255, 0.045);
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .mobile-flow-row strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .mobile-flow-row span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 750;
+    }
+
+    .mobile-demo-carousel {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 0 2px 2px;
+      align-items: stretch;
+    }
+
+    .mobile-demo-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-demo-card {
+      flex: 0 0 82%;
+      min-height: 520px;
+      scroll-snap-align: center;
+      padding: 14px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      overflow: hidden;
+      position: relative;
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.36),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    }
+
+    .mobile-demo-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.10), transparent 45%),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 38%);
+      z-index: 0;
+    }
+
+    .mobile-demo-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .mobile-demo-card.light {
+      color: #0f172a;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(96, 165, 250, 0.18), transparent 36%),
+        radial-gradient(circle at 90% 12%, rgba(196, 181, 253, 0.18), transparent 34%),
+        linear-gradient(180deg, #ffffff, #edf4ff 72%, #dfeaff);
+      border-color: rgba(255, 255, 255, 0.78);
+    }
+
+    .mobile-demo-card.orange {
+      color: #fff8ef;
+      background:
+        linear-gradient(180deg, rgba(5, 4, 3, 0.64), rgba(5, 4, 3, 0.90)),
+        radial-gradient(circle at 20% 0%, rgba(242, 197, 123, 0.30), transparent 38%),
+        url("./marble.png") center / cover no-repeat,
+        #090806;
+      border-color: rgba(242, 197, 123, 0.28);
+    }
+
+    .mobile-demo-card.violet {
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(139, 92, 246, 0.33), transparent 36%),
+        radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.035)),
+        #090c22;
+      border-color: rgba(196, 181, 253, 0.24);
+    }
+
+    .mobile-demo-card h3 {
+      margin: 8px 0 0;
+      font-family: "Sora", sans-serif;
+      font-size: 26px;
+      line-height: 0.96;
+      letter-spacing: -0.065em;
+      max-width: 11ch;
+    }
+
+    .mobile-demo-card p {
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.42;
+    }
+
+    .mobile-demo-card.light p {
+      color: #64748b;
+    }
+
+    .mobile-mockup {
+      min-height: 132px;
+      padding: 9px;
+      border-radius: 20px;
+      display: grid;
+      align-content: end;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.065);
+      border: 1px solid rgba(255, 255, 255, 0.10);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 14px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .mobile-demo-card.light .mobile-mockup {
+      background: rgba(255, 255, 255, 0.82);
+      border-color: rgba(15, 23, 42, 0.08);
+      box-shadow:
+        0 12px 24px rgba(148, 163, 184, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+    .mobile-ui-row {
+      min-height: 34px;
+      padding: 0 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid rgba(255, 255, 255, 0.085);
+      font-size: 10.5px;
+      font-weight: 850;
+    }
+
+    .mobile-ui-row span {
+      color: rgba(247, 248, 255, 0.62);
+      white-space: nowrap;
+    }
+
+    .mobile-ui-row strong {
+      color: #ffffff;
+      white-space: nowrap;
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .mobile-demo-card.light .mobile-ui-row {
+      background: rgba(37, 99, 235, 0.055);
+      border-color: rgba(37, 99, 235, 0.08);
+    }
+
+    .mobile-demo-card.light .mobile-ui-row span {
+      color: #64748b;
+    }
+
+    .mobile-demo-card.light .mobile-ui-row strong {
+      color: #0f172a;
+    }
+
+    .mobile-demo-card .btn {
+      min-height: 50px;
+      font-size: 11px;
+      width: 100%;
+    }
+
+    .mobile-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .mobile-info-card {
+      min-height: 92px;
+      padding: 13px;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 11px;
+      align-items: start;
+    }
+
+    .mobile-info-card strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 18px;
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 5px;
+    }
+
+    .mobile-info-card p {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.38;
+    }
+
+    .mobile-faq-section-title {
+      margin: 4px 2px 0;
+      color: rgba(247, 248, 255, 0.72);
+      font-size: 12px;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    .mobile-faq-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .mobile-faq-list .faq-question-card {
+      min-height: 80px;
+      padding: 14px;
+      border-radius: 20px;
+    }
+
+    .mobile-faq-list .faq-question-text {
+      font-size: 18px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .mobile-faq-list .faq-plus {
+      width: 40px;
+      height: 40px;
+      font-size: 24px;
+    }
+
+    .mobile-demo-carousel.faq-carousel {
+      padding: 0 2px 6px;
+    }
+
+    .mobile-demo-carousel.faq-carousel .faq-question-card {
+      flex: 0 0 86%;
+      min-height: 190px;
+      scroll-snap-align: center;
+      align-content: space-between;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+
+    .mobile-demo-carousel.faq-carousel .faq-question-text {
+      font-size: 22px;
+      line-height: 0.98;
+      max-width: 13ch;
+    }
+
+    .mobile-faq-carousel {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 0 2px 8px;
+      align-items: stretch;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-faq-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-faq-carousel .faq-question-card {
+      flex: 0 0 86%;
+      min-height: 190px;
+      scroll-snap-align: center;
+      align-content: space-between;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+    }
+
+    #page-home .mobile-faq-carousel .faq-question-card {
+      min-height: 140px;
+    }
+
+    #page-home .mobile-faq-list .faq-question-card {
+      min-height: 120px;
+      grid-template-columns: 1fr auto;
+      align-content: center;
+    }
+
+    .faq-question-preview {
+      grid-column: 1;
+      grid-row: 2;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.35;
+      margin-top: -2px;
+      max-width: 30ch;
+    }
+
+    .faq-plus {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      align-self: center;
+    }
+
+    .mobile-bottom {
+      padding: 8px 12px calc(10px + var(--safe-bottom));
+      background: linear-gradient(180deg, transparent, rgba(3, 5, 19, 0.92) 38%);
+      position: relative;
+      z-index: 20;
+      display: none;
+    }
+
+    .mobile-app.show-contact-cta .mobile-bottom {
+      display: block;
+    }
+
+    .mobile-app.show-contact-cta .mobile-page.active {
+      padding-bottom: 78px;
+    }
+
+    .mobile-bottom .btn {
+      width: 100%;
+      min-height: 58px;
+    }
+
+    @media (max-width: 1120px) {
+      .hero,
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .flow-dashboard {
+        min-height: 510px;
+      }
+
+      .demo-grid,
+      .benefit-grid,
+      .steps-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid::before {
+        display: none;
+      }
+
+      .demo-card {
+        min-height: auto;
+      }
+
+      .mockup {
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .desktop-version,
+      .floating-contact,
+      .footer {
+        display: none !important;
+      }
+
+      .mobile-app {
+        display: grid;
+      }
+
+      .container {
+        width: min(100%, calc(100% - 18px));
+      }
+
+      .orb {
+        filter: blur(76px);
+        opacity: 0.62;
+        animation: none;
+      }
+
+      .mobile-top,
+      .mobile-drawer,
+      .mobile-lang-panel,
+      .faq-modal-backdrop {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .orb.one {
+        width: 300px;
+        height: 300px;
+        left: -135px;
+        top: -90px;
+      }
+
+      .orb.two {
+        width: 320px;
+        height: 320px;
+        right: -175px;
+        top: 260px;
+      }
+
+      .orb.three {
+        width: 300px;
+        height: 300px;
+        left: 18%;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .mobile-title {
+        font-size: 33px;
+      }
+
+      .mobile-sub {
+        font-size: 13px;
+      }
+
+      .mobile-demo-card {
+        flex-basis: 88%;
+        min-height: 500px;
+      }
+
+      .mobile-demo-carousel.faq-carousel .faq-question-card {
+        flex-basis: 90%;
+      }
+
+      .mobile-faq-carousel .faq-question-card {
+        flex-basis: 90%;
+      }
+
+      .mobile-demo-card h3 {
+        font-size: 27px;
+      }
+
+      .mobile-mockup {
+        min-height: 138px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal,
+      .word {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <div class="desktop-version">
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Mrozowski Systems">
+          <div class="brand-mark">MA</div>
+          <div class="brand-copy">
+            <strong>Mrozowski Systems</strong>
+            <span>Premium booking systems</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Główna nawigacja">
+          <a href="#demos">Demo</a>
+          <a href="#benefits">Co daje</a>
+          <a href="#how">Jak działa</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Kontakt</a>
+        </nav>
+
+        <div class="desktop-lang" aria-label="Language switcher">
+          <span class="desktop-lang-label">Lang</span>
+          <button
+            class="desktop-lang-option mobile-lang-option"
+            type="button"
+            data-set-lang="ru">
+            RU
+          </button>
+          <button
+            class="desktop-lang-option mobile-lang-option"
+            type="button"
+            data-set-lang="pl">
+            PL
+          </button>
+          <button
+            class="desktop-lang-option mobile-lang-option"
+            type="button"
+            data-set-lang="en">
+            EN
+          </button>
+        </div>
+
+        <a class="btn btn-primary" href="#demos">Zobacz demo</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="container hero" aria-labelledby="hero-title">
+        <div class="glass reveal">
+          <div class="hero-copy">
+            <div class="chip">Jeden link do rezerwacji</div>
+
+            <h1 id="hero-title" data-split>
+              Nie strona. System do zdobywania <em>terminów.</em>
+            </h1>
+
+            <p class="hero-lead">
+              Premium landing i rezerwacja online dla lokalnych usług. Klient trafia z bio, DM, reklamy,
+              QR kodu, Google, WhatsApp albo SMS — widzi ofertę, ceny, lokalizację, wolne godziny
+              i od razu wybiera termin.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#demos">Zobacz 3 wersje</a>
+              <a class="btn" href="https://www.instagram.com/mrozowski.systems/" target="_blank" rel="noopener">
+                Napisz na Instagram
+              </a>
+            </div>
+
+            <div class="hero-pills" aria-label="Zastosowania systemu">
+              <div class="pill" style="--i: 0">Link in bio</div>
+              <div class="pill" style="--i: 1">DM / WhatsApp / SMS</div>
+              <div class="pill" style="--i: 2">QR kod i reklamy</div>
+              <div class="pill" style="--i: 3">Google Business Profile</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side reveal">
+          <div class="glass flow-dashboard" aria-label="Flow rezerwacji">
+            <div class="hero-sell-badge">
+              <span>System, który nie tylko wygląda drogo</span>
+              <strong>ale zamienia wejścia w konkretne rezerwacje.</strong>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dashboard-top">
+                <div class="dashboard-title">
+                  <strong>Link z każdego miejsca</strong>
+                  <span>Jedna strona pod bio, DM, reklamę, QR kod albo profil Google.</span>
+                </div>
+
+                <div class="status-pill">live flow</div>
+              </div>
+
+              <div class="flow-list">
+                <div class="flow-row">
+                  <div class="flow-num">01</div>
+                  <div>
+                    <strong>Punkt wejścia</strong>
+                    <span>Bio, DM, reklama, QR, Google albo WhatsApp — klient trafia w jedno miejsce.</span>
+                  </div>
+                </div>
+
+                <div class="flow-row">
+                  <div class="flow-num">02</div>
+                  <div>
+                    <strong>Oferta bez rozmowy</strong>
+                    <span>Widoczna usługa, cena, czas trwania, lokalizacja i klimat marki.</span>
+                  </div>
+                </div>
+
+                <div class="flow-row">
+                  <div class="flow-num">03</div>
+                  <div>
+                    <strong>Wybór terminu</strong>
+                    <span>Klient wybiera usługę, osobę, dzień i godzinę bez ręcznego ustalania.</span>
+                  </div>
+                </div>
+
+                <div class="flow-row">
+                  <div class="flow-num">04</div>
+                  <div>
+                    <strong>Gotowa rezerwacja</strong>
+                    <span>Termin trafia do kalendarza, a zajęty slot znika z dostępnych godzin.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mini-flow">
+            <div class="mini-step">
+              <span>Start</span>
+              <strong>Bio / QR / Google</strong>
+            </div>
+
+            <div class="mini-step">
+              <span>Oferta</span>
+              <strong>Ceny i usługi</strong>
+            </div>
+
+            <div class="mini-step">
+              <span>Akcja</span>
+              <strong>Booking online</strong>
+            </div>
+
+            <div class="mini-step">
+              <span>Finish</span>
+              <strong>Kalendarz</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="demos">
+        <div class="container glass reveal">
+          <div class="section-inner">
+            <div class="section-head center">
+              <div class="chip">Demo selector</div>
+
+              <h2>Wybierz styl, który pasuje do Twojego biznesu.</h2>
+
+              <p>
+                Ten sam mechanizm rezerwacji, trzy różne charaktery. Dzięki temu właściciel widzi,
+                że system można dopasować pod jego lokal, branżę i klimat marki.
+              </p>
+            </div>
+
+            <div class="demo-grid">
+              <article class="demo-card light reveal" id="white-demo">
+                <div class="demo-top">
+                  <div class="demo-kicker">Clean premium</div>
+
+                  <h3>Jasno, spokojnie, profesjonalnie.</h3>
+
+                  <p>
+                    Dla beauty, nails, lashes, kosmetologii i spokojnych marek.
+                    Czysto, lekko i premium — bez ciężkiego efektu.
+                  </p>
+                </div>
+
+                <div class="mockup">
+                  <div class="screen-ui">
+                    <div class="ui-row">
+                      <span>Usługa</span>
+                      <strong>Manicure</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Godzina</span>
+                      <strong>14:30</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Status</span>
+                      <strong>Potwierdzone</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>CTA</span>
+                      <strong>Zarezerwuj</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-bottom">
+                  <div class="tag-row">
+                    <span class="tag">Beauty</span>
+                    <span class="tag">Clean UI</span>
+                    <span class="tag">Soft premium</span>
+                    <span class="tag">Mobile-first</span>
+                  </div>
+
+                  <a
+                    class="btn btn-light"
+                    href="https://lunanails.up.railway.app/"
+                    target="_blank"
+                    rel="noopener">
+                    Otwórz demo
+                  </a>
+                </div>
+              </article>
+
+              <article class="demo-card orange reveal" id="orange-demo">
+                <div class="demo-top">
+                  <div class="demo-kicker">Dark local</div>
+
+                  <h3>Mocny klimat dla lokalu.</h3>
+
+                  <p>
+                    Dla barbershopów, salonów i miejsc z mocniejszym charakterem.
+                    Więcej kontrastu, więcej atmosfery, premium feeling.
+                  </p>
+                </div>
+
+                <div class="mockup">
+                  <div class="screen-ui">
+                    <div class="ui-row">
+                      <span>Barber</span>
+                      <strong>Tymur</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Usługa</span>
+                      <strong>Combo 140 zł</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Godzina</span>
+                      <strong>18:00</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>CTA</span>
+                      <strong>Zarezerwuj</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-bottom">
+                  <div class="tag-row">
+                    <span class="tag">Barbershop</span>
+                    <span class="tag">Dark local</span>
+                    <span class="tag">Strong CTA</span>
+                    <span class="tag">Premium brand</span>
+                  </div>
+
+                  <a
+                    class="btn btn-orange"
+                    href="https://barbermonarch.up.railway.app/"
+                    target="_blank"
+                    rel="noopener">
+                    Otwórz demo
+                  </a>
+                </div>
+              </article>
+
+                            <article class="demo-card violet reveal" id="violet-demo">
+                <div class="demo-top">
+                  <div class="demo-kicker">Modern service</div>
+
+                  <h3>Nowocześnie, drożej, czytelniej.</h3>
+
+                  <p>
+                    Dla usług, które chcą wyglądać lepiej niż zwykły formularz.
+                    Szybka ścieżka, czytelna oferta i mocny przycisk rezerwacji.
+                  </p>
+                </div>
+
+                <div class="mockup">
+                  <div class="screen-ui">
+                    <div class="ui-row">
+                      <span>Sloty</span>
+                      <strong>Z kalendarza</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Oferta</span>
+                      <strong>Bez pytań</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>System</span>
+                      <strong>Auto booking</strong>
+                    </div>
+
+                    <div class="ui-row">
+                      <span>Status</span>
+                      <strong>Ready</strong>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-bottom">
+                  <div class="tag-row">
+                    <span class="tag">Local service</span>
+                    <span class="tag">Modern UI</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Premium flow</span>
+                  </div>
+
+                  <a
+                    class="btn btn-primary"
+                    href="https://mrozowski.up.railway.app/"
+                    target="_blank"
+                    rel="noopener">
+                    Otwórz demo
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="benefits">
+        <div class="container glass reveal">
+          <div class="section-inner">
+            <div class="section-head center">
+              <div class="chip">Co to daje?</div>
+
+              <h2>Mniej ustalania. Więcej gotowych wizyt.</h2>
+
+              <p>
+                Klient nie musi pytać o podstawy. W jednym miejscu widzi ofertę, ceny,
+                godziny, lokalizację i może od razu zarezerwować termin.
+              </p>
+            </div>
+
+            <div class="benefit-grid">
+              <article class="benefit-card reveal">
+                <div class="benefit-icon">↗</div>
+
+                <div>
+                  <strong>Jeden link wszędzie</strong>
+                  <p>Bio, DM, reklama, QR kod, Google Business Profile — ten sam link prowadzi klienta do rezerwacji.</p>
+                </div>
+              </article>
+
+              <article class="benefit-card reveal">
+                <div class="benefit-icon">?</div>
+
+                <div>
+                  <strong>Mniej pytań przed wizytą</strong>
+                  <p>Ceny, czas trwania, usługi i lokalizacja są pokazane zanim klient napisze wiadomość.</p>
+                </div>
+              </article>
+
+              <article class="benefit-card reveal">
+                <div class="benefit-icon">★</div>
+
+                <div>
+                  <strong>Lepsze pierwsze wrażenie</strong>
+                  <p>Zamiast zwykłego formularza klient widzi stronę, która wygląda jak część marki.</p>
+                </div>
+              </article>
+
+              <article class="benefit-card reveal">
+                <div class="benefit-icon">✓</div>
+
+                <div>
+                  <strong>Gotowe pod automatyzację</strong>
+                  <p>Link można podpiąć pod auto reply, reklamy, kampanie, QR kod albo ręcznie wysyłać klientom.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="container glass reveal">
+          <div class="section-inner">
+            <div class="section-head center">
+              <div class="chip">Jak działa?</div>
+
+              <h2>Jak to działa od strony biznesu?</h2>
+
+              <p>
+                Najpierw pokazujesz klientowi gotową ścieżkę, a dopiero potem wchodzisz
+                w rozmowę, jeśli naprawdę jest potrzebna.
+              </p>
+            </div>
+
+            <div class="steps-grid">
+              <article class="step-card reveal">
+                <div class="step-number">01</div>
+
+                <div>
+                  <strong>Podpinasz link</strong>
+                  <p>Dodajesz go do bio, DM, reklamy, Google, QR kodu albo wysyłasz klientowi ręcznie.</p>
+                </div>
+              </article>
+
+              <article class="step-card reveal">
+                <div class="step-number">02</div>
+
+                <div>
+                  <strong>Klient sam wybiera</strong>
+                  <p>Nie tłumaczysz po raz setny cen, usług i godzin — wszystko jest już pokazane.</p>
+                </div>
+              </article>
+
+              <article class="step-card reveal">
+                <div class="step-number">03</div>
+
+                <div>
+                  <strong>System prowadzi do decyzji</strong>
+                  <p>Strona skraca drogę od zainteresowania do konkretnej godziny.</p>
+                </div>
+              </article>
+
+              <article class="step-card reveal">
+                <div class="step-number">04</div>
+
+                <div>
+                  <strong>Kalendarz pilnuje slotów</strong>
+                  <p>Zajęte terminy znikają, a właściciel widzi gotową rezerwację zamiast kolejnej rozmowy.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container glass reveal">
+          <div class="section-inner">
+            <div class="section-head center">
+              <div class="chip">FAQ</div>
+
+              <h2>Najczęstsze pytania przed startem.</h2>
+
+              <p>
+                Wybierz kategorię i kliknij pytanie. Odpowiedź otwiera się w osobnym oknie.
+              </p>
+              <div class="faq-toolbar">
+                <div class="faq-tabs" id="desktopFaqTabs"></div>
+              </div>
+            </div>
+
+            <div class="faq-grid" id="desktopFaqCards"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container cta-grid reveal">
+          <div class="cta-copy">
+            <div class="chip">Kontakt</div>
+
+            <h2>Chcesz taki system pod swój lokal?</h2>
+
+            <p>
+              Można przygotować wersję pod barbershop, nails, lashes, kosmetologię, masaż
+              albo inny biznes usługowy. Najpierw pokazujemy ofertę, potem prowadzimy klienta do rezerwacji.
+            </p>
+
+            <div class="section-actions">
+              <a
+                class="btn btn-primary"
+                href="https://www.instagram.com/mrozowski.systems/"
+                target="_blank"
+                rel="noopener">
+                Napisz na Instagram
+              </a>
+
+              <a class="btn" href="tel:+48532377701">
+                Zadzwoń
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="chip">Social media</div>
+
+            <div class="socials">
+              <a
+                class="social-link"
+                href="https://www.instagram.com/mrozowski.systems/"
+                target="_blank"
+                rel="noopener">
+                <span>Instagram</span>
+                <span>↗</span>
+              </a>
+
+              <a
+                class="social-link"
+                href="https://www.facebook.com/profile.php?id=61576437654902"
+                target="_blank"
+                rel="noopener">
+                <span>Facebook</span>
+                <span>↗</span>
+              </a>
+
+              <a
+                class="social-link"
+                href="https://www.tiktok.com/@mrozowski.automation"
+                target="_blank"
+                rel="noopener">
+                <span>TikTok</span>
+                <span>↗</span>
+              </a>
+
+              <a class="social-link" href="tel:+48532377701">
+                <span>+48 532 377 701</span>
+                <span>☎</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <a class="btn btn-primary floating-contact" href="#contact">
+      Kontakt
+    </a>
+
+    <footer class="footer">
+      <div class="container">
+        Mrozowski Systems — premium booking systems for local service businesses.
+      </div>
+    </footer>
+  </div>
+
+  <main class="mobile-app" id="mobileApp">
+    <header class="mobile-top">
+      <button class="mobile-icon menu-pulse" type="button" id="mobileMenuBtn" aria-label="Menu">
+        <span class="hamburger-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <div class="mobile-brand">
+        <strong>Mrozowski Systems</strong>
+      </div>
+
+      <div class="mobile-lang" id="mobileLang">
+        <div class="mobile-lang-inline" aria-label="Language">
+          <button class="mobile-lang-option" type="button" data-set-lang="ru">RU</button>
+          <button class="mobile-lang-option" type="button" data-set-lang="pl">PL</button>
+          <button class="mobile-lang-option" type="button" data-set-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="mobile-drawer" id="mobileDrawer" aria-label="Mobile navigation">
+      <button class="mobile-nav-btn active" type="button" data-page="demos" data-i18n="nav_demos">Demo</button>
+      <button class="mobile-nav-btn" type="button" data-page="home" data-i18n="nav_home">Start</button>
+      <button class="mobile-nav-btn" type="button" data-page="benefits" data-i18n="nav_benefits">Co daje</button>
+      <button class="mobile-nav-btn" type="button" data-page="how" data-i18n="nav_how">Jak działa</button>
+      <button class="mobile-nav-btn" type="button" data-page="faq" data-i18n="nav_faq">FAQ</button>
+      <button class="mobile-nav-btn" type="button" data-page="contact" data-i18n="nav_contact">Kontakt</button>
+    </nav>
+
+    <section class="mobile-pages">
+      <article class="mobile-page active" id="page-demos">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker" data-i18n="demos_kicker">Demo selector</div>
+
+          <h2 class="mobile-title" data-i18n="demos_title">
+            Zobacz trzy przykłady realizacji.
+          </h2>
+
+          <p class="mobile-sub" data-i18n="demos_sub">
+            Trzy wersje, jeden mechanizm. Przesuń karty i otwórz demo.
+          </p>
+        </div>
+
+        <div class="mobile-body">
+          <div class="mobile-demo-carousel">
+            <article class="mobile-demo-card light">
+              <div>
+                <div class="demo-kicker" data-i18n="demo_light_kicker">Clean premium</div>
+                <h3 data-i18n="demo_light_h3">Jasno i profesjonalnie.</h3>
+                <p data-i18n="demo_light_p">Dla beauty, nails, lashes, kosmetologii i spokojnych marek.</p>
+              </div>
+              <div class="mobile-mockup">
+                <div class="mobile-ui-row"><span data-i18n="demo_light_r1a">Usługa</span><strong data-i18n="demo_light_r1b">Manicure</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_light_r2a">Godzina</span><strong data-i18n="demo_light_r2b">14:30</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_light_r3a">Status</span><strong data-i18n="demo_light_r3b">Ready</strong></div>
+              </div>
+              <a class="btn btn-light" href="https://lunanails.up.railway.app/" target="_blank" rel="noopener" data-i18n="demo_open">Otwórz demo</a>
+            </article>
+
+            <article class="mobile-demo-card violet">
+              <div>
+                <div class="demo-kicker" data-i18n="demo_violet_kicker">Modern service</div>
+                <h3 data-i18n="demo_violet_h3">Nowocześnie i czytelnie.</h3>
+                <p data-i18n="demo_violet_p">Dla usług, które chcą wyglądać drożej niż zwykły formularz.</p>
+              </div>
+              <div class="mobile-mockup">
+                <div class="mobile-ui-row"><span data-i18n="demo_violet_r1a">Sloty</span><strong data-i18n="demo_violet_r1b">Kalendarz</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_violet_r2a">Oferta</span><strong data-i18n="demo_violet_r2b">Bez pytań</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_violet_r3a">Status</span><strong data-i18n="demo_violet_r3b">Online</strong></div>
+              </div>
+              <a class="btn btn-primary" href="https://mrozowski.up.railway.app/" target="_blank" rel="noopener" data-i18n="demo_open">Otwórz demo</a>
+            </article>
+
+            <article class="mobile-demo-card orange">
+              <div>
+                <div class="demo-kicker" data-i18n="demo_orange_kicker">Dark local</div>
+                <h3 data-i18n="demo_orange_h3">Mocny klimat lokalu.</h3>
+                <p data-i18n="demo_orange_p">Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.</p>
+              </div>
+              <div class="mobile-mockup">
+                <div class="mobile-ui-row"><span data-i18n="demo_orange_r1a">Usługa</span><strong data-i18n="demo_orange_r1b">Combo</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_orange_r2a">Godzina</span><strong data-i18n="demo_orange_r2b">18:00</strong></div>
+                <div class="mobile-ui-row"><span data-i18n="demo_orange_r3a">CTA</span><strong data-i18n="demo_orange_r3b">Zarezerwuj</strong></div>
+              </div>
+              <a class="btn btn-orange" href="https://barbermonarch.up.railway.app/" target="_blank" rel="noopener" data-i18n="demo_open">Otwórz demo</a>
+            </article>
+          </div>
+          <p class="mobile-demos-note" data-i18n="demos_note">
+            Końcowa realizacja zostanie przygotowana indywidualnie pod klienta.
+          </p>
+        </div>
+      </article>
+
+      <article class="mobile-page" id="page-home">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker" data-i18n="home_kicker">Jeden link do rezerwacji</div>
+
+          <h1 class="mobile-title" data-i18n-html="home_title_html">
+            Nie strona. System do zdobywania <em>terminów.</em>
+          </h1>
+
+          <p class="mobile-sub" data-i18n="home_sub">
+            Klient trafia z bio, DM, reklamy, QR, Google albo WhatsApp — widzi ofertę,
+            ceny, wolne godziny i od razu wybiera termin.
+          </p>
+        </div>
+
+        <div class="mobile-body">
+          <div class="mobile-list mobile-faq-list">
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="0"><span class="faq-question-text">Jak klient trafia na stronę?</span><span class="faq-question-preview">Instagram, Google, QR, WhatsApp albo link w bio.</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="1"><span class="faq-question-text">Co klient widzi na stronie?</span><span class="faq-question-preview">Oferta, ceny, FAQ, zdjęcia, kontakt i wolne terminy.</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="2"><span class="faq-question-text">Jak działa rezerwacja online?</span><span class="faq-question-preview">Klient wybiera usługę, dzień i godzinę bez pisania wiadomości.</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="3"><span class="faq-question-text">Co dzieje się po rezerwacji?</span><span class="faq-question-preview">Termin trafia do systemu, a właściciel dostaje powiadomienie.</span><span class="faq-plus" aria-hidden="true">+</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-page" id="page-benefits">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker" data-i18n="benefits_kicker">Co to daje?</div>
+
+          <h2 class="mobile-title" data-i18n="benefits_title">
+            Mniej ustalania. Więcej wizyt.
+          </h2>
+
+          <p class="mobile-sub" data-i18n="benefits_sub">
+            Klient widzi podstawy od razu i szybciej przechodzi do decyzji.
+          </p>
+        </div>
+
+        <div class="mobile-body">
+          <div class="mobile-list mobile-faq-list">
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="0"><span class="faq-question-text">Co otrzymujesz?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="1"><span class="faq-question-text">Dlaczego to nie jest zwykła strona?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="2"><span class="faq-question-text">Jak strona jest dopasowywana do biznesu?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="3"><span class="faq-question-text">Czy można dodać zdjęcia i video?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="4"><span class="faq-question-text">Co daje booking online?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="5"><span class="faq-question-text">Co daje połączenie z Google Calendar?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="6"><span class="faq-question-text">Co dają powiadomienia?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="coDaje" data-faq-index="7"><span class="faq-question-text">Jak strona pomaga w kontakcie z Instagrama?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-page" id="page-how">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker" data-i18n="how_kicker">Jak działa?</div>
+
+          <h2 class="mobile-title" data-i18n="how_title">
+            Od linku do gotowego terminu.
+          </h2>
+
+          <p class="mobile-sub" data-i18n="how_sub">
+            Prosta ścieżka dla klienta i mniej ręcznego ustalania dla właściciela.
+          </p>
+        </div>
+
+        <div class="mobile-body">
+          <div class="mobile-list mobile-faq-list">
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="0"><span class="faq-question-text">Jak klient trafia na stronę?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="1"><span class="faq-question-text">Co klient widzi na stronie?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="2"><span class="faq-question-text">Jak działa rezerwacja online?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="3"><span class="faq-question-text">Co dzieje się po rezerwacji?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="4"><span class="faq-question-text">Czy klient otrzymuje potwierdzenie?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="jakDziala" data-faq-index="5"><span class="faq-question-text">Jak działa automatyzacja kontaktu?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-page" id="page-faq">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker" data-i18n="faq_page_kicker">FAQ</div>
+
+          <h2 class="mobile-title" data-i18n="faq_page_title">
+            Najczęstsze pytania.
+          </h2>
+
+          <p class="mobile-sub" data-i18n="faq_page_sub">
+            Co robi strona, gdzie ją podpiąć i jak zacząć bez chaosu w wiadomościach.
+          </p>
+        </div>
+
+        <div class="mobile-body scrollable">
+          <div class="mobile-list mobile-faq-list">
+            <h3 class="mobile-faq-section-title" data-i18n="faq_section_admin">Panel admina</h3>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="0"><span class="faq-question-text">Co daje panel admina?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="1"><span class="faq-question-text">Jakie dane można zmieniać w panelu?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="2"><span class="faq-question-text">Czy można edytować usługi?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="3"><span class="faq-question-text">Czy można edytować pracowników?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="4"><span class="faq-question-text">Czy można edytować galerię?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="5"><span class="faq-question-text">Czy panel wpływa na booking?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="panelAdmina" data-faq-index="6"><span class="faq-question-text">Czy można zmieniać kontakt?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <h3 class="mobile-faq-section-title" data-i18n="faq_section_faq">FAQ</h3>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="0"><span class="faq-question-text">Co można zmieniać w środku strony?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="1"><span class="faq-question-text">Czego nie obejmują zmiany po akceptacji projektu?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="2"><span class="faq-question-text">Czy można później rozbudować stronę?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="3"><span class="faq-question-text">Jak wygląda współpraca?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="4"><span class="faq-question-text">Ile trwa przygotowanie?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+            <button class="faq-question-card" type="button" data-faq-open data-faq-cat="faq" data-faq-index="5"><span class="faq-question-text">Co trzeba przygotować przed startem?</span><span class="faq-plus" aria-hidden="true">+</span></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="mobile-page" id="page-contact">
+        <div class="mobile-page-head">
+          <div class="mobile-kicker" data-i18n="contact_kicker">Kontakt</div>
+
+          <h2 class="mobile-title" data-i18n="contact_title">
+            Chcesz taki system pod swój lokal?
+          </h2>
+
+          <p class="mobile-sub" data-i18n="contact_sub">
+            Wersja pod barbershop, beauty, nails, lashes, masaż albo inny lokal usługowy.
+          </p>
+        </div>
+
+        <div class="mobile-body">
+          <div class="mobile-list">
+            <a
+              class="social-link"
+              href="https://www.instagram.com/mrozowski.systems/"
+              target="_blank"
+              rel="noopener">
+              <span>Instagram</span>
+              <span>↗</span>
+            </a>
+
+            <a class="social-link" href="tel:+48532377701">
+              <span>+48 532 377 701</span>
+              <span>☎</span>
+            </a>
+
+            <a
+              class="social-link"
+              href="https://www.tiktok.com/@mrozowski.automation"
+              target="_blank"
+              rel="noopener">
+              <span>TikTok</span>
+              <span>↗</span>
+            </a>
+
+            <a
+              class="social-link"
+              href="https://www.facebook.com/profile.php?id=61576437654902"
+              target="_blank"
+              rel="noopener">
+              <span>Facebook</span>
+              <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="mobile-bottom">
+      <a
+        class="btn btn-primary"
+        href="https://www.instagram.com/mrozowski.systems/"
+        target="_blank"
+        rel="noopener"
+        data-i18n="cta_instagram">
+        Napisz na Instagram
+      </a>
+    </div>
+  </main>
+
+  <div class="faq-modal" id="faqModal" aria-hidden="true">
+    <div class="faq-modal-backdrop" data-faq-close></div>
+    <div class="faq-modal-panel" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
+      <button class="faq-modal-close" type="button" data-faq-close data-i18n-aria="faq_modal_close_aria" aria-label="Zamknij">×</button>
+      <h3 class="faq-modal-title" id="faqModalTitle">Pytanie</h3>
+      <p class="faq-modal-answer" id="faqModalAnswer">Odpowiedź</p>
+    </div>
+  </div>
+
+  <script>
+    const isMobileUi = window.matchMedia("(max-width: 760px)").matches;
+
+    if (!isMobileUi) {
+      const splitTargets = document.querySelectorAll("[data-split]");
+
+      splitTargets.forEach((element) => {
+        const nodes = [...element.childNodes];
+        let index = 0;
+
+        element.innerHTML = nodes.map((node) => {
+          if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent
+              .split(/(\s+)/)
+              .map((part) => {
+                if (!part.trim()) return part;
+                return `<span class="word" style="--i:${index++}">${part}</span>`;
+              })
+              .join("");
+          }
+
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            const words = node.textContent
+              .split(/(\s+)/)
+              .map((part) => {
+                if (!part.trim()) return part;
+                return `<span class="word" style="--i:${index++}">${part}</span>`;
+              })
+              .join("");
+
+            return `<${node.tagName.toLowerCase()}>${words}</${node.tagName.toLowerCase()}>`;
+          }
+
+          return "";
+        }).join("");
+      });
+
+      const revealItems = document.querySelectorAll(".reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.14,
+          rootMargin: "0px 0px -7% 0px"
+        }
+      );
+
+      revealItems.forEach((item) => {
+        revealObserver.observe(item);
+      });
+    }
+
+    const floating = document.querySelector(".floating-contact");
+    const hero = document.querySelector(".hero");
+
+    function handleFloating() {
+      if (!floating || !hero) return;
+
+      const rect = hero.getBoundingClientRect();
+      const passedHero = rect.bottom < window.innerHeight * 0.55;
+
+      floating.classList.toggle("visible", passedHero);
+    }
+
+    let floatingRaf = 0;
+    function scheduleFloatingUpdate() {
+      if (floatingRaf) return;
+      floatingRaf = requestAnimationFrame(() => {
+        floatingRaf = 0;
+        handleFloating();
+      });
+    }
+
+    window.addEventListener("scroll", scheduleFloatingUpdate, { passive: true });
+    window.addEventListener("resize", scheduleFloatingUpdate);
+    handleFloating();
+
+    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (canHover) {
+      document.querySelectorAll(".demo-card").forEach((card) => {
+        let tiltRaf = 0;
+        let nextTransform = "";
+
+        card.addEventListener("mousemove", (event) => {
+          const rect = card.getBoundingClientRect();
+          const x = event.clientX - rect.left;
+          const y = event.clientY - rect.top;
+
+          const rx = ((y / rect.height) - 0.5) * -4;
+          const ry = ((x / rect.width) - 0.5) * 5;
+          nextTransform = `translateY(-7px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+
+          if (!tiltRaf) {
+            tiltRaf = requestAnimationFrame(() => {
+              tiltRaf = 0;
+              card.style.transform = nextTransform;
+            });
+          }
+        });
+
+        card.addEventListener("mouseleave", () => {
+          if (tiltRaf) {
+            cancelAnimationFrame(tiltRaf);
+            tiltRaf = 0;
+          }
+          card.style.transform = "";
+        });
+      });
+    }
+
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    const mobileNavButtons = document.querySelectorAll(".mobile-nav-btn");
+    const mobilePages = document.querySelectorAll(".mobile-page");
+    const DRAWER_REST_LEFT = 46;
+    let drawerSnapTimer = null;
+
+    function snapDrawerBack() {
+      if (!mobileDrawer || !document.body.classList.contains("mobile-menu-open")) return;
+
+      if (mobileDrawer.scrollLeft < DRAWER_REST_LEFT) {
+        mobileDrawer.scrollTo({
+          left: DRAWER_REST_LEFT,
+          behavior: "smooth"
+        });
+      }
+    }
+
+    if (mobileDrawer) {
+      mobileDrawer.addEventListener("scroll", () => {
+        clearTimeout(drawerSnapTimer);
+        drawerSnapTimer = setTimeout(snapDrawerBack, 90);
+      }, { passive: true });
+
+      mobileDrawer.addEventListener("touchend", snapDrawerBack, { passive: true });
+      mobileDrawer.addEventListener("pointerup", snapDrawerBack);
+    }
+
+    function openMobileDrawer() {
+      closeMobileLangPanel();
+      document.body.classList.add("mobile-menu-open");
+
+      if (!mobileDrawer) return;
+
+      mobileDrawer.scrollLeft = 0;
+
+      setTimeout(() => {
+        mobileDrawer.scrollTo({
+          left: 54,
+          behavior: "smooth"
+        });
+      }, 120);
+    }
+
+    function closeMobileDrawer() {
+      document.body.classList.remove("mobile-menu-open");
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenuBtn.classList.remove("menu-pulse");
+
+        const isOpen = document.body.classList.contains("mobile-menu-open");
+
+        if (isOpen) {
+          closeMobileDrawer();
+        } else {
+          openMobileDrawer();
+        }
+      });
+    }
+
+    mobileNavButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const target = button.dataset.page;
+
+        mobileNavButtons.forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+
+        mobilePages.forEach((page) => {
+          page.classList.toggle("active", page.id === `page-${target}`);
+          if (page.id === `page-${target}`) page.scrollTop = 0;
+        });
+
+        syncMobileContactCta(target);
+        closeMobileDrawer();
+      });
+    });
+
+    const FAQ_BY_LANG = {
+      pl: {
+      coDaje: [
+        {
+          q: "Co otrzymujesz?",
+          a: "Otrzymujesz stronę przygotowaną pod Twój biznes, połączoną z rezerwacją online, panelem admina i podstawową automatyzacją kontaktu z klientem.\n\nTo nie jest tylko wizytówka. To system, który pomaga klientowi zobaczyć ofertę, poznać ceny, sprawdzić FAQ i zapisać się na usługę online."
+        },
+        {
+          q: "Dlaczego to nie jest zwykła strona?",
+          a: "Strona nie tylko pokazuje informacje o biznesie, ale prowadzi klienta do konkretnego działania.\n\nKlient może zobaczyć ofertę, sprawdzić zdjęcia, obejrzeć video, przeczytać odpowiedzi na pytania i od razu przejść do rezerwacji."
+        },
+        {
+          q: "Jak strona jest dopasowywana do biznesu?",
+          a: "Strona jest dopasowywana do Twojej branży, oferty i stylu.\n\nDopasowywane są teksty, zdjęcia, video, usługi, pracownicy, kontakt, opisy i sekcje strony tak, żeby pasowały do Twojego salonu albo usługi.\n\nPrzykładowe sekcje to: O nas, Usługi, Galeria, Pracownicy, FAQ, Kontakt, Lokalizacja, Opinie, Efekty, Cennik i Rezerwacja online."
+        },
+        {
+          q: "Czy można dodać zdjęcia i video?",
+          a: "Tak. Na stronie można dodać zdjęcia oraz video.\n\nVideo może działać z automatycznym odtwarzaniem bez dźwięku, dzięki czemu strona wygląda bardziej dynamicznie i lepiej pokazuje klimat miejsca."
+        },
+        {
+          q: "Co daje booking online?",
+          a: "Booking online pozwala klientowi zapisać się na usługę bez pisania wiadomości.\n\nKlient może przejść ze strony bezpośrednio do rezerwacji, a właściciel nie musi ręcznie ustalać każdego terminu w wiadomościach."
+        },
+        {
+          q: "Co daje połączenie z Google Calendar?",
+          a: "Rezerwacje mogą trafiać do Google Calendar.\n\nDzięki temu właściciel widzi nowe terminy w jednym miejscu i może łatwiej kontrolować swój grafik."
+        },
+        {
+          q: "Co dają powiadomienia?",
+          a: "Po nowej rezerwacji właściciel może otrzymać powiadomienie, na przykład przez Telegram albo SMS.\n\nKlient może otrzymać potwierdzenie rezerwacji, żeby wiedział, że termin został zapisany."
+        },
+        {
+          q: "Jak strona pomaga w kontakcie z Instagrama?",
+          a: "Strona może działać jako miejsce, do którego trafia klient z Instagrama, reklamy, Google, QR kodu albo linku w bio.\n\nZamiast odpowiadać na te same pytania w wiadomościach, możesz kierować klienta na stronę, gdzie od razu widzi ofertę, ceny, FAQ, kontakt i rezerwację online."
+        }
+      ],
+      jakDziala: [
+        {
+          q: "Jak klient trafia na stronę?",
+          preview: "Instagram, Google, QR, WhatsApp albo link w bio.",
+          a: "Klient może trafić na stronę z Instagrama, reklamy, Google, QR kodu albo linku w bio.\n\nStrona zbiera w jednym miejscu najważniejsze informacje o biznesie i prowadzi klienta do kontaktu albo rezerwacji."
+        },
+        {
+          q: "Co klient widzi na stronie?",
+          preview: "Oferta, ceny, FAQ, zdjęcia, kontakt i wolne terminy.",
+          a: "Klient może zobaczyć usługi, ceny, opisy, FAQ, zdjęcia, video, pracowników, kontakt, lokalizację i linki do social media.\n\nDzięki temu może sam znaleźć odpowiedzi na podstawowe pytania bez pisania kilku wiadomości."
+        },
+        {
+          q: "Jak działa rezerwacja online?",
+          preview: "Klient wybiera usługę, dzień i godzinę bez pisania wiadomości.",
+          a: "Klient może przejść ze strony do rezerwacji online i zapisać się na usługę.\n\nProces nie wymaga ręcznego ustalania terminu w wiadomościach, dlatego jest wygodniejszy dla klienta i właściciela."
+        },
+        {
+          q: "Co dzieje się po rezerwacji?",
+          preview: "Termin trafia do systemu, a właściciel dostaje powiadomienie.",
+          a: "Po nowej rezerwacji właściciel może otrzymać powiadomienie o terminie.\n\nRezerwacja może też trafić do Google Calendar, żeby wszystkie terminy były widoczne w jednym miejscu."
+        },
+        {
+          q: "Czy klient otrzymuje potwierdzenie?",
+          a: "Tak. Klient może otrzymać potwierdzenie rezerwacji.\n\nDzięki temu wie, że termin został zapisany i nie trzeba dodatkowo potwierdzać wszystkiego ręcznie."
+        },
+        {
+          q: "Jak działa automatyzacja kontaktu?",
+          a: "Automatyzacja pomaga ograniczyć ręczne odpowiadanie na podstawowe pytania.\n\nKlient dostaje jasną ścieżkę: Instagram → strona → oferta → FAQ → kontakt albo rezerwacja online."
+        }
+      ],
+      panelAdmina: [
+        {
+          q: "Co daje panel admina?",
+          a: "Panel admina pozwala zarządzać informacjami na stronie.\n\nDzięki temu możesz samodzielnie aktualizować ofertę, ceny, zdjęcia, kontakt i dane widoczne w rezerwacji."
+        },
+        {
+          q: "Jakie dane można zmieniać w panelu?",
+          a: "Można zmieniać usługi, ceny, czas trwania usług, pracowników, zdjęcia, video, opisy, galerię, godziny pracy, kontakt, linki do social media i informacje widoczne w rezerwacji online."
+        },
+        {
+          q: "Czy można edytować usługi?",
+          a: "Tak. Możesz zmieniać nazwy usług, ceny, czas trwania, podpisy i widoczność usług."
+        },
+        {
+          q: "Czy można edytować pracowników?",
+          a: "Tak. Możesz dodawać i zmieniać pracowników oraz ustawiać, które usługi wykonują."
+        },
+        {
+          q: "Czy można edytować galerię?",
+          a: "Tak. Możesz dodawać zdjęcia, video i opisy do galerii albo innych sekcji strony."
+        },
+        {
+          q: "Czy panel wpływa na booking?",
+          a: "Tak. Usługi i pracownicy widoczni w rezerwacji online są połączeni z panelem admina.\n\nDzięki temu nie trzeba zmieniać tych danych w kilku miejscach osobno."
+        },
+        {
+          q: "Czy można zmieniać kontakt?",
+          a: "Tak. Możesz zmieniać numer telefonu, adres, godziny pracy i linki do social media."
+        }
+      ],
+      faq: [
+        {
+          q: "Co można zmieniać w środku strony?",
+          a: "Możesz samodzielnie zarządzać podstawowymi danymi przez panel admina.\n\nMożesz zmieniać usługi, ceny, pracowników, zdjęcia, video, opisy, galerię, kontakt, godziny pracy i informacje widoczne w booking."
+        },
+        {
+          q: "Czego nie obejmują zmiany po akceptacji projektu?",
+          a: "Po przyjęciu projektu większe zmiany całej koncepcji wizualnej są traktowane jako dodatkowa praca.\n\nDotyczy to na przykład zmiany stylu strony, zmiany kolorystyki, przebudowy układu, zmiany nagłówków po zatwierdzeniu albo dużej rozbudowy funkcji ponad ustalony zakres."
+        },
+        {
+          q: "Czy można później rozbudować stronę?",
+          a: "Tak. Stronę można później rozbudować o nowe sekcje, dodatkowe funkcje albo automatyzację Instagrama jako osobny element.\n\nTaka rozbudowa jest ustalana osobno."
+        },
+        {
+          q: "Jak wygląda współpraca?",
+          a: "Najpierw ustalamy branżę, styl i zawartość strony.\n\nNastępnie przygotowuję stronę, dodaję sekcje, nagłówki, zdjęcia, video, usługi, pracowników i kontakt.\n\nPotem konfiguruję booking online, Google Calendar i podstawowe powiadomienia.\n\nNa końcu testuję cały proces: stronę, admin panel, rezerwację, powiadomienia i zapis terminu w kalendarzu."
+        },
+        {
+          q: "Ile trwa przygotowanie?",
+          a: "Standardowo przygotowanie strony trwa 1–3 dni.\n\nPrzy większej liczbie materiałów, większym zakresie albo kolejce prac czas może wynosić około tygodnia."
+        },
+        {
+          q: "Co trzeba przygotować przed startem?",
+          a: "Najlepiej przygotować nazwę biznesu, listę usług, ceny, czas trwania usług, dane pracowników, zdjęcia, video, godziny pracy, adres, numer telefonu i linki do social media."
+        }
+      ]
+    },
+      en: {
+        coDaje: [
+          { q: "What do you get?", a: "You get a page tailored to your business, connected to online booking, an admin panel, and basic automation for client contact.\n\nIt is not just a business card. It is a system that helps the client see the offer, prices, FAQ, and book a service online." },
+          { q: "Why is this not a regular website?", a: "The page does not only show information about the business — it leads the client to a concrete action.\n\nThe client can see the offer, photos, video, read answers to questions, and go straight to booking." },
+          { q: "How is the page matched to the business?", a: "The page is matched to your industry, offer, and style.\n\nTexts, photos, video, services, staff, contact, descriptions, and sections are adjusted so they fit your salon or service.\n\nExample sections: About, Services, Gallery, Staff, FAQ, Contact, Location, Reviews, Results, Pricing, and Online booking." },
+          { q: "Can you add photos and video?", a: "Yes. The page can include photos and video.\n\nVideo can autoplay muted so the page feels more dynamic and shows the vibe of the place." },
+          { q: "What does online booking give you?", a: "Online booking lets the client book without writing messages.\n\nThey can go from the page straight to booking, and you do not have to arrange every slot manually in DMs." },
+          { q: "What does Google Calendar integration give?", a: "Bookings can go to Google Calendar.\n\nYou see new slots in one place and manage your schedule more easily." },
+          { q: "What do notifications do?", a: "After a new booking the owner can get a notification, e.g. via Telegram or SMS.\n\nThe client can get a confirmation so they know the slot is saved." },
+          { q: "How does the page help Instagram contact?", a: "The page can be the single place clients land from Instagram, ads, Google, a QR code, or a bio link.\n\nInstead of answering the same questions in DMs, you send people to a page where they immediately see offer, prices, FAQ, contact, and online booking." }
+        ],
+        jakDziala: [
+          { q: "How does the client reach the page?", preview: "Instagram, Google, QR, WhatsApp, or a bio link.", a: "Clients can come from Instagram, ads, Google, a QR code, or a bio link.\n\nThe page gathers the key business info in one place and leads to contact or booking." },
+          { q: "What does the client see on the page?", preview: "Offer, prices, FAQ, photos, contact, and free slots.", a: "They can see services, prices, descriptions, FAQ, photos, video, staff, contact, location, and social links.\n\nThey can answer basic questions themselves without several messages." },
+          { q: "How does online booking work?", preview: "The client picks service, day, and time without writing a message.", a: "They can go from the page to online booking and reserve a service.\n\nNo need to negotiate the time manually in messages — easier for both sides." },
+          { q: "What happens after booking?", preview: "The slot goes to the system and the owner gets a notification.", a: "After a booking the owner can get a notification.\n\nThe booking can also sync to Google Calendar so everything is visible in one place." },
+          { q: "Does the client get a confirmation?", a: "Yes. The client can receive a booking confirmation.\n\nThey know the slot is saved without extra manual back-and-forth." },
+          { q: "How does contact automation work?", a: "Automation cuts down manual replies to basic questions.\n\nThe path is clear: Instagram → page → offer → FAQ → contact or online booking." }
+        ],
+        panelAdmina: [
+          { q: "What does the admin panel do?", a: "The admin panel lets you manage information on the page.\n\nYou can update offer, prices, photos, contact, and data shown in booking yourself." },
+          { q: "What can you change in the panel?", a: "Services, prices, duration, staff, photos, video, descriptions, gallery, opening hours, contact, social links, and booking-visible information." },
+          { q: "Can you edit services?", a: "Yes. You can change service names, prices, duration, captions, and visibility." },
+          { q: "Can you edit staff?", a: "Yes. You can add and edit staff and which services they perform." },
+          { q: "Can you edit the gallery?", a: "Yes. You can add photos, video, and captions to the gallery or other sections." },
+          { q: "Does the panel affect booking?", a: "Yes. Services and staff in online booking are tied to the admin panel.\n\nYou do not maintain the same data in several separate places." },
+          { q: "Can you change contact details?", a: "Yes. Phone, address, opening hours, and social links can be updated." }
+        ],
+        faq: [
+          { q: "What can you change inside the page?", a: "You manage core data yourself via the admin panel.\n\nServices, prices, staff, photos, video, descriptions, gallery, contact, hours, and booking info." },
+          { q: "What is not included in changes after the project is accepted?", a: "After sign-off, major visual concept changes count as extra work.\n\nFor example: changing the overall style, color scheme, layout, headlines after approval, or large feature scope beyond what was agreed." },
+          { q: "Can the page be expanded later?", a: "Yes. You can add sections, features, or Instagram automation later as a separate element.\n\nThat is agreed separately." },
+          { q: "How does collaboration work?", a: "First we align industry, style, and content.\n\nThen I build the page with sections, headlines, photos, video, services, staff, and contact.\n\nThen I set up online booking, Google Calendar, and basic notifications.\n\nFinally I test the full flow: page, admin, booking, notifications, and calendar." },
+          { q: "How long does setup take?", a: "Typically 1–3 days.\n\nMore materials, wider scope, or a queue can push it to about a week." },
+          { q: "What should you prepare before start?", a: "Business name, service list, prices, durations, staff details, photos, video, hours, address, phone, and social links." }
+        ]
+      },
+      ru: {
+        coDaje: [
+          { q: "Что вы получаете?", a: "Страницу под ваш бизнес с онлайн-записью, админ-панелью и базовой автоматизацией контакта с клиентом.\n\nЭто не просто визитка, а система: клиент видит оферту, цены, FAQ и может сразу записаться онлайн." },
+          { q: "Почему это не обычный сайт?", a: "Страница не только показывает информацию, а ведёт клиента к действию.\n\nОн видит услуги, фото, видео, ответы на вопросы и сразу переходит к записи." },
+          { q: "Как страница подстраивается под бизнес?", a: "Под отрасль, оферту и стиль.\n\nТексты, фото, видео, услуги, сотрудники, контакты, описания и блоки под ваш салон или сервис.\n\nПримеры блоков: О нас, Услуги, Галерея, Команда, FAQ, Контакт, Локация, Отзывы, Результаты, Цены и Онлайн-запись." },
+          { q: "Можно ли добавить фото и видео?", a: "Да. На странице могут быть фото и видео.\n\nВидео может автовоспроизводиться без звука — страница выглядит живее и передаёт атмосферу." },
+          { q: "Что даёт онлайн-запись?", a: "Клиент записывается без переписки.\n\nПереход со страницы сразу в бронирование, вам не нужно вручную согласовывать каждый слот в сообщениях." },
+          { q: "Что даёт связка с Google Calendar?", a: "Записи могут попадать в Google Calendar.\n\nВсе слоты в одном месте, проще контролировать расписание." },
+          { q: "Зачем уведомления?", a: "После новой записи владелец может получить уведомление, например в Telegram или SMS.\n\nКлиент может получить подтверждение, что время сохранено." },
+          { q: "Как страница помогает с Instagram?", a: "Это единая точка входа из Instagram, рекламы, Google, QR или ссылки в био.\n\nВместо одних и тех же ответов в Direct вы направляете на страницу: оферта, цены, FAQ, контакт и онлайн-запись сразу видны." }
+        ],
+        jakDziala: [
+          { q: "Как клиент попадает на страницу?", preview: "Instagram, Google, QR, WhatsApp или ссылка в био.", a: "Клиент может прийти из Instagram, рекламы, Google, QR-кода или ссылки в био.\n\nНа странице собрана ключевая информация и путь к контакту или записи." },
+          { q: "Что клиент видит на странице?", preview: "Оферта, цены, FAQ, фото, контакт и свободные слоты.", a: "Услуги, цены, описания, FAQ, фото, видео, сотрудников, контакт, локацию и соцсети.\n\nБазовые вопросы он закрывает сам, без цепочки сообщений." },
+          { q: "Как работает онлайн-запись?", preview: "Клиент выбирает услугу, день и время без переписки.", a: "Со страницы — в онлайн-запись и бронирование услуги.\n\nБез ручного согласования времени в переписке — удобнее всем." },
+          { q: "Что после записи?", preview: "Слот попадает в систему, владелец получает уведомление.", a: "После записи владелец получает уведомление о слоте.\n\nЗапись может синхронизироваться с Google Calendar." },
+          { q: "Клиент получает подтверждение?", a: "Да. Можно отправить подтверждение записи.\n\nКлиент уверен, что время сохранено." },
+          { q: "Как работает автоматизация контакта?", a: "Меньше ручных ответов на однотипные вопросы.\n\nПуть: Instagram → страница → оферта → FAQ → контакт или онлайн-запись." }
+        ],
+        panelAdmina: [
+          { q: "Что даёт админ-панель?", a: "Управление данными на странице.\n\nСамостоятельно обновляете оферту, цены, фото, контакт и то, что видно в записи." },
+          { q: "Что можно менять в панели?", a: "Услуги, цены, длительность, сотрудников, фото, видео, описания, галерею, часы работы, контакт, соцсети и данные в бронировании." },
+          { q: "Можно редактировать услуги?", a: "Да. Названия, цены, длительность, подписи и видимость услуг." },
+          { q: "Можно редактировать сотрудников?", a: "Да. Добавление и изменение сотрудников и привязка услуг." },
+          { q: "Можно редактировать галерею?", a: "Да. Фото, видео и подписи в галерее и других блоках." },
+          { q: "Панель влияет на бронирование?", a: "Да. Услуги и сотрудники в онлайн-записи связаны с админ-панелью.\n\nНе нужно дублировать данные в нескольких местах." },
+          { q: "Можно менять контакты?", a: "Да. Телефон, адрес, часы и ссылки на соцсети." }
+        ],
+        faq: [
+          { q: "Что можно менять внутри страницы?", a: "Основные данные — через админ-панель.\n\nУслуги, цены, сотрудники, фото, видео, описания, галерея, контакт, часы и информация для записи." },
+          { q: "Что не входит в правки после принятия проекта?", a: "После сдачи проекта крупные изменения визуальной концепции — отдельная работа.\n\nНапример: смена стиля, палитры, сетки, заголовков после утверждения или существенное расширение функций сверх согласованного." },
+          { q: "Можно ли расширить страницу позже?", a: "Да. Новые блоки, функции и автоматизация Instagram добавляются как отдельный элемент — по отдельной договорённости." },
+          { q: "Как выглядит сотрудничество?", a: "Сначала согласуем нишу, стиль и контент.\n\nЗатем страница, блоки, заголовки, фото, видео, услуги, сотрудники и контакт.\n\nПотом онлайн-запись, Google Calendar и базовые уведомления.\n\nВ конце проверка всего пути: страница, админ, запись, уведомления, календарь." },
+          { q: "Сколько длится подготовка?", a: "Обычно 1–3 дня.\n\nБольше материалов, объём или очередь — около недели." },
+          { q: "Что подготовить до старта?", a: "Название, список услуг, цены, длительность, данные сотрудников, фото, видео, часы, адрес, телефон и ссылки на соцсети." }
+        ]
+      }
+    };
+
+    let portfolioLang = localStorage.getItem("portfolioLang") || "pl";
+    if (!FAQ_BY_LANG[portfolioLang]) portfolioLang = "pl";
+
+    function getFaqContent() {
+      return FAQ_BY_LANG[portfolioLang] || FAQ_BY_LANG.pl;
+    }
+
+    const FAQ_CATEGORY_LABELS_BY_LANG = {
+      pl: { coDaje: "Co daje?", jakDziala: "Jak działa?", panelAdmina: "Panel admina", faq: "FAQ" },
+      en: { coDaje: "What you get", jakDziala: "How it works", panelAdmina: "Admin panel", faq: "FAQ" },
+      ru: { coDaje: "Что даёт", jakDziala: "Как это работает", panelAdmina: "Админ-панель", faq: "FAQ" }
+    };
+
+    const DESKTOP_UI_I18N = {
+      pl: {
+        brand_sub: "Premium booking systems",
+        nav_demos: "Demo",
+        nav_benefits: "Co daje",
+        nav_how: "Jak działa",
+        nav_faq: "FAQ",
+        nav_contact: "Kontakt",
+        header_cta: "Zobacz demo",
+        hero_chip: "Jeden link do rezerwacji",
+        hero_title_html: "Nie strona. System do zdobywania <em>terminów.</em>",
+        hero_lead: "Premium landing i rezerwacja online dla lokalnych usług. Klient trafia z bio, DM, reklamy, QR kodu, Google, WhatsApp albo SMS — widzi ofertę, ceny, lokalizację, wolne godziny i od razu wybiera termin.",
+        hero_btn_demo: "Zobacz 3 wersje",
+        hero_btn_ig: "Napisz na Instagram",
+        hero_pill_1: "Link in bio",
+        hero_pill_2: "DM / WhatsApp / SMS",
+        hero_pill_3: "QR kod i reklamy",
+        hero_pill_4: "Google Business Profile",
+        demos_chip: "Demo selector",
+        demos_h2: "Wybierz styl, który pasuje do Twojego biznesu.",
+        demos_p: "Ten sam mechanizm rezerwacji, trzy różne charaktery. Dzięki temu właściciel widzi, że system można dopasować pod jego lokal, branżę i klimat marki.",
+        flow_badge_top: "System, który nie tylko wygląda drogo",
+        flow_badge_bottom: "ale zamienia wejścia w konkretne rezerwacje.",
+        flow_title: "Link z każdego miejsca",
+        flow_sub: "Jedna strona pod bio, DM, reklamę, QR kod albo profil Google.",
+        flow_status: "live flow",
+        flow_1_title: "Punkt wejścia",
+        flow_1_desc: "Bio, DM, reklama, QR, Google albo WhatsApp — klient trafia w jedno miejsce.",
+        flow_2_title: "Oferta bez rozmowy",
+        flow_2_desc: "Widoczna usługa, cena, czas trwania, lokalizacja i klimat marki.",
+        flow_3_title: "Wybór terminu",
+        flow_3_desc: "Klient wybiera usługę, osobę, dzień i godzinę bez ręcznego ustalania.",
+        flow_4_title: "Gotowa rezerwacja",
+        flow_4_desc: "Termin trafia do kalendarza, a zajęty slot znika z dostępnych godzin.",
+        benefit_1_title: "Jeden link wszędzie",
+        benefit_1_desc: "Bio, DM, reklama, QR kod, Google Business Profile — ten sam link prowadzi klienta do rezerwacji.",
+        benefit_2_title: "Mniej pytań przed wizytą",
+        benefit_2_desc: "Ceny, czas trwania, usługi i lokalizacja są pokazane zanim klient napisze wiadomość.",
+        benefit_3_title: "Lepsze pierwsze wrażenie",
+        benefit_3_desc: "Zamiast zwykłego formularza klient widzi stronę, która wygląda jak część marki.",
+        benefit_4_title: "Gotowe pod automatyzację",
+        benefit_4_desc: "Link można podpiąć pod auto reply, reklamy, kampanie, QR kod albo ręcznie wysyłać klientom.",
+        how_step_1_title: "Podpinasz link",
+        how_step_1_desc: "Dodajesz go do bio, DM, reklamy, Google, QR kodu albo wysyłasz klientowi ręcznie.",
+        how_step_2_title: "Klient sam wybiera",
+        how_step_2_desc: "Nie tłumaczysz po raz setny cen, usług i godzin — wszystko jest już pokazane.",
+        how_step_3_title: "System prowadzi do decyzji",
+        how_step_3_desc: "Strona skraca drogę od zainteresowania do konkretnej godziny.",
+        how_step_4_title: "Kalendarz pilnuje slotów",
+        how_step_4_desc: "Zajęte terminy znikają, a właściciel widzi gotową rezerwację zamiast kolejnej rozmowy.",
+        demo1_h3: "Jasno, spokojnie, profesjonalnie.",
+        demo1_p: "Dla beauty, nails, lashes, kosmetologii i spokojnych marek. Czysto, lekko i premium — bez ciężkiego efektu.",
+        demo1_r1_l: "Usługa",
+        demo1_r1_v: "Manicure",
+        demo1_r2_l: "Godzina",
+        demo1_r2_v: "14:30",
+        demo1_r3_l: "Status",
+        demo1_r3_v: "Potwierdzone",
+        demo1_r4_l: "CTA",
+        demo1_r4_v: "Zarezerwuj",
+        demo2_h3: "Mocny klimat dla lokalu.",
+        demo2_p: "Dla barbershopów, salonów i miejsc z mocniejszym charakterem. Więcej kontrastu, więcej atmosfery, premium feeling.",
+        demo2_r1_l: "Barber",
+        demo2_r1_v: "Tymur",
+        demo2_r2_l: "Usługa",
+        demo2_r2_v: "Combo 140 zł",
+        demo2_r3_l: "Godzina",
+        demo2_r3_v: "18:00",
+        demo2_r4_l: "CTA",
+        demo2_r4_v: "Zarezerwuj",
+        demo3_h3: "Nowocześnie, drożej, czytelniej.",
+        demo3_p: "Dla usług, które chcą wyglądać lepiej niż zwykły formularz. Szybka ścieżka, czytelna oferta i mocny przycisk rezerwacji.",
+        demo3_r1_l: "Sloty",
+        demo3_r1_v: "Z kalendarza",
+        demo3_r2_l: "Oferta",
+        demo3_r2_v: "Bez pytań",
+        demo3_r3_l: "System",
+        demo3_r3_v: "Auto booking",
+        demo3_r4_l: "Status",
+        demo3_r4_v: "Ready",
+        demo_open: "Otwórz demo",
+        benefits_h2: "Mniej ustalania. Więcej gotowych wizyt.",
+        benefits_p: "Klient nie musi pytać o podstawy. W jednym miejscu widzi ofertę, ceny, godziny, lokalizację i może od razu zarezerwować termin.",
+        how_h2: "Jak to działa od strony biznesu?",
+        how_p: "Najpierw pokazujesz klientowi gotową ścieżkę, a dopiero potem wchodzisz w rozmowę, jeśli naprawdę jest potrzebna.",
+        faq_h2: "Najczęstsze pytania przed startem.",
+        faq_p: "Wybierz kategorię i kliknij pytanie. Odpowiedź otwiera się w osobnym oknie.",
+        contact_h2: "Chcesz taki system pod swój lokal?",
+        contact_p: "Można przygotować wersję pod barbershop, nails, lashes, kosmetologię, masaż albo inny biznes usługowy. Najpierw pokazujemy ofertę, potem prowadzimy klienta do rezerwacji.",
+        contact_call: "Zadzwoń",
+        contact_social_chip: "Social media",
+        floating_contact: "Kontakt",
+        footer_copy: "Mrozowski Systems — premium booking systems for local service businesses."
+      },
+      en: {
+        brand_sub: "Premium booking systems",
+        nav_demos: "Demo",
+        nav_benefits: "What you get",
+        nav_how: "How it works",
+        nav_faq: "FAQ",
+        nav_contact: "Contact",
+        header_cta: "View demo",
+        hero_chip: "One booking link",
+        hero_title_html: "Not a website. A system for getting <em>appointments.</em>",
+        hero_lead: "Premium landing page and online booking for local services. The client comes from bio, DM, ads, QR code, Google, WhatsApp, or SMS — sees the offer, prices, location, available hours, and picks a slot right away.",
+        hero_btn_demo: "See 3 versions",
+        hero_btn_ig: "Message on Instagram",
+        hero_pill_1: "Link in bio",
+        hero_pill_2: "DM / WhatsApp / SMS",
+        hero_pill_3: "QR code and ads",
+        hero_pill_4: "Google Business Profile",
+        demos_chip: "Demo selector",
+        demos_h2: "Choose the style that fits your business.",
+        demos_p: "The same booking engine, three different styles. This helps owners see the system can match their venue, industry, and brand vibe.",
+        flow_badge_top: "A system that not only looks premium",
+        flow_badge_bottom: "but turns traffic into real bookings.",
+        flow_title: "One link from every channel",
+        flow_sub: "One page for bio, DM, ads, QR code, or Google profile.",
+        flow_status: "live flow",
+        flow_1_title: "Entry point",
+        flow_1_desc: "Bio, DM, ad, QR, Google, or WhatsApp - the client lands in one place.",
+        flow_2_title: "Offer without chat",
+        flow_2_desc: "Visible service, price, duration, location, and brand vibe.",
+        flow_3_title: "Pick a slot",
+        flow_3_desc: "The client chooses service, person, day, and time without manual back-and-forth.",
+        flow_4_title: "Booking confirmed",
+        flow_4_desc: "The slot goes to the calendar and occupied times disappear from availability.",
+        benefit_1_title: "One link everywhere",
+        benefit_1_desc: "Bio, DM, ads, QR code, Google Business Profile - the same link leads clients to booking.",
+        benefit_2_title: "Fewer pre-visit questions",
+        benefit_2_desc: "Prices, duration, services, and location are shown before the client sends a message.",
+        benefit_3_title: "Better first impression",
+        benefit_3_desc: "Instead of a plain form, the client sees a page that feels like part of your brand.",
+        benefit_4_title: "Ready for automation",
+        benefit_4_desc: "The link can be connected to auto replies, ads, campaigns, QR code, or sent manually.",
+        how_step_1_title: "You plug in the link",
+        how_step_1_desc: "Add it to bio, DM, ads, Google, QR code, or send it manually to a client.",
+        how_step_2_title: "The client chooses on their own",
+        how_step_2_desc: "You stop explaining prices, services, and hours over and over - everything is already shown.",
+        how_step_3_title: "The system drives the decision",
+        how_step_3_desc: "The page shortens the path from interest to a specific time slot.",
+        how_step_4_title: "Calendar guards the slots",
+        how_step_4_desc: "Booked times disappear, and the owner sees a ready booking instead of another chat.",
+        demo1_h3: "Bright, calm, professional.",
+        demo1_p: "For beauty, nails, lashes, cosmetology, and calm brands. Clean, light, and premium without a heavy look.",
+        demo1_r1_l: "Service",
+        demo1_r1_v: "Manicure",
+        demo1_r2_l: "Time",
+        demo1_r2_v: "2:30 PM",
+        demo1_r3_l: "Status",
+        demo1_r3_v: "Confirmed",
+        demo1_r4_l: "CTA",
+        demo1_r4_v: "Book now",
+        demo2_h3: "Strong local vibe.",
+        demo2_p: "For barbershops, salons, and venues with stronger character. More contrast, more atmosphere, premium feeling.",
+        demo2_r1_l: "Barber",
+        demo2_r1_v: "Tymur",
+        demo2_r2_l: "Service",
+        demo2_r2_v: "Combo PLN 140",
+        demo2_r3_l: "Time",
+        demo2_r3_v: "6:00 PM",
+        demo2_r4_l: "CTA",
+        demo2_r4_v: "Book now",
+        demo3_h3: "Modern, premium, clear.",
+        demo3_p: "For services that want to look better than a plain form. Fast path, clear offer, and a strong booking button.",
+        demo3_r1_l: "Slots",
+        demo3_r1_v: "From calendar",
+        demo3_r2_l: "Offer",
+        demo3_r2_v: "No back-and-forth",
+        demo3_r3_l: "System",
+        demo3_r3_v: "Auto booking",
+        demo3_r4_l: "Status",
+        demo3_r4_v: "Ready",
+        demo_open: "Open demo",
+        benefits_h2: "Less back-and-forth. More confirmed visits.",
+        benefits_p: "The client does not need to ask for the basics. In one place they see the offer, prices, hours, location, and can book right away.",
+        how_h2: "How does it work for the business?",
+        how_p: "First you show the client a ready path, and only then enter a chat if it is really needed.",
+        faq_h2: "Most common questions before launch.",
+        faq_p: "Choose a category and click a question. The answer opens in a separate window.",
+        contact_h2: "Want this system for your place?",
+        contact_p: "A version can be prepared for barbershop, nails, lashes, cosmetology, massage, or another service business. First we show the offer, then we guide the client to booking.",
+        contact_call: "Call",
+        contact_social_chip: "Social media",
+        floating_contact: "Contact",
+        footer_copy: "Mrozowski Systems — premium booking systems for local service businesses."
+      },
+      ru: {
+        brand_sub: "Премиум-системы записи",
+        nav_demos: "Демо",
+        nav_benefits: "Что даёт",
+        nav_how: "Как работает",
+        nav_faq: "FAQ",
+        nav_contact: "Контакт",
+        header_cta: "Смотреть демо",
+        hero_chip: "Одна ссылка на запись",
+        hero_title_html: "Не сайт. Система для получения <em>записей.</em>",
+        hero_lead: "Премиум-лендинг и онлайн-запись для локальных услуг. Клиент приходит из bio, DM, рекламы, QR-кода, Google, WhatsApp или SMS — видит предложение, цены, локацию, свободные часы и сразу выбирает слот.",
+        hero_btn_demo: "Смотреть 3 версии",
+        hero_btn_ig: "Написать в Instagram",
+        hero_pill_1: "Ссылка в bio",
+        hero_pill_2: "DM / WhatsApp / SMS",
+        hero_pill_3: "QR-код и реклама",
+        hero_pill_4: "Google Business Profile",
+        demos_chip: "Демо-селектор",
+        demos_h2: "Выберите стиль, который подходит вашему бизнесу.",
+        demos_p: "Один и тот же механизм записи, три разных стиля. Так владелец видит, что систему можно подстроить под свой локал, нишу и атмосферу бренда.",
+        flow_badge_top: "Система, которая не только выглядит дорого",
+        flow_badge_bottom: "но и превращает трафик в реальные записи.",
+        flow_title: "Ссылка из любого канала",
+        flow_sub: "Одна страница для bio, DM, рекламы, QR-кода и профиля Google.",
+        flow_status: "live flow",
+        flow_1_title: "Точка входа",
+        flow_1_desc: "Bio, DM, реклама, QR, Google или WhatsApp - клиент попадает в одно место.",
+        flow_2_title: "Оффер без переписки",
+        flow_2_desc: "Сразу видны услуга, цена, длительность, локация и стиль бренда.",
+        flow_3_title: "Выбор времени",
+        flow_3_desc: "Клиент выбирает услугу, мастера, день и час без ручных согласований.",
+        flow_4_title: "Готовая запись",
+        flow_4_desc: "Слот попадает в календарь, а занятое время исчезает из доступных часов.",
+        benefit_1_title: "Одна ссылка везде",
+        benefit_1_desc: "Bio, DM, реклама, QR-код, Google Business Profile - одна ссылка ведет клиента к записи.",
+        benefit_2_title: "Меньше вопросов до визита",
+        benefit_2_desc: "Цены, длительность, услуги и локация показаны до того, как клиент напишет.",
+        benefit_3_title: "Лучшее первое впечатление",
+        benefit_3_desc: "Вместо обычной формы клиент видит страницу, которая выглядит как часть бренда.",
+        benefit_4_title: "Готово к автоматизации",
+        benefit_4_desc: "Ссылку можно подключить к автоответам, рекламе, кампаниям, QR-коду или отправлять вручную.",
+        how_step_1_title: "Подключаете ссылку",
+        how_step_1_desc: "Добавляете ее в bio, DM, рекламу, Google, QR-код или отправляете клиенту вручную.",
+        how_step_2_title: "Клиент выбирает сам",
+        how_step_2_desc: "Не нужно в сотый раз объяснять цены, услуги и часы - все уже показано.",
+        how_step_3_title: "Система ведет к решению",
+        how_step_3_desc: "Страница сокращает путь от интереса до конкретного времени.",
+        how_step_4_title: "Календарь контролирует слоты",
+        how_step_4_desc: "Занятые слоты исчезают, а владелец видит готовую запись вместо очередного диалога.",
+        demo1_h3: "Светло, спокойно, профессионально.",
+        demo1_p: "Для beauty, nails, lashes, косметологии и спокойных брендов. Чисто, легко и премиально - без тяжести.",
+        demo1_r1_l: "Услуга",
+        demo1_r1_v: "Маникюр",
+        demo1_r2_l: "Время",
+        demo1_r2_v: "14:30",
+        demo1_r3_l: "Статус",
+        demo1_r3_v: "Подтверждено",
+        demo1_r4_l: "CTA",
+        demo1_r4_v: "Записаться",
+        demo2_h3: "Сильный характер для локала.",
+        demo2_p: "Для барбершопов, салонов и мест с более ярким характером. Больше контраста, больше атмосферы, premium feeling.",
+        demo2_r1_l: "Барбер",
+        demo2_r1_v: "Тимур",
+        demo2_r2_l: "Услуга",
+        demo2_r2_v: "Комбо 140 zł",
+        demo2_r3_l: "Время",
+        demo2_r3_v: "18:00",
+        demo2_r4_l: "CTA",
+        demo2_r4_v: "Записаться",
+        demo3_h3: "Современно, дороже, понятнее.",
+        demo3_p: "Для услуг, которые хотят выглядеть лучше обычной формы. Быстрый путь, понятный оффер и сильная кнопка записи.",
+        demo3_r1_l: "Слоты",
+        demo3_r1_v: "Из календаря",
+        demo3_r2_l: "Оффер",
+        demo3_r2_v: "Без лишних вопросов",
+        demo3_r3_l: "Система",
+        demo3_r3_v: "Автозапись",
+        demo3_r4_l: "Статус",
+        demo3_r4_v: "Готово",
+        demo_open: "Открыть демо",
+        benefits_h2: "Меньше переписки. Больше готовых визитов.",
+        benefits_p: "Клиенту не нужно спрашивать базовые вещи. В одном месте он видит предложение, цены, часы, локацию и может сразу забронировать слот.",
+        how_h2: "Как это работает для бизнеса?",
+        how_p: "Сначала вы показываете клиенту готовый путь, и только потом переходите в диалог, если это действительно нужно.",
+        faq_h2: "Самые частые вопросы перед стартом.",
+        faq_p: "Выберите категорию и нажмите на вопрос. Ответ откроется в отдельном окне.",
+        contact_h2: "Хотите такую систему для бизнеса?",
+        contact_p: "Можно подготовить версию для барбершопа, nails, lashes, косметологии, массажа или другого сервисного бизнеса. Сначала показываем предложение, потом ведем клиента к записи.",
+        contact_call: "Позвонить",
+        contact_social_chip: "Соцсети",
+        floating_contact: "Контакт",
+        footer_copy: "Mrozowski Systems — премиум-системы записи для локального сервисного бизнеса."
+      }
+    };
+
+    function getFaqCategoryLabels() {
+      return FAQ_CATEGORY_LABELS_BY_LANG[portfolioLang] || FAQ_CATEGORY_LABELS_BY_LANG.pl;
+    }
+
+    function applyDesktopUiStrings() {
+      const root = document.querySelector(".desktop-version");
+      const pack = DESKTOP_UI_I18N[portfolioLang] || DESKTOP_UI_I18N.pl;
+      if (!root || !pack) return;
+
+      const textMap = [
+        [".brand-copy span", "brand_sub"],
+        [".nav a[href='#demos']", "nav_demos"],
+        [".nav a[href='#benefits']", "nav_benefits"],
+        [".nav a[href='#how']", "nav_how"],
+        [".nav a[href='#faq']", "nav_faq"],
+        [".nav a[href='#contact']", "nav_contact"],
+        [".header-inner > a.btn.btn-primary", "header_cta"],
+        [".hero-copy .chip", "hero_chip"],
+        [".hero-lead", "hero_lead"],
+        [".hero-actions a.btn.btn-primary", "hero_btn_demo"],
+        [".hero-actions a.btn:not(.btn-primary)", "hero_btn_ig"],
+        [".hero-pills .pill:nth-child(1)", "hero_pill_1"],
+        [".hero-pills .pill:nth-child(2)", "hero_pill_2"],
+        [".hero-pills .pill:nth-child(3)", "hero_pill_3"],
+        [".hero-pills .pill:nth-child(4)", "hero_pill_4"],
+        [".hero-sell-badge span", "flow_badge_top"],
+        [".hero-sell-badge strong", "flow_badge_bottom"],
+        [".dashboard-title strong", "flow_title"],
+        [".dashboard-title span", "flow_sub"],
+        [".status-pill", "flow_status"],
+        [".flow-row:nth-child(1) strong", "flow_1_title"],
+        [".flow-row:nth-child(1) span", "flow_1_desc"],
+        [".flow-row:nth-child(2) strong", "flow_2_title"],
+        [".flow-row:nth-child(2) span", "flow_2_desc"],
+        [".flow-row:nth-child(3) strong", "flow_3_title"],
+        [".flow-row:nth-child(3) span", "flow_3_desc"],
+        [".flow-row:nth-child(4) strong", "flow_4_title"],
+        [".flow-row:nth-child(4) span", "flow_4_desc"],
+        ["#demos .section-head .chip", "demos_chip"],
+        ["#demos .section-head h2", "demos_h2"],
+        ["#demos .section-head p", "demos_p"],
+        ["#white-demo h3", "demo1_h3"],
+        ["#white-demo .demo-top p", "demo1_p"],
+        ["#white-demo .ui-row:nth-child(1) span", "demo1_r1_l"],
+        ["#white-demo .ui-row:nth-child(1) strong", "demo1_r1_v"],
+        ["#white-demo .ui-row:nth-child(2) span", "demo1_r2_l"],
+        ["#white-demo .ui-row:nth-child(2) strong", "demo1_r2_v"],
+        ["#white-demo .ui-row:nth-child(3) span", "demo1_r3_l"],
+        ["#white-demo .ui-row:nth-child(3) strong", "demo1_r3_v"],
+        ["#white-demo .ui-row:nth-child(4) span", "demo1_r4_l"],
+        ["#white-demo .ui-row:nth-child(4) strong", "demo1_r4_v"],
+        ["#orange-demo h3", "demo2_h3"],
+        ["#orange-demo .demo-top p", "demo2_p"],
+        ["#orange-demo .ui-row:nth-child(1) span", "demo2_r1_l"],
+        ["#orange-demo .ui-row:nth-child(1) strong", "demo2_r1_v"],
+        ["#orange-demo .ui-row:nth-child(2) span", "demo2_r2_l"],
+        ["#orange-demo .ui-row:nth-child(2) strong", "demo2_r2_v"],
+        ["#orange-demo .ui-row:nth-child(3) span", "demo2_r3_l"],
+        ["#orange-demo .ui-row:nth-child(3) strong", "demo2_r3_v"],
+        ["#orange-demo .ui-row:nth-child(4) span", "demo2_r4_l"],
+        ["#orange-demo .ui-row:nth-child(4) strong", "demo2_r4_v"],
+        ["#violet-demo h3", "demo3_h3"],
+        ["#violet-demo .demo-top p", "demo3_p"],
+        ["#violet-demo .ui-row:nth-child(1) span", "demo3_r1_l"],
+        ["#violet-demo .ui-row:nth-child(1) strong", "demo3_r1_v"],
+        ["#violet-demo .ui-row:nth-child(2) span", "demo3_r2_l"],
+        ["#violet-demo .ui-row:nth-child(2) strong", "demo3_r2_v"],
+        ["#violet-demo .ui-row:nth-child(3) span", "demo3_r3_l"],
+        ["#violet-demo .ui-row:nth-child(3) strong", "demo3_r3_v"],
+        ["#violet-demo .ui-row:nth-child(4) span", "demo3_r4_l"],
+        ["#violet-demo .ui-row:nth-child(4) strong", "demo3_r4_v"],
+        ["#white-demo .demo-bottom a.btn", "demo_open"],
+        ["#orange-demo .demo-bottom a.btn", "demo_open"],
+        ["#violet-demo .demo-bottom a.btn", "demo_open"],
+        ["#benefits .section-head h2", "benefits_h2"],
+        ["#benefits .section-head p", "benefits_p"],
+        ["#benefits .benefit-card:nth-child(1) strong", "benefit_1_title"],
+        ["#benefits .benefit-card:nth-child(1) p", "benefit_1_desc"],
+        ["#benefits .benefit-card:nth-child(2) strong", "benefit_2_title"],
+        ["#benefits .benefit-card:nth-child(2) p", "benefit_2_desc"],
+        ["#benefits .benefit-card:nth-child(3) strong", "benefit_3_title"],
+        ["#benefits .benefit-card:nth-child(3) p", "benefit_3_desc"],
+        ["#benefits .benefit-card:nth-child(4) strong", "benefit_4_title"],
+        ["#benefits .benefit-card:nth-child(4) p", "benefit_4_desc"],
+        ["#how .section-head h2", "how_h2"],
+        ["#how .section-head p", "how_p"],
+        ["#how .step-card:nth-child(1) strong", "how_step_1_title"],
+        ["#how .step-card:nth-child(1) p", "how_step_1_desc"],
+        ["#how .step-card:nth-child(2) strong", "how_step_2_title"],
+        ["#how .step-card:nth-child(2) p", "how_step_2_desc"],
+        ["#how .step-card:nth-child(3) strong", "how_step_3_title"],
+        ["#how .step-card:nth-child(3) p", "how_step_3_desc"],
+        ["#how .step-card:nth-child(4) strong", "how_step_4_title"],
+        ["#how .step-card:nth-child(4) p", "how_step_4_desc"],
+        ["#faq .section-head h2", "faq_h2"],
+        ["#faq .section-head p", "faq_p"],
+        ["#contact .cta-copy h2", "contact_h2"],
+        ["#contact .cta-copy p", "contact_p"],
+        ["#contact .section-actions a.btn:not(.btn-primary)", "contact_call"],
+        ["#contact .contact-card .chip", "contact_social_chip"],
+        [".floating-contact", "floating_contact"],
+        [".footer .container", "footer_copy"]
+      ];
+
+      textMap.forEach(([selector, key]) => {
+        const el = root.querySelector(selector) || document.querySelector(selector);
+        if (el && pack[key] != null) el.textContent = pack[key];
+      });
+
+      const heroTitle = root.querySelector("#hero-title");
+      if (heroTitle && pack.hero_title_html != null) heroTitle.innerHTML = pack.hero_title_html;
+    }
+
+    const MOBILE_UI_I18N = {
+      pl: {
+        nav_demos: "Demo",
+        nav_home: "Start",
+        nav_benefits: "Co daje",
+        nav_how: "Jak działa",
+        nav_faq: "FAQ",
+        nav_contact: "Kontakt",
+        demos_kicker: "Demo selector",
+        demos_title: "Zobacz trzy przykłady realizacji.",
+        demos_sub: "Trzy wersje, jeden mechanizm. Przesuń karty i otwórz demo.",
+        demos_note: "Końcowa realizacja zostanie przygotowana indywidualnie pod klienta.",
+        demo_light_kicker: "Clean premium",
+        demo_light_h3: "Jasno i profesjonalnie.",
+        demo_light_p: "Dla beauty, nails, lashes, kosmetologii i spokojnych marek.",
+        demo_light_r1a: "Usługa",
+        demo_light_r1b: "Manicure",
+        demo_light_r2a: "Godzina",
+        demo_light_r2b: "14:30",
+        demo_light_r3a: "Status",
+        demo_light_r3b: "Ready",
+        demo_violet_kicker: "Modern service",
+        demo_violet_h3: "Nowocześnie i czytelnie.",
+        demo_violet_p: "Dla usług, które chcą wyglądać drożej niż zwykły formularz.",
+        demo_violet_r1a: "Sloty",
+        demo_violet_r1b: "Kalendarz",
+        demo_violet_r2a: "Oferta",
+        demo_violet_r2b: "Bez pytań",
+        demo_violet_r3a: "Status",
+        demo_violet_r3b: "Online",
+        demo_orange_kicker: "Dark local",
+        demo_orange_h3: "Mocny klimat lokalu.",
+        demo_orange_p: "Dla barberów, salonów i marek, które chcą wyglądać bardziej premium.",
+        demo_orange_r1a: "Usługa",
+        demo_orange_r1b: "Combo",
+        demo_orange_r2a: "Godzina",
+        demo_orange_r2b: "18:00",
+        demo_orange_r3a: "CTA",
+        demo_orange_r3b: "Zarezerwuj",
+        demo_open: "Otwórz demo",
+        home_kicker: "Jeden link do rezerwacji",
+        home_title_html: "Nie strona. System do zdobywania <em>terminów.</em>",
+        home_sub: "Klient trafia z bio, DM, reklamy, QR, Google albo WhatsApp — widzi ofertę, ceny, wolne godziny i od razu wybiera termin.",
+        benefits_kicker: "Co to daje?",
+        benefits_title: "Mniej ustalania. Więcej wizyt.",
+        benefits_sub: "Klient widzi podstawy od razu i szybciej przechodzi do decyzji.",
+        how_kicker: "Jak działa?",
+        how_title: "Od linku do gotowego terminu.",
+        how_sub: "Prosta ścieżka dla klienta i mniej ręcznego ustalania dla właściciela.",
+        faq_page_kicker: "FAQ",
+        faq_page_title: "Najczęstsze pytania.",
+        faq_page_sub: "Co robi strona, gdzie ją podpiąć i jak zacząć bez chaosu w wiadomościach.",
+        faq_section_admin: "Panel admina",
+        faq_section_faq: "FAQ",
+        contact_kicker: "Kontakt",
+        contact_title: "Chcesz taki system pod swój lokal?",
+        contact_sub: "Wersja pod barbershop, beauty, nails, lashes, masaż albo inny lokal usługowy.",
+        cta_instagram: "Napisz na Instagram",
+        lang_aria: "Język",
+        faq_modal_close_aria: "Zamknij"
+      },
+      en: {
+        nav_demos: "Demo",
+        nav_home: "Start",
+        nav_benefits: "Benefits",
+        nav_how: "How it works",
+        nav_faq: "FAQ",
+        nav_contact: "Contact",
+        demos_kicker: "Demo selector",
+        demos_title: "See three implementation examples.",
+        demos_sub: "Three versions, one engine. Swipe the cards and open a demo.",
+        demos_note: "The final deliverable is tailored individually for each client.",
+        demo_light_kicker: "Clean premium",
+        demo_light_h3: "Bright and professional.",
+        demo_light_p: "For beauty, nails, lashes, cosmetology, and calm brands.",
+        demo_light_r1a: "Service",
+        demo_light_r1b: "Manicure",
+        demo_light_r2a: "Time",
+        demo_light_r2b: "2:30 PM",
+        demo_light_r3a: "Status",
+        demo_light_r3b: "Ready",
+        demo_violet_kicker: "Modern service",
+        demo_violet_h3: "Modern and clear.",
+        demo_violet_p: "For businesses that should look more premium than a plain form.",
+        demo_violet_r1a: "Slots",
+        demo_violet_r1b: "Calendar",
+        demo_violet_r2a: "Offer",
+        demo_violet_r2b: "No back-and-forth",
+        demo_violet_r3a: "Status",
+        demo_violet_r3b: "Online",
+        demo_orange_kicker: "Dark local",
+        demo_orange_h3: "Strong local vibe.",
+        demo_orange_p: "For barbershops, salons, and brands that want a bolder premium feel.",
+        demo_orange_r1a: "Service",
+        demo_orange_r1b: "Combo",
+        demo_orange_r2a: "Time",
+        demo_orange_r2b: "6:00 PM",
+        demo_orange_r3a: "CTA",
+        demo_orange_r3b: "Book",
+        demo_open: "Open demo",
+        home_kicker: "One link for booking",
+        home_title_html: "Not just a website. A system for <em>booking appointments.</em>",
+        home_sub: "Clients land from bio, DMs, ads, QR, Google, or WhatsApp — they see the offer, prices, free slots, and book right away.",
+        benefits_kicker: "What you get",
+        benefits_title: "Less negotiating. More visits.",
+        benefits_sub: "Clients see the essentials faster and decide sooner.",
+        how_kicker: "How it works",
+        how_title: "From link to a booked slot.",
+        how_sub: "A simple path for clients and less manual scheduling for you.",
+        faq_page_kicker: "FAQ",
+        faq_page_title: "Common questions.",
+        faq_page_sub: "What the page does, where to plug it in, and how to start without inbox chaos.",
+        faq_section_admin: "Admin panel",
+        faq_section_faq: "FAQ",
+        contact_kicker: "Contact",
+        contact_title: "Want this system for your venue?",
+        contact_sub: "For barbershops, beauty, nails, lashes, massage, and other local services.",
+        cta_instagram: "Message on Instagram",
+        lang_aria: "Language",
+        faq_modal_close_aria: "Close"
+      },
+      ru: {
+        nav_demos: "Демо",
+        nav_home: "Старт",
+        nav_benefits: "Что даёт",
+        nav_how: "Как работает",
+        nav_faq: "FAQ",
+        nav_contact: "Контакт",
+        demos_kicker: "Выбор демо",
+        demos_title: "Посмотрите на три примера реализации.",
+        demos_sub: "Три версии, один механизм. Листайте карточки и откройте демо.",
+        demos_note: "Итоговая работа будет выполнена индивидуально под клиента.",
+        demo_light_kicker: "Clean premium",
+        demo_light_h3: "Светло и профессионально.",
+        demo_light_p: "Для beauty, nails, lashes, косметологии и спокойных брендов.",
+        demo_light_r1a: "Услуга",
+        demo_light_r1b: "Маникюр",
+        demo_light_r2a: "Время",
+        demo_light_r2b: "14:30",
+        demo_light_r3a: "Статус",
+        demo_light_r3b: "Готово",
+        demo_violet_kicker: "Modern service",
+        demo_violet_h3: "Современно и понятно.",
+        demo_violet_p: "Для сервисов, которым важно выглядеть дороже обычной формы.",
+        demo_violet_r1a: "Слоты",
+        demo_violet_r1b: "Календарь",
+        demo_violet_r2a: "Оферта",
+        demo_violet_r2b: "Без лишних вопросов",
+        demo_violet_r3a: "Статус",
+        demo_violet_r3b: "Онлайн",
+        demo_orange_kicker: "Dark local",
+        demo_orange_h3: "Сильный характер локала.",
+        demo_orange_p: "Для барбершопов, салонов и брендов с более смелым премиум-вайбом.",
+        demo_orange_r1a: "Услуга",
+        demo_orange_r1b: "Комбо",
+        demo_orange_r2a: "Время",
+        demo_orange_r2b: "18:00",
+        demo_orange_r3a: "CTA",
+        demo_orange_r3b: "Записаться",
+        demo_open: "Открыть демо",
+        home_kicker: "Одна ссылка на запись",
+        home_title_html: "Не сайт. Система для <em>записи клиентов.</em>",
+        home_sub: "Клиент приходит из био, DM, рекламы, QR, Google или WhatsApp — видит оферту, цены, свободные слоты и сразу выбирает время.",
+        benefits_kicker: "Что это даёт",
+        benefits_title: "Меньше переписок. Больше визитов.",
+        benefits_sub: "Клиент быстрее видит суть и переходит к решению.",
+        how_kicker: "Как это работает",
+        how_title: "От ссылки до записи.",
+        how_sub: "Простой путь для клиента и меньше ручного согласования для вас.",
+        faq_page_kicker: "FAQ",
+        faq_page_title: "Частые вопросы.",
+        faq_page_sub: "Что делает страница, куда её вставить и как стартовать без хаоса в сообщениях.",
+        faq_section_admin: "Админ-панель",
+        faq_section_faq: "FAQ",
+        contact_kicker: "Контакт",
+        contact_title: "Нужна такая система под ваш локал?",
+        contact_sub: "Для барбершопа, beauty, nails, lashes, массажа и других локальных услуг.",
+        cta_instagram: "Написать в Instagram",
+        lang_aria: "Язык",
+        faq_modal_close_aria: "Закрыть"
+      }
+    };
+
+    function getMobileUiPack() {
+      return MOBILE_UI_I18N[portfolioLang] || MOBILE_UI_I18N.pl;
+    }
+
+    function applyMobileUiStrings() {
+      const pack = getMobileUiPack();
+      if (!mobileApp) return;
+
+      mobileApp.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (key && pack[key] != null) el.textContent = pack[key];
+      });
+
+      mobileApp.querySelectorAll("[data-i18n-html]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-html");
+        if (key && pack[key] != null) el.innerHTML = pack[key];
+      });
+
+      document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-aria");
+        if (key && pack[key] != null) el.setAttribute("aria-label", pack[key]);
+      });
+    }
+
+    function syncMobileFaqFromLang() {
+      if (!mobileApp) return;
+      const bundle = getFaqContent();
+      mobileApp.querySelectorAll("[data-faq-open]").forEach((btn) => {
+        const cat = btn.getAttribute("data-faq-cat");
+        const idx = Number(btn.getAttribute("data-faq-index"));
+        const row = bundle[cat] && bundle[cat][idx];
+        if (!row) return;
+        const qt = btn.querySelector(".faq-question-text");
+        const qp = btn.querySelector(".faq-question-preview");
+        if (qt) qt.textContent = row.q;
+        if (qp) qp.textContent = row.preview || "";
+      });
+    }
+
+    function setLangOptionActive() {
+      document.querySelectorAll(".mobile-lang-option").forEach((btn) => {
+        btn.classList.toggle("active", btn.getAttribute("data-set-lang") === portfolioLang);
+      });
+    }
+
+    function closeMobileLangPanel() {
+      document.body.classList.remove("mobile-lang-open");
+      const panel = document.getElementById("mobileLangPanel");
+      if (panel) {
+        panel.style.position = "";
+        panel.style.top = "";
+        panel.style.right = "";
+        panel.style.bottom = "";
+        panel.style.left = "";
+        panel.style.maxHeight = "";
+        panel.style.zIndex = "";
+      }
+    }
+
+    function openMobileLangPanel() {
+      const panel = document.getElementById("mobileLangPanel");
+      document.body.classList.add("mobile-lang-open");
+
+      if (panel) {
+        const anchor = document.getElementById("mobileLang") || panel;
+        const r = anchor.getBoundingClientRect();
+        const gap = 10;
+        const vh = window.visualViewport?.height ?? window.innerHeight;
+        const spaceAbove = Math.max(0, r.top - gap);
+        const panelMax = Math.min(240, Math.max(130, spaceAbove - 8));
+        panel.style.position = "fixed";
+        panel.style.left = "auto";
+        panel.style.top = "auto";
+        panel.style.right = `${Math.max(10, window.innerWidth - r.right)}px`;
+        panel.style.bottom = `${vh - r.top + gap}px`;
+        panel.style.maxHeight = `${panelMax}px`;
+        panel.style.zIndex = "150";
+      }
+
+      setLangOptionActive();
+    }
+
+    function setPortfolioLang(lang) {
+      if (!FAQ_BY_LANG[lang]) return;
+      portfolioLang = lang;
+      localStorage.setItem("portfolioLang", lang);
+      document.documentElement.lang = lang === "pl" ? "pl" : lang === "ru" ? "ru" : "en";
+      applyDesktopUiStrings();
+      applyMobileUiStrings();
+      syncMobileFaqFromLang();
+      renderDesktopFaq();
+      setLangOptionActive();
+    }
+
+    const desktopFaqTabs = document.getElementById("desktopFaqTabs");
+    const desktopFaqCards = document.getElementById("desktopFaqCards");
+    const faqModal = document.getElementById("faqModal");
+    const faqModalTitle = document.getElementById("faqModalTitle");
+    const faqModalAnswer = document.getElementById("faqModalAnswer");
+    const mobileApp = document.getElementById("mobileApp");
+    let activeDesktopFaqCategory = "coDaje";
+
+    function escHtml(value) {
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;");
+    }
+
+    function faqCardHtml(item, categoryKey, index, extraClass = "") {
+      return `<button class="faq-question-card ${extraClass}" type="button" data-faq-open data-faq-cat="${categoryKey}" data-faq-index="${index}">
+        <span class="faq-question-text">${escHtml(item.q)}</span>
+        <span class="faq-plus" aria-hidden="true">+</span>
+      </button>`;
+    }
+
+    function renderDesktopFaq() {
+      if (!desktopFaqTabs || !desktopFaqCards) return;
+
+      desktopFaqTabs.innerHTML = Object.entries(getFaqCategoryLabels())
+        .map(([key, label]) => {
+          const active = key === activeDesktopFaqCategory ? "active" : "";
+          return `<button class="faq-tab ${active}" type="button" data-desktop-faq-tab="${key}">${label}</button>`;
+        })
+        .join("");
+
+      const entries = getFaqContent()[activeDesktopFaqCategory] || [];
+      desktopFaqCards.innerHTML = entries
+        .map((item, idx) => faqCardHtml(item, activeDesktopFaqCategory, idx))
+        .join("");
+    }
+
+    function renderMobileFaqSections() {
+      const pageMap = {
+        home: { category: "jakDziala", ids: [0, 1, 2, 3], mode: "list" },
+        demos: { category: "coDaje", ids: [1, 2, 3, 7], mode: "carousel" },
+        benefits: { category: "coDaje", ids: [0, 1, 2, 3, 4, 5, 6, 7], mode: "carousel" },
+        how: { category: "jakDziala", ids: [0, 1, 2, 3, 4, 5], mode: "carousel" }
+      };
+
+      Object.entries(pageMap).forEach(([pageId, cfg]) => {
+        const body = document.querySelector(`#page-${pageId} .mobile-body`);
+        if (!body) return;
+        const nodes = cfg.ids
+          .map((i) => (getFaqContent()[cfg.category] || [])[i])
+          .filter(Boolean)
+          .map((item, idx) => faqCardHtml(item, cfg.category, cfg.ids[idx], cfg.mode === "carousel" ? "faq-question-card--carousel" : ""))
+          .join("");
+
+        if (cfg.mode === "carousel") {
+          body.innerHTML = `<div class="mobile-faq-carousel">${nodes}</div>`;
+        } else {
+          body.innerHTML = `<div class="mobile-list mobile-faq-list">${nodes}</div>`;
+        }
+      });
+
+      const faqBody = document.querySelector("#page-faq .mobile-body");
+      if (faqBody) {
+        const panelList = (getFaqContent().panelAdmina || [])
+          .map((item, idx) => faqCardHtml(item, "panelAdmina", idx))
+          .join("");
+        const faqList = (getFaqContent().faq || [])
+          .map((item, idx) => faqCardHtml(item, "faq", idx))
+          .join("");
+
+        faqBody.innerHTML = `
+          <div class="mobile-list mobile-faq-list">
+            <h3 class="mobile-faq-section-title">Panel admina</h3>
+            <div class="mobile-faq-carousel">${panelList}</div>
+            <h3 class="mobile-faq-section-title">FAQ</h3>
+            <div class="mobile-faq-carousel">${faqList}</div>
+          </div>
+        `;
+      }
+    }
+
+    function enableVerticalSwipeOnFaqCarousels() {
+      document.querySelectorAll(".mobile-faq-carousel").forEach((carousel) => {
+        if (carousel.dataset.verticalSwipeBound === "1") return;
+        carousel.dataset.verticalSwipeBound = "1";
+
+        let startX = 0;
+        let startY = 0;
+        let lastY = 0;
+        let axis = "";
+
+        carousel.addEventListener("touchstart", (event) => {
+          const t = event.touches && event.touches[0];
+          if (!t) return;
+          startX = t.clientX;
+          startY = t.clientY;
+          lastY = t.clientY;
+          axis = "";
+        }, { passive: true });
+
+        carousel.addEventListener("touchmove", (event) => {
+          const t = event.touches && event.touches[0];
+          if (!t) return;
+
+          const dx = t.clientX - startX;
+          const dy = t.clientY - startY;
+
+          if (!axis) {
+            axis = Math.abs(dy) > Math.abs(dx) ? "y" : "x";
+          }
+
+          if (axis === "y") {
+            const page = carousel.closest(".mobile-page");
+            if (page) {
+              const deltaY = t.clientY - lastY;
+              page.scrollTop -= deltaY;
+              lastY = t.clientY;
+              event.preventDefault();
+            }
+          }
+        }, { passive: false });
+      });
+    }
+
+    function openFaqModal(categoryKey, index) {
+      const data = getFaqContent()[categoryKey] && getFaqContent()[categoryKey][index];
+      if (!data || !faqModal || !faqModalTitle || !faqModalAnswer) return;
+      faqModalTitle.textContent = data.q;
+      faqModalAnswer.textContent = data.a;
+      faqModal.classList.add("open");
+      faqModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("faq-modal-open");
+    }
+
+    function closeFaqModal() {
+      if (!faqModal) return;
+      faqModal.classList.remove("open");
+      faqModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("faq-modal-open");
+    }
+
+    function syncMobileContactCta(pageId) {
+      if (!mobileApp) return;
+      mobileApp.classList.toggle("show-contact-cta", pageId === "contact");
+    }
+
+    setPortfolioLang(portfolioLang);
+    enableVerticalSwipeOnFaqCarousels();
+    syncMobileContactCta("demos");
+
+    const mobileLang = document.getElementById("mobileLang");
+
+    document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const lang = btn.getAttribute("data-set-lang");
+        if (lang) setPortfolioLang(lang);
+        closeMobileLangPanel();
+      });
+    });
+
+    document.addEventListener("click", () => {
+      closeMobileLangPanel();
+    });
+
+    if (mobileLang) {
+      mobileLang.addEventListener("click", (event) => event.stopPropagation());
+    }
+
+    document.addEventListener("click", (event) => {
+      const tab = event.target.closest("[data-desktop-faq-tab]");
+      if (tab) {
+        activeDesktopFaqCategory = tab.getAttribute("data-desktop-faq-tab") || "coDaje";
+        renderDesktopFaq();
+      }
+
+      const faqOpen = event.target.closest("[data-faq-open]");
+      if (faqOpen) {
+        openFaqModal(faqOpen.getAttribute("data-faq-cat"), Number(faqOpen.getAttribute("data-faq-index")));
+      }
+
+      if (event.target.closest("[data-faq-close]")) {
+        closeFaqModal();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMobileDrawer();
+        closeMobileLangPanel();
+        closeFaqModal();
+      }
+    });
+
+    const demoBackTarget = `${window.location.origin}/`;
+    function withBackTarget(baseUrl) {
+      try {
+        const u = new URL(baseUrl);
+        u.searchParams.set("back", demoBackTarget);
+        u.searchParams.set("returnUrl", demoBackTarget);
+        return u.toString();
+      } catch {
+        return baseUrl;
+      }
+    }
+
+    const DEMO_URLS = {
+      luna: withBackTarget("https://lunanails.up.railway.app/"),
+      barber: withBackTarget("https://barbermonarch.up.railway.app/"),
+      mrozowski: withBackTarget("https://mrozowski.up.railway.app/")
+    };
+
+    document.querySelectorAll("#white-demo a.btn, .mobile-demo-card.light a.btn").forEach((link) => {
+      link.href = DEMO_URLS.luna;
+    });
+
+    document.querySelectorAll("#orange-demo a.btn, .mobile-demo-card.orange a.btn").forEach((link) => {
+      link.href = DEMO_URLS.barber;
+    });
+
+    document.querySelectorAll("#violet-demo a.btn, .mobile-demo-card.violet a.btn").forEach((link) => {
+      link.href = DEMO_URLS.mrozowski;
+    });
+
+    document.addEventListener("click", (event) => {
+      const link = event.target.closest("a");
+
+      if (!link) return;
+
+      const isDemoLink =
+        link.closest("#white-demo") ||
+        link.closest("#orange-demo") ||
+        link.closest("#violet-demo") ||
+        link.closest(".mobile-demo-card");
+
+      if (!isDemoLink) return;
+
+      if (link.closest("#white-demo") || link.closest(".mobile-demo-card.light")) {
+        link.href = DEMO_URLS.luna;
+      }
+
+      if (link.closest("#orange-demo") || link.closest(".mobile-demo-card.orange")) {
+        link.href = DEMO_URLS.barber;
+      }
+
+      if (link.closest("#violet-demo") || link.closest(".mobile-demo-card.violet")) {
+        link.href = DEMO_URLS.mrozowski;
+      }
+    }, true);
+    
+  </script>
+
+  <script>
+const params = new URLSearchParams(window.location.search);
+const pageFromUrl = params.get("page");
+
+if (pageFromUrl === "demos") {
+  window.addEventListener("load", () => {
+    const demoBtn = document.querySelector('.mobile-nav-btn[data-page="demos"]');
+
+    if (demoBtn) {
+      demoBtn.click();
+    }
+
+    const demosSection = document.getElementById("demos");
+
+    if (demosSection && window.innerWidth > 760) {
+      setTimeout(() => {
+        demosSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 200);
+    }
+  });
+}
+
+if (pageFromUrl === "home") {
+  window.addEventListener("load", () => {
+    document.querySelector('.mobile-nav-btn[data-page="home"]')?.click();
+  });
+}
+</script>
+  
+</body>
+</html>
