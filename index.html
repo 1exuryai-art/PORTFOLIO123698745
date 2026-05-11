@@ -1547,6 +1547,8 @@
       position: relative;
       z-index: 3;
       min-height: 100svh;
+      min-height: 100dvh;
+      min-height: -webkit-fill-available;
       height: 100svh;
       height: 100dvh;
       display: none;
@@ -1858,6 +1860,9 @@
       grid-template-rows: auto auto;
       gap: 12px;
       overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
       scrollbar-width: none;
       padding-right: 2px;
       animation: pageIn 0.42s cubic-bezier(.2,.8,.2,1) both;
@@ -1969,8 +1974,17 @@
       max-width: 36ch;
     }
 
+    #page-demos .mobile-page-head .mobile-title {
+      font-size: clamp(26px, 8.2vw, 44px);
+      line-height: 0.95;
+      max-width: 100%;
+      letter-spacing: -0.07em;
+    }
+
     #page-demos .mobile-page-head .mobile-sub {
-      max-width: 44ch;
+      max-width: 100%;
+      font-size: 13px;
+      line-height: 1.42;
     }
 
     .mobile-body {
@@ -2035,22 +2049,39 @@
 
     .mobile-demo-carousel {
       display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
+      flex-direction: column;
+      gap: 14px;
+      overflow: visible;
       scrollbar-width: none;
-      padding: 0 2px 2px;
+      padding: 0 2px 8px;
       align-items: stretch;
+      touch-action: pan-y;
     }
 
     .mobile-demo-carousel::-webkit-scrollbar {
       display: none;
     }
 
+    .mobile-demo-carousel.faq-carousel {
+      flex-direction: row;
+      gap: 10px;
+      overflow-x: auto;
+      overflow-y: visible;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      padding: 0 2px 6px;
+      touch-action: pan-x pan-y;
+    }
+
+    .mobile-demo-carousel.faq-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
     .mobile-demo-card {
-      flex: 0 0 82%;
-      min-height: 520px;
-      scroll-snap-align: center;
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 100%;
+      min-height: clamp(300px, calc(100svh - 200px), 480px);
       padding: 14px;
       border-radius: 24px;
       border: 1px solid var(--line);
@@ -2116,7 +2147,7 @@
       font-size: 26px;
       line-height: 0.96;
       letter-spacing: -0.065em;
-      max-width: 11ch;
+      max-width: 100%;
     }
 
     .mobile-demo-card p {
@@ -2191,9 +2222,10 @@
     }
 
     .mobile-demo-card .btn {
-      min-height: 50px;
+      min-height: 52px;
       font-size: 11px;
       width: 100%;
+      touch-action: manipulation;
     }
 
     .mobile-list {
@@ -2255,10 +2287,6 @@
       width: 40px;
       height: 40px;
       font-size: 24px;
-    }
-
-    .mobile-demo-carousel.faq-carousel {
-      padding: 0 2px 6px;
     }
 
     .mobile-demo-carousel.faq-carousel .faq-question-card {
@@ -2383,10 +2411,16 @@
     }
 
     @media (max-width: 760px) {
-      html,
+      html {
+        height: 100%;
+        min-height: -webkit-fill-available;
+      }
+
       body {
         height: 100%;
-        overflow: hidden;
+        min-height: -webkit-fill-available;
+        overflow-x: hidden;
+        overflow-y: hidden;
       }
 
       .desktop-version,
@@ -2448,12 +2482,11 @@
       }
 
       .mobile-demo-card {
-        flex-basis: 88%;
-        min-height: 500px;
+        min-height: clamp(280px, calc(100svh - 180px), 460px);
       }
 
       .mobile-demo-carousel.faq-carousel .faq-question-card {
-        flex-basis: 90%;
+        flex: 0 0 90%;
       }
 
       .mobile-faq-carousel .faq-question-card {
@@ -3072,11 +3105,11 @@
           <div class="mobile-kicker" data-i18n="demos_kicker">Demo selector</div>
 
           <h2 class="mobile-title" data-i18n="demos_title">
-            Zobacz trzy przykłady realizacji.
+            Przykłady realizacji.
           </h2>
 
           <p class="mobile-sub" data-i18n="demos_sub">
-            Końcowa realizacja zostanie przygotowana indywidualnie pod klienta.
+            Poniżej trzy działające wdrożenia — zobacz, jak to wygląda w praktyce.
           </p>
         </div>
 
@@ -4122,8 +4155,8 @@
         nav_faq: "FAQ",
         nav_contact: "Kontakt",
         demos_kicker: "Demo selector",
-        demos_title: "Zobacz trzy przykłady realizacji.",
-        demos_sub: "Końcowa realizacja zostanie przygotowana indywidualnie pod klienta.",
+        demos_title: "Przykłady realizacji.",
+        demos_sub: "Poniżej trzy działające wdrożenia — zobacz, jak to wygląda w praktyce.",
         demo_light_kicker: "Clean premium",
         demo_light_h3: "Jasno i profesjonalnie.",
         demo_light_p: "Dla beauty, nails, lashes, kosmetologii i spokojnych marek.",
@@ -4181,8 +4214,8 @@
         nav_faq: "FAQ",
         nav_contact: "Contact",
         demos_kicker: "Demo selector",
-        demos_title: "See three implementation examples.",
-        demos_sub: "The final deliverable is tailored individually for each client.",
+        demos_title: "Implementation examples.",
+        demos_sub: "Three live builds below — see how they work in practice.",
         demo_light_kicker: "Clean premium",
         demo_light_h3: "Bright and professional.",
         demo_light_p: "For beauty, nails, lashes, cosmetology, and calm brands.",
@@ -4240,8 +4273,8 @@
         nav_faq: "FAQ",
         nav_contact: "Контакт",
         demos_kicker: "Выбор демо",
-        demos_title: "Посмотрите на три примера реализации.",
-        demos_sub: "Итоговая работа будет выполнена индивидуально под клиента.",
+        demos_title: "Примеры реализации.",
+        demos_sub: "Ниже три живых примера — посмотрите, как это выглядит вживую.",
         demo_light_kicker: "Clean premium",
         demo_light_h3: "Светло и профессионально.",
         demo_light_p: "Для beauty, nails, lashes, косметологии и спокойных брендов.",
